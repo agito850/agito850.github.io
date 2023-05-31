@@ -62,18 +62,23 @@ a {
 }
 
 /*-------nav---------*/
+nav{
+    position: sticky;
+    top:0;
+    background-color: #fff;
+}
 #menu_control{
     display: none;
     transition: .5s;
 }
-#menu_control:checked ~ .header nav .masterLink{
+#menu_control:checked ~ nav .masterLink{
     /* display: block; */
     opacity: 1;
 }
-#menu_control:checked ~ .header nav .menu_btn{
+#menu_control:checked ~ nav .menu_btn{
     background-color: #ff9933;
 }
-#menu_control:checked ~ .header nav .menu_btn::before{
+#menu_control:checked ~ nav .menu_btn::before{
     background-color: #fff;
     box-shadow: 0 10px #fff, 0 -10px #fff;
 }
