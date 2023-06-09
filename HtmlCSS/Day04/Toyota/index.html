@@ -9,24 +9,29 @@
     <link rel="stylesheet" href="css/reset.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Noto+Sans+TC:wght@300;500&display=swap');
-        body{
+
+        body {
             font-family: 'Noto Sans TC', sans-serif;
             background-image: url(img/bg.png);
             /* background-color: #fefefe; */
         }
-        img{
+
+        img {
             width: 100%;
             vertical-align: middle;
         }
-        section{
+
+        section {
             margin-top: 150px;
         }
-        .container{
+
+        .container {
             width: 960px;
             margin: auto;
         }
+
         /*-------主底圖---------*/
-        .point-item{
+        .point-item {
             width: 100%;
             height: 500px;
             /* background-color: palegreen; */
@@ -35,25 +40,29 @@
             flex-direction: row-reverse;
             margin-bottom: 450px;
         }
-        .point-item .back-color{
+
+        .point-item .back-color {
             background-color: #f4f4f4;
             width: 439px;
             height: 290px;
         }
-        .point-item .main-pic{
+
+        .point-item .main-pic {
             width: 695px;
             position: relative;
             top: -190px;
             left: -80px;
         }
-        .point-item .main-pic .video-btn{
+
+        .point-item .main-pic .video-btn {
             position: absolute;
             /* width: 57px; */
             top: 47%;
             right: -10px;
         }
+
         /*-------txt-title---------*/
-        .txt-title{
+        .txt-title {
             display: flex;
             flex-direction: column;
             width: 350px;
@@ -61,7 +70,8 @@
             top: -140px;
             left: -185px;
         }
-        .txt-title .number{
+
+        .txt-title .number {
             background-color: #bb0404;
             color: #fff;
             display: flex;
@@ -69,20 +79,23 @@
             line-height: 0.8;
             height: 140px;
         }
-        .txt-title .number span{
+
+        .txt-title .number span {
             display: inline-block;
-            writing-mode:vertical-lr;
+            writing-mode: vertical-lr;
             font-family: 'Quicksand', sans-serif;
             font-size: 155px;
-            font-weight: 100;
+            font-weight: 300;
             padding-top: 0px;
             transform: scaleY(0.8);
         }
-        .txt-title .number h1{
+
+        .txt-title .number h1 {
             font-size: 52px;
             font-weight: 100;
         }
-        .txt-title .title-desc{
+
+        .txt-title .title-desc {
             background-color: #000;
             color: #fff;
             padding: 20px 20px 30px;
@@ -90,16 +103,19 @@
             line-height: 1.7;
             text-align: justify;
         }
-        .txt-title .title-desc h2{
+
+        .txt-title .title-desc h2 {
             font-size: 26px;
             font-weight: 400;
         }
-        .txt-title .title-desc p{
+
+        .txt-title .title-desc p {
             font-size: 18px;
             font-weight: 100;
         }
+
         /*-------txt-whatsnew---------*/
-        .txt-whatsnew{
+        .txt-whatsnew {
             background-color: #eeeeee;
             padding: 20px 25px;
             width: 620px;
@@ -107,18 +123,21 @@
             top: 400px;
             left: -130px;
         }
-        .txt-whatsnew h3{
+
+        .txt-whatsnew h3 {
             padding-bottom: 15px;
             display: flex;
             align-items: center;
         }
-        .txt-whatsnew h3 span{
+
+        .txt-whatsnew h3 span {
             color: #bb0404;
             font-weight: 600;
             font-size: 20px;
             flex-grow: 0;
         }
-        .txt-whatsnew h3::after{
+
+        .txt-whatsnew h3::after {
             content: '';
             display: inline-block;
             width: 50px;
@@ -128,7 +147,8 @@
             margin-left: 10px;
             flex-grow: 1;
         }
-        .txt-whatsnew ul h4{
+
+        .txt-whatsnew ul h4 {
             background-color: #000;
             color: #fff;
             font-weight: 100;
@@ -136,7 +156,8 @@
             padding: 5px 10px;
             border-radius: 3px;
         }
-        .txt-whatsnew ul li{
+
+        .txt-whatsnew ul li {
             list-style: none;
             color: #000;
             font-weight: 100;
@@ -144,50 +165,60 @@
             line-height: 1.3;
             padding: 5px 0 5px 10px;
         }
-        .txt-whatsnew ul li::before{
+
+        .txt-whatsnew ul li::before {
             content: '▪';
             display: inline-block;
             color: #bb0404;
             transform: scale(0.8);
         }
+
         /* -------------------------------偶數區塊--------------------- */
-        .point-item:nth-child(even){
+        .point-item:nth-child(even) {
             /* background-color: #faf; */
             flex-direction: row;
             margin-bottom: 370px;
         }
-        .point-item:nth-child(even) .back-color{
+
+        .point-item:nth-child(even) .back-color {
             margin-left: 270px;
             width: 518px;
             height: 413px;
         }
-        .point-item:nth-child(even) .main-pic{
+
+        .point-item:nth-child(even) .main-pic {
             left: 0;
             top: -320px;
         }
-        .point-item:nth-child(even) .main-pic .video-btn{
+
+        .point-item:nth-child(even) .main-pic .video-btn {
             width: 57px;
             left: -10px;
         }
+
         /*-------txt-title---------*/
-        .point-item:nth-child(even) .txt-title{
+        .point-item:nth-child(even) .txt-title {
             left: auto;
             right: -265px;
         }
-        .point-item:nth-child(even) .txt-title .number{
+
+        .point-item:nth-child(even) .txt-title .number {
             flex-direction: row-reverse;
         }
-        .point-item:nth-child(even) .txt-title .number span{
+
+        .point-item:nth-child(even) .txt-title .number span {
             margin-right: -10px;
             margin-left: 15px;
         }
+
         /*-------txt-whatsnew---------*/
-        .point-item:nth-child(even) .txt-whatsnew{
+        .point-item:nth-child(even) .txt-whatsnew {
             left: auto;
             right: -265px;
         }
     </style>
 </head>
+
 <body>
 
     <section>
@@ -199,38 +230,39 @@
                     <div class="video-btn">
                         <img src="img/video-icon.png" alt="">
                     </div>
-                        <div class="txt-title">
-                            <div class="number">
-                                <span>01</span>
-                                <h1>操控樂趣</h1>
-                            </div>
-                            <div class="title-desc">
-                                <h2>人人滿意的駕駛體驗</h2>
-                                <p>透過最佳重量分配，實現平順起步，直線穩定加速，過彎同時保持車身平穩，帶給駕駛更靈敏的道路反饋，享受隨心馳騁的行駛快感。</p>
-                            </div>
+                    <div class="txt-title">
+                        <div class="number">
+                            <span>01</span>
+                            <h1>操控樂趣</h1>
                         </div>
-
-                        <div class="txt-whatsnew">
-                            <h3><span>因為我們做了這些革新</span></h3>
-                            <ul>
-                                <h4>低重心設計</h4>
-                                <li>
-                                    透過低重心設計，不僅呈現更低伏的外觀，更能減少車身側傾，保持高速行駛穩定性。
-                                </li>
-                                <h4>車體剛性強化</h4>
-                                <li>
-                                    車身結構採用超高強度鋼材，提高車輛穩定性，同時藉由雷射強化焊接技術，大幅增加焊點數量，提升車身抗扭剛性，強化駕馭穩定性及安全性。
-                                </li>
-                                <h4>四輪獨立懸吊</h4>
-                                <li>
-                                    搭載全新四輪獨立懸吊設定，透過懸吊的高承載強度，保持輪胎抓地力，同時兼顧轉向靈敏度與清晰路感回饋，提升駕馭樂趣。
-                                </li>     
-                            </ul>
-        
+                        <div class="title-desc">
+                            <h2>人人滿意的駕駛體驗</h2>
+                            <p>透過最佳重量分配，實現平順起步，直線穩定加速，過彎同時保持車身平穩，帶給駕駛更靈敏的道路反饋，享受隨心馳騁的行駛快感。</p>
                         </div>
+                    </div>
 
-                    
-                    <a class="video-pic" href="#" target="_blank"><img src="img/advantage-1-video-button-bg.png" alt=""></a>
+                    <div class="txt-whatsnew">
+                        <h3><span>因為我們做了這些革新</span></h3>
+                        <ul>
+                            <h4>低重心設計</h4>
+                            <li>
+                                透過低重心設計，不僅呈現更低伏的外觀，更能減少車身側傾，保持高速行駛穩定性。
+                            </li>
+                            <h4>車體剛性強化</h4>
+                            <li>
+                                車身結構採用超高強度鋼材，提高車輛穩定性，同時藉由雷射強化焊接技術，大幅增加焊點數量，提升車身抗扭剛性，強化駕馭穩定性及安全性。
+                            </li>
+                            <h4>四輪獨立懸吊</h4>
+                            <li>
+                                搭載全新四輪獨立懸吊設定，透過懸吊的高承載強度，保持輪胎抓地力，同時兼顧轉向靈敏度與清晰路感回饋，提升駕馭樂趣。
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pic">
+                        <a class="video-pic" href="#" target="_blank"><img src="img/advantage-1-video-button-bg.png"
+                                alt=""></a>
+                    </div>
+
                 </div>
             </div>
             <!-- 2 -->
@@ -240,33 +272,36 @@
                     <div class="video-btn">
                         <img src="img/video-icon.png" alt="">
                     </div>
-                        <div class="txt-title">
-                            <div class="number">
-                                <span>02</span>
-                                <h1>安全守護</h1>
-                            </div>
-                            <div class="title-desc">
-                                <h2>行車更安心的高剛性車體</h2>
-                                <p>您的愛車會妥善保護您，強悍穩固的車身可使您安全無虞。世界級的安全功能讓您輕鬆自如享受旅程，毫無後顧之憂。</p>
-                            </div>
+                    <div class="txt-title">
+                        <div class="number">
+                            <span>02</span>
+                            <h1>安全守護</h1>
                         </div>
-
-                        <div class="txt-whatsnew">
-                            <h3><span>因為我們做了這些革新</span></h3>
-                            <ul>
-                                <h4>主動安全</h4>
-                                <li>
-                                    可以先進的TSS系統主動偵測路況，輔助駕駛判斷路況並維持行車安全。
-                                </li>
-                                <h4>被動安全</h4>
-                                <li>
-                                    堅固的高剛性車體，使用熱沖壓材料的高強度抗扭鋼板，強化座艙對意外事故的保護力。
-                                </li>
-                            </ul>
-        
+                        <div class="title-desc">
+                            <h2>行車更安心的高剛性車體</h2>
+                            <p>您的愛車會妥善保護您，強悍穩固的車身可使您安全無虞。世界級的安全功能讓您輕鬆自如享受旅程，毫無後顧之憂。</p>
                         </div>
+                    </div>
 
-                    <a class="video-pic" href="#" target="_blank"><img src="img/advantage-2-video-button-bg.png" alt=""></a>
+                    <div class="txt-whatsnew">
+                        <h3><span>因為我們做了這些革新</span></h3>
+                        <ul>
+                            <h4>主動安全</h4>
+                            <li>
+                                可以先進的TSS系統主動偵測路況，輔助駕駛判斷路況並維持行車安全。
+                            </li>
+                            <h4>被動安全</h4>
+                            <li>
+                                堅固的高剛性車體，使用熱沖壓材料的高強度抗扭鋼板，強化座艙對意外事故的保護力。
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="pic">
+                        <a class="video-pic" href="#" target="_blank"><img src="img/advantage-2-video-button-bg.png"
+                                alt=""></a>
+                    </div>
+
                 </div>
             </div>
             <!-- 3 -->
@@ -277,37 +312,40 @@
                         <img src="img/video-icon.png" alt="">
                     </div>
 
-                        <div class="txt-title">
-                            <div class="number">
-                                <span>03</span>
-                                <h1>乘坐舒適</h1>
-                            </div>
-                            <div class="title-desc">
-                                <h2>令人放鬆舒適的車室空間</h2>
-                                <p>車室空間設計著重人體工學，透過方向盤，踏板等位置優化，追求更舒適的駕駛位置，並以新型座椅設計，提高座椅包覆性，致力實現長途駕駛疲勞的舒適駕馭體驗。</p>
-                            </div>
+                    <div class="txt-title">
+                        <div class="number">
+                            <span>03</span>
+                            <h1>乘坐舒適</h1>
                         </div>
-
-                        <div class="txt-whatsnew">
-                            <h3><span>因為我們做了這些革新</span></h3>
-                            <ul>
-                                <h4>駕駛位置最佳化</h4>
-                                <li>
-                                    針對駕駛位置進行徹底的修改，讓駕駛者可如同握手般自然且舒適地操控方向盤。
-                                </li>
-                                <h4>駕馭視野佳</h4>
-                                <li>
-                                    考量駕駛坐進車內的高度，透過前擋風玻璃位置的調整，達到盲區極小化，使駕駛視野更開闊，同步提升駕取安全。
-                                </li>
-                                <h4>更寧靜的車室</h4>
-                                <li>
-                                    採用最新三層結構的隔音材料，與引擎，變速箱的零件改革，將座艙的震動抑制在最小限度，提供乘客舒適安靜的感受。
-                                </li>     
-                            </ul>
-        
+                        <div class="title-desc">
+                            <h2>令人放鬆舒適的車室空間</h2>
+                            <p>車室空間設計著重人體工學，透過方向盤，踏板等位置優化，追求更舒適的駕駛位置，並以新型座椅設計，提高座椅包覆性，致力實現長途駕駛疲勞的舒適駕馭體驗。</p>
                         </div>
+                    </div>
 
-                    <a class="video-pic" href="#" target="_blank"><img src="img/advantage-3-video-button-bg.png" alt=""></a>
+                    <div class="txt-whatsnew">
+                        <h3><span>因為我們做了這些革新</span></h3>
+                        <ul>
+                            <h4>駕駛位置最佳化</h4>
+                            <li>
+                                針對駕駛位置進行徹底的修改，讓駕駛者可如同握手般自然且舒適地操控方向盤。
+                            </li>
+                            <h4>駕馭視野佳</h4>
+                            <li>
+                                考量駕駛坐進車內的高度，透過前擋風玻璃位置的調整，達到盲區極小化，使駕駛視野更開闊，同步提升駕取安全。
+                            </li>
+                            <h4>更寧靜的車室</h4>
+                            <li>
+                                採用最新三層結構的隔音材料，與引擎，變速箱的零件改革，將座艙的震動抑制在最小限度，提供乘客舒適安靜的感受。
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="pic">
+                        <a class="video-pic" href="#" target="_blank"><img src="img/advantage-3-video-button-bg.png"
+                                alt=""></a>
+                    </div>
+
                 </div>
             </div>
             <!-- 4 -->
@@ -317,34 +355,37 @@
                     <div class="video-btn">
                         <img src="img/video-icon.png" alt="">
                     </div>
-                        <div class="txt-title">
-                            <div class="number">
-                                <span>04</span>
-                                <h1>以人為本</h1>
-                            </div>
-                            <div class="title-desc">
-                                <h2>使用者導向的貼心設計</h2>
-                                <p>藉由高度人性化的介面整合，傳遞車輛資訊，豐富日常駕駛體驗。從提升油耗表現到行李廂空間最適化，均細心考量，更加貼近使用者真正所需與習慣，並給予即時回應。</p>
-                            </div>
+                    <div class="txt-title">
+                        <div class="number">
+                            <span>04</span>
+                            <h1>以人為本</h1>
                         </div>
-
-                        <div class="txt-whatsnew">
-                            <h3><span>因為我們做了這些革新</span></h3>
-                            <ul>
-                                <h4>優異油耗表現</h4>
-                                <li>
-                                    以Corolla Sport為例，更強勁的高效引擎將熱效率提升至40％，達到世界級水準，屡屡突破燃油效率新境界。
-                                </li>
-                                <h4>行李箱空間最適化</h4>
-                                <li>
-                                    以第四代Prius為例，透過將電池位置移到後座下方，讓行李箱擁有更大的空間。
-                                </li>
-                                   
-                            </ul>
-        
+                        <div class="title-desc">
+                            <h2>使用者導向的貼心設計</h2>
+                            <p>藉由高度人性化的介面整合，傳遞車輛資訊，豐富日常駕駛體驗。從提升油耗表現到行李廂空間最適化，均細心考量，更加貼近使用者真正所需與習慣，並給予即時回應。</p>
                         </div>
+                    </div>
 
-                    <a class="video-pic" href="#" target="_blank"><img src="img/advantage-4-video-button-bg.png" alt=""></a>
+                    <div class="txt-whatsnew">
+                        <h3><span>因為我們做了這些革新</span></h3>
+                        <ul>
+                            <h4>優異油耗表現</h4>
+                            <li>
+                                以Corolla Sport為例，更強勁的高效引擎將熱效率提升至40％，達到世界級水準，屡屡突破燃油效率新境界。
+                            </li>
+                            <h4>行李箱空間最適化</h4>
+                            <li>
+                                以第四代Prius為例，透過將電池位置移到後座下方，讓行李箱擁有更大的空間。
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <div class="pic">
+                        <a class="video-pic" href="#" target="_blank"><img src="img/advantage-4-video-button-bg.png"
+                                alt=""></a>
+                    </div>
+
                 </div>
             </div>
             <!-- 5 -->
@@ -354,32 +395,35 @@
                     <div class="video-btn">
                         <img src="img/video-icon.png" alt="">
                     </div>
-                        <div class="txt-title">
-                            <div class="number">
-                                <span>05</span>
-                                <h1>引以為傲</h1>
-                            </div>
-                            <div class="title-desc">
-                                <h2>極具吸引力的精心設計</h2>
-                                <p>TNGA車款擁有讓人忍不住回頭的新潮外觀，讓駕駛充滿自信的駕馭快感！不僅讓車主能展現個人風格，能讓擁有者都能引以為傲。</p>
-                            </div>
+                    <div class="txt-title">
+                        <div class="number">
+                            <span>05</span>
+                            <h1>引以為傲</h1>
                         </div>
+                        <div class="title-desc">
+                            <h2>極具吸引力的精心設計</h2>
+                            <p>TNGA車款擁有讓人忍不住回頭的新潮外觀，讓駕駛充滿自信的駕馭快感！不僅讓車主能展現個人風格，能讓擁有者都能引以為傲。</p>
+                        </div>
+                    </div>
 
-                        <div class="txt-whatsnew">
-                            <h3><span>因為我們做了這些革新</span></h3>
-                            <ul>
-                                <h4>設計概念</h4>
-                                <li>
-                                    TNGA低重心設計，不僅呈現更低伏的運動化外觀，更講究高品質內裝的一致性。
-                                </li>
-                                <h4>環保概念</h4>
-                                <li>
-                                    為了對環境保護盡一份心力，我們全面提升傳統引擎，變速箱與油電複合動力的動力效能。
-                                </li>
-                            </ul>
-        
-                        </div>
-                    <a class="video-pic" href="#" target="_blank"><img src="img/advantage-5-video-button-bg.png" alt=""></a>
+                    <div class="txt-whatsnew">
+                        <h3><span>因為我們做了這些革新</span></h3>
+                        <ul>
+                            <h4>設計概念</h4>
+                            <li>
+                                TNGA低重心設計，不僅呈現更低伏的運動化外觀，更講究高品質內裝的一致性。
+                            </li>
+                            <h4>環保概念</h4>
+                            <li>
+                                為了對環境保護盡一份心力，我們全面提升傳統引擎，變速箱與油電複合動力的動力效能。
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="pic">
+                        <a class="video-pic" href="#" target="_blank"><img src="img/advantage-5-video-button-bg.png"
+                                alt=""></a>
+                    </div>
                 </div>
             </div>
 
@@ -387,12 +431,13 @@
         </div>
     </section>
 
-    
 
 
 
 
 
-    
+
+
 </body>
+
 </html>
