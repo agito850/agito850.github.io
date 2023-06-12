@@ -54,9 +54,14 @@
             margin: 15px;
             text-align: center;
         }
-        .btn_clear{
+        .btn_clear,
+        .btn_look{
             width: 80px;
             border-radius: 500px;
+        }
+        .btn_look{
+            margin: auto;
+            background-color: coral;
         }
         .btn_num:hover{
             background-color: #000;
@@ -92,6 +97,7 @@
             <button class="btn_num btn9">9</button>
             <button class="btn_num btn0">0</button>
             <button class="btn_num btn_clear">clear</button>
+            <button class="btn_num btn_look">看答案</button>
         </div>
     </div>
 
@@ -118,6 +124,7 @@
         let btn9;
         let btn0;
         let btn_clear;
+        let btn_look;
 
 
         // 開始
@@ -142,6 +149,7 @@
             btn0 = document.querySelector(".btn0");
 
             clear = document.querySelector(".btn_clear");
+            look = document.querySelector(".btn_look");
 
             max = 100;
             min = 1;
@@ -179,6 +187,9 @@
 
             clear.addEventListener("click", () => {
                 input.value = "";
+            });
+            look.addEventListener("click", () => {
+                alert(`答案是${answer}`)
             });
 
             btnGuess.addEventListener("click", () => {
