@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .game{
+            width: 400px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #txt_result{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 50px;
+            margin: 0;
+        }
+        .button_pad{
+            display: flex;
+            flex-wrap: wrap;
+            width: 220px;
+            justify-content: space-between;
+        }
+        .btn_guess{
+            display: block;
+            border-radius: 500px;
+            border: none;
+            background-color: cadetblue;
+            color: #fff;
+            width: 100px;
+            height: 35px;
+            margin: 15px;
+            text-align: center;
+            transition: .3s;
+        }
+        .btn_guess:hover{
+            background-color: coral;
+            cursor: pointer;
+        }
+        .button_pad button{
+            display: block;
+            border-radius: 50%;
+            border: none;
+            background-color: #555;
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            margin: 12px;
+            text-align: center;
+            transition: .3s;
+        }
+        
+        .button_pad .btn_clear,
+        .button_pad .btn_look,
+        .button_pad .btn_restart{
+            width: 75px;
+            border-radius: 500px;
+        }
+        .button_pad .btn_look,
+        .button_pad .btn_restart{
+            background-color: coral;
+        }
+        
+        button:hover{
+            background-color: #000;
+            cursor: pointer;
+        }
+        .button_pad .btn_look:hover,
+        .button_pad .btn_restart:hover{
+            background-color: cadetblue;
+        }
+        .button_pad .btn_restart:active{
+            background-color: brown;
+        }
+        .btn_gameover{
+            background-color: #eee;
+            color: #555;
+        }
+        .btn_gameover:hover{
+            background-color: #eee;
+            color: #555;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <p>請輸入在1~100之間的整數數字</p>
+        <input type="text">
+        <button class="btn_guess">猜</button>
+        <p id="txt_result">遊戲開始!</p>
+        <div class="button_pad">
+            <button class="btn_num">1</button>
+            <button class="btn_num">2</button>
+            <button class="btn_num">3</button>
+            <button class="btn_num">4</button>
+            <button class="btn_num">5</button>
+            <button class="btn_num">6</button>
+            <button class="btn_num">7</button>
+            <button class="btn_num">8</button>
+            <button class="btn_num">9</button>
+            <button class="btn_num">0</button>
+            <button class="btn_clear">clear</button>
+            <button class="btn_look" id="btn_look">看答案</button>
+            <button class="btn_restart">重新開始</button>
+        </div>
+        
+    </div>
+
+    <script>
+
+        let btnGuess;
+        let input;
+        let result;
+        let answer;
+        let max,min;
+
+
+        // let btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8,btn9,btn0;
+        let btn_clear,btn_look,btn_restart;
+
+        // 開始
+        window.onload = function () {
+            
+            setAnswer()
+
+            // 請輸入min~max之間的數字
+            // 按下"猜"
+            btnGuess = document.querySelector(".btn_guess");
+            input = document.querySelector("input");
+            txtResult = document.getElementById("txt_result");
+
+            // btn1 = document.querySelector(".btn1");
+            // btn2 = document.querySelector(".btn2");
+            // btn3 = document.querySelector(".btn3");
+            // btn4 = document.querySelector(".btn4");
+            // btn5 = document.querySelector(".btn5");
+            // btn6 = document.querySelector(".btn6");
+            // btn7 = document.querySelector(".btn7");
+            // btn8 = document.querySelector(".btn8");
+            // btn9 = document.querySelector(".btn9");
+            // btn0 = document.querySelector(".btn0");
+
+            clear = document.querySelector(".btn_clear");
+            look = document.querySelector(".btn_look");
+            restart = document.querySelector(".btn_restart");
+
+            max = 100;
+            min = 1;
+
+            function insertNum(event){
+                // 指定事件的作用物件
+                input.value += event.target.textContent
+            }
+            // document.querySelectorAll(".number_pad:nth-child(-n+10)").forEach(function(el){
+            //     console.log(el)
+            //     el.addEventListener("click",insertNum)
+            // })
+            document.querySelectorAll(".btn_num").forEach(function(el){
+                console.log(el)
+                el.addEventListener("click",insertNum)
+            })
+
+            // btn1.addEventListener("click", insertNum);
+            // btn2.addEventListener("click", insertNum);
+            // btn3.addEventListener("click", insertNum);
+            // btn4.addEventListener("click", insertNum);
+            // btn5.addEventListener("click", insertNum);
+            // btn6.addEventListener("click", insertNum);
+            // btn7.addEventListener("click", insertNum);
+            // btn8.addEventListener("click", insertNum);
+            // btn9.addEventListener("click", insertNum);
+            // btn0.addEventListener("click", insertNum);
+
+            clear.addEventListener("click", () => {
+                input.value = "";
+            });
+            look.addEventListener("click", () => {
+                alert(`答案是${answer}`)
+            });
+            restart.addEventListener("click", () => {
+                setAnswer()
+            });
+
+            btnGuess.addEventListener("click", () => {
+                getInput(answer,max,min);
+                input.value = "";
+            });
+        };
+
+        function setAnswer(){
+            answer = getRandomIntInclusive(1, 100)
+        }
+
+        // 取得介於1~100之間的亂數answer
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min);
+            //The maximum is inclusive and the minimum is inclusive
+        }
+        function getInput(answer) {
+            
+            let inputNumStr = input.value
+            let firstNum = inputNumStr.charAt(0)
+            if (inputNumStr != parseInt(inputNumStr, 10)) {
+                // 檢查input是否輸入數字
+                // 否: 提示輸入錯誤 請重新輸數字
+                txtResult.textContent = `輸入錯誤 請輸入在 ${min} ~ ${max} 之間的整數數字`;
+                return
+            }
+            if(firstNum == "0"){
+                // 檢查input是否開頭為0
+                // 是: 提示輸入錯誤 請重新非開頭為0的數字
+                txtResult.textContent = "輸入錯誤 請勿輸入開頭為0的數字";
+                return
+            }
+            let inputNum = parseInt(inputNumStr, 10);//真的轉成數字
+
+
+            if (min <= inputNum && inputNum <= max) {
+                // 輸入範圍是否在區間內?
+                // 是: 猜對了嗎?
+
+                if (winOrNot(inputNum, answer)) {
+
+                    // 對: 猜對了 結束遊戲
+                    alert("猜對了!! 遊戲結束")
+                    input.value = "恭喜您!!";
+                    txtResult.textContent = "~ 再玩一次 請重新載入頁面 ~";
+                    
+                    var allBtn = document.querySelectorAll('button');
+                    for(var i = 0; i < allBtn.length; i++){
+                        allBtn[i].classList.add("btn_gameover");
+                        allBtn[i].disabled = true;
+                    }
+
+
+                } else {
+                    //錯:更新區間範圍
+                    // 提示輸入錯誤 繼續遊戲
+                    if (inputNum < answer) {
+                        min = inputNum;
+                    } else {
+                        max = inputNum;
+                    }
+
+                    txtResult.textContent ="可惜~沒有中~~";
+                    txtResult.innerHTML +=`<br/> 請輸入在 ${min} ~ ${max} 之間的整數數字`;
+
+                }
+            } else {
+                // 否: 提示輸入錯誤 請重新輸數字
+                txtResult.textContent = `輸入錯誤 請輸入在 ${min} ~ ${max} 之間的整數數字`;
+            }
+
+
+        }//getInput end
+
+        function winOrNot(inputNum, answer) {
+            // 是: input 與 answer比對
+
+            let tmpBool;
+            if (inputNum == answer) {
+                return tmpBool = true;
+            } else {
+                return tmpBool = false;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
