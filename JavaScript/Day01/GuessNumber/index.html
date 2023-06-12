@@ -222,14 +222,12 @@
             if (inputNumStr != parseInt(inputNumStr, 10)) {
                 // 檢查input是否輸入數字
                 // 否: 提示輸入錯誤 請重新輸數字
-                // alert("輸入錯誤 請輸入在1~100之間的整數數字")
                 txtResult.textContent = `輸入錯誤 請輸入在 ${min} ~ ${max} 之間的整數數字`;
                 return
             }
             if(firstNum == "0"){
                 // 檢查input是否開頭為0
                 // 是: 提示輸入錯誤 請重新非開頭為0的數字
-                // alert("輸入錯誤 請勿輸入開頭為0的數字")
                 txtResult.textContent = "輸入錯誤 請勿輸入開頭為0的數字";
                 return
             }
@@ -266,11 +264,6 @@
                     // btn0.disabled = true;
                     // clear.disabled = true;
 
-                    
-
-                    
-                    
-
 
                 } else {
                     //錯:更新區間範圍
@@ -281,15 +274,12 @@
                         max = inputNum;
                     }
 
-                    // alert("可惜~沒有中~~")
-                    // alert(`請輸入在 ${min} ~ ${max} 之間的整數數字`)
                     txtResult.textContent ="可惜~沒有中~~";
                     txtResult.innerHTML +=`<br/> 請輸入在 ${min} ~ ${max} 之間的整數數字`;
 
                 }
             } else {
                 // 否: 提示輸入錯誤 請重新輸數字
-                // alert(`輸入錯誤 請輸入在 ${min} ~ ${max} 之間的整數數字`)
                 txtResult.textContent = `輸入錯誤 請輸入在 ${min} ~ ${max} 之間的整數數字`;
             }
 
