@@ -78,14 +78,20 @@
         .button_pad .btn_restart:active{
             background-color: brown;
         }
-        .btn_gameover{
+        button.btn_gameover,
+        .button_pad .btn_look.btn_gameover,
+        .button_pad .btn_restart.btn_gameover{
             background-color: #eee;
             color: #555;
         }
-        .btn_gameover:hover{
+        button.btn_gameover:hover,
+        .button_pad .btn_look.btn_gameover:hover,
+        .button_pad .btn_restart.btn_gameover:hover{
             background-color: #eee;
             color: #555;
+            cursor: default;
         }
+        
         
 
     </style>
@@ -109,7 +115,7 @@
             <button class="btn_num">9</button>
             <button class="btn_num">0</button>
             <button class="btn_clear">clear</button>
-            <button class="btn_look" id="btn_look">看答案</button>
+            <button class="btn_look">看答案</button>
             <button class="btn_restart">重新開始</button>
         </div>
         
