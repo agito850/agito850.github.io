@@ -23,7 +23,7 @@
         section {}
 
         .container {
-            width: 1000px;
+            width: 960px;
             margin: auto;
         }
 
@@ -32,50 +32,57 @@
             display: grid;
             /* background-color: #faa; */
 
-            grid-template-rows: 42px 103px 200px 12px 38px 168px 33px 264px;
-            grid-template-columns: 59px 72px 63px 174px 175px 216px 110px 51px 11px 70px;
-            margin: 50px 0;
+            /* grid-template-rows: repeat(3,220px); */
+            grid-template-rows: 220px 220px 1fr;
+            grid-template-columns: repeat(3,320px);
+            margin: 80px 0;
         }
 
-        .group:nth-child(even) {
-            grid-template-rows: 42px 103px 200px 38px 91px 80px 33px 170px;
-            grid-template-columns: 11px 49px 227px 22px 330px 72px 16px 97px 176px;
-        }
-        .group:nth-child(4) {
-            grid-template-rows: 42px 103px 200px 38px 91px 80px 33px 190px;
-        }
-        .group:nth-child(5) {
-            grid-template-rows: 42px 103px 200px 12px 38px 168px 33px 170px;
-        }
 
         .back-color {
-            grid-area: 2/-6/4/-1;
+            grid-area: 1/3/2/-1;
             background-color: #f4f4f4;
             z-index: -1;
+            width: 439px;
+            height: 290px;
+            margin-left: -120px;
+            margin-top: 40px;
         }
         .group:nth-child(even) .back-color{
-            grid-area: 2/4/6/-2;
+            grid-area: 1/2/2/3;
+            margin-left: -40px;
+            margin-top: 50px;
         }
 
         .btn-video {
-            grid-area: 5/-2/6/-4;
+            grid-area: 2/-2/3/-1;
             z-index: 1;
+            width: 57px;
+            height: 36px;
+            margin-left: 200px;
+            margin-top: 125px;
         }
         .group:nth-child(even) .btn-video{
-            grid-area: 4/1/5/3;
+            grid-area: 2/1/3/2;
+            margin-left: 0;
         }
 
         /* -------------txt-title-number-------------- */
         .txt-title-number {
-            grid-area: 1/1/3/5;
+            grid-area: 1/1/2/2;
             background-color: #bb0404;
             color: #fff;
+            width: 350px;
+            height: 140px;
             display: flex;
             align-items: center;
             line-height: 0.8;
+
         }
         .group:nth-child(even) .txt-title-number{
-            grid-area: 1/-5/3/-1;
+            grid-area: 1/3/2/4;
+            margin-left: -30px;
+            flex-direction: row-reverse;
         }
 
         .txt-title-number span {
@@ -87,6 +94,10 @@
             padding-top: 0px;
             transform: scaleY(0.8);
         }
+        .group:nth-child(even) .txt-title-number span{
+            margin-left: 14px;
+            margin-right: -10px;
+        }
 
         .txt-title-number h1 {
             font-size: 52px;
@@ -95,9 +106,13 @@
 
         /* -------------txt-title-desc-------------- */
         .txt-title-desc {
-            grid-area: 3/1/6/5;
+            grid-area: 2/1/3/2;
             background-color: #000;
             color: #fff;
+            width: 350px;
+            height: 216px;
+            margin-top: -80px;
+            box-sizing: border-box;
             z-index: 1;
             padding: 20px 20px 30px;
             letter-spacing: 2px;
@@ -105,7 +120,8 @@
             text-align: justify;
         }
         .group:nth-child(even) .txt-title-desc{
-            grid-area: 3/-5/5/-1;
+            grid-area: 2/3/3/-1;
+            margin-left: -30px;
         }
 
         .txt-title-desc h2 {
@@ -120,13 +136,25 @@
 
         /* -------------txt-whatsnew-------------- */
         .txt-whatsnew {
-            grid-area: -3/2/-1/-5;
+            grid-area: 3/1/4/3;
             background-color: #eee;
+            width: 670px;
+            height: 300px;
+            margin-top: 98px;
+            box-sizing: border-box;
             z-index: 1;
             padding: 20px 25px;
         }
         .group:nth-child(even) .txt-whatsnew{
-            grid-area: -3/5/-1/-1;
+            grid-area: 3/2/-1/-1;
+            margin-left: -28px;
+            height: 200px;
+        }
+        .group:nth-child(4) .txt-whatsnew{
+            height: 220px;
+        }
+        .group:nth-child(5) .txt-whatsnew{
+            height: 220px;
         }
 
         .txt-whatsnew .slg {
@@ -183,10 +211,14 @@
 
         /* -------------pic-------------- */
         .pic {
-            grid-area: 3/4/-3/-3;
+            grid-area: 2/2/3/3;
+            width: 695px;
+            height: 430px;
+            margin-left: -130px;
+            margin-top: -80px;
         }
         .group:nth-child(even) .pic{
-            grid-area: 3/2/-2/-3;
+            margin-left: -308px;
         }
     </style>
 </head>
