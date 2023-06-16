@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstarp -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body{
+            padding: 50px 0;
+        }
+        #container{
+            width: 70%;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+        canvas{
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <table class="table table-bordered table-striped">
+
+        </table>
+    </div>
+    
+
+    <canvas id="mkShare"></canvas>
+
+
+
+    <!-- Bootstarp -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <!-- Chart.js 2.9.4 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"
+        integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+
+        // 包含 標題 發布日期...額外資訊
+        const marketingShare = {
+            version: "v1.0",
+            publish: "2021/12/31",
+            titles: ["排名", "公司", "國別", "市佔率"],
+            data: [
+                { Rainking: 1, Name: "台積電", Country: "台灣", Ratio: 53.1 },
+                { Rainking: 2, Name: "三星電子", Country: "韓國", Ratio: 17.3 },
+                { Rainking: 3, Name: "聯電", Country: "台灣", Ratio: 7.2 },
+                { Rainking: 4, Name: "格羅方德", Country: "美國", Ratio: 6.1 },
+                { Rainking: 5, Name: "中芯國際", Country: "中國", Ratio: 5.3 },
+                { Rainking: 6, Name: "華虹半導體", Country: "中國", Ratio: 2.6 },
+                { Rainking: 7, Name: "力積電", Country: "台灣", Ratio: 1.8 },
+                { Rainking: 8, Name: "世界先進", Country: "台灣", Ratio: 1.4 },
+                { Rainking: 9, Name: "高塔半導體", Country: "以色列", Ratio: 1.4 },
+                { Rainking: 10, Name: "東部高科", Country: "韓國", Ratio: 1 }
+            ]
+
+        };
+
+
+
+        let companies = [], data = [];
+
+        window.onload = function () {
+
+            // 製作表格 :
+            table = document.querySelector('table');
+            thead = document.createElement('thead');
+            thead.setAttribute("class", "table-dark");
+            tbody = document.createElement('tbody');
+
+            let Tbody2dArray = [];
+            marketingShare.data.forEach(obj => {
+                let values = Object.values(obj)// 抓出值 形成一個 一維陣列
+                console.log(values)
+                Tbody2dArray.push(values)// 塞進另一個陣列中
+            })
+
+            CreateThead();
+            CreateTbody(Tbody2dArray);
+
+
+
+            // 製作圖表 :
+            for (let i = 0; i < marketingShare.data.length; i++) {
+                companies[i] = marketingShare.data[i].Name;
+                data[i] = marketingShare.data[i].Ratio;
+            }
+
+            drawPieChart("pie", companies, data)
+        }
+
+
+        //表格用 :
+        function CreateThead() {
+            tr = document.createElement('tr')
+            marketingShare.titles.forEach(item => {
+                th = document.createElement('th')
+                th.innerText = item
+                tr.append(th)
+            })
+            thead.append(tr)
+            table.append(thead)
+        };
+
+        function CreateTbody(Tbody2dArray) {
+            Tbody2dArray.forEach(companyArray => {
+                let tr = document.createElement('tr')
+                companyArray.forEach(value => {
+                    let td = document.createElement('td')
+                    td.innerText = value
+                    tr.append(td)
+                })
+                tbody.append(tr)
+            })
+            table.append(tbody)
+        };
+
+
+
+
+
+        //圖表用 :
+        function creatArrayData() {
+
+            // 從原資料 選取要的部分 另外建立兩個陣列
+            // 有多種方式可以使用:
+
+            //1.for
+            for (let i = 0; i < marketingShare.data.length; i++) {
+                companies[i] = marketingShare.data[i].Name;
+                data[i] = marketingShare.data[i].Ratio;
+            }
+        }
+
+
+
+
+    </script>
+
+    <!-- 圖表產生器 js -->
+    <script>
+
+        // 需求(需要這兩個陣列資料才能建立圓餅圖):
+        // let xArray = ["台積電", "三星電子", "聯電", ...];
+        // let yArray = [ 53.1, 17.3, 7.2, ...];
+
+        // 產生圓餅圖的 方法
+        // 第一個參數為公司陣列, 第二個參數為資料陣列
+        function drawPieChart(grahpyType, companyArray, dataArray) {
+            //Pie Chart圓餅圖
+            let ctxPie = document.getElementById("mkShare");
+            var pieChart = new Chart(ctxPie, {
+                // type: 'pie',
+                type: grahpyType,
+                data: {
+                    labels: companyArray,
+                    datasets: [{
+                        data: dataArray,
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255,75,50)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                            'rgb(255, 138, 64)',
+                            'rgb(142, 65, 64)',
+                            'rgb(59, 72, 64)'
+                        ]
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    title: {
+                        display: true,
+                        fontSize: 26,
+                        text: '2021年全球晶圓代工市佔率%'
+                    },
+                    tooltips: {
+                        mode: 'point',
+                        intersect: true,
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            fontColor: 'black',
+                        }
+                    }
+                }
+            });
+        }
+        function createTable() {
+        }
+    </script>
+
+</body>
+
+</html>
