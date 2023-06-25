@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="firework.css">
+    <style>
+        @import url('https://fonts.googleapis.com/earlyaccess/cwtexyen.css');
+        @import url('https://fonts.googleapis.com/css2?family=Moirai+One&family=Press+Start+2P&display=swap');
+
+        /* -----漸層背景----- */
+        body {
+            background: linear-gradient(223deg, #022224, #00636b, #0c1253, #6d005e, #240220);
+            background-size: 1000% 1000%;
+
+            -webkit-animation: gradient_bg 60s linear infinite;
+            -moz-animation: gradient_bg 60s linear infinite;
+            animation: gradient_bg 60s linear infinite;
+        }
+
+        @-webkit-keyframes gradient_bg {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 51%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @-moz-keyframes gradient_bg {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 51%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        @keyframes gradient_bg {
+            0% {
+                background-position: 0% 50%
+            }
+
+            50% {
+                background-position: 100% 51%
+            }
+
+            100% {
+                background-position: 0% 50%
+            }
+        }
+
+        /* -----漸層背景 end----- */
+
+        .game {
+            width: 550px;
+            height: 500px;
+            margin: auto;
+            margin-top: 20px;
+            background-color: #00000050;
+            color: #fff;
+            border-radius: 20px;
+            border: 7px double #ffb4f5;
+            box-shadow: 0 0 15px 3px #af0098;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 500;
+            font-family: 'cwTeXYen', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Moirai One', cursive;
+            font-size: 60px;
+            color: #fff;
+            text-shadow: 0 0 15px #00eeff;
+            line-height: 1;
+        }
+
+        .button-pad {
+            display: flex;
+        }
+
+        .button-pad button {
+            background-color: #00000080;
+            color: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px 3px #00636b;
+            border-radius: 50px;
+            margin: 0 10px;
+            width: 150px;
+            padding: 5px;
+            font-size: 18px;
+            font-family: "cwTeXYen", sans-serif;
+            transition: .3s;
+        }
+
+        .button-pad button:hover {
+            background-color: #00eeff;
+            color: #000000;
+        }
+
+        .button-pad button:active {
+            background-color: #00636b;
+        }
+
+        .btn-start {
+            position: relative;
+            z-index: 1;
+        }
+
+        .tip-display {
+            width: 450px;
+            height: 220px;
+            background-color: #00000080;
+            overflow-y: scroll;
+            margin: 20px;
+            padding: 0 10px;
+        }
+        .tip-display p{
+            line-height: 1.2;
+            text-shadow: 0 0 1px #00eeff,0 0 15px #00eeff;
+            font-size: 20px;
+
+            
+        }
+        .tip-display p span{
+            display: inline-block;
+            width: 150px;
+            height: 20px;
+            padding: 4px 0 5px;
+            background-image: linear-gradient(90deg,#af0098 50%,#af0098a0 70%,transparent 100%);
+            border-radius: 0 50px 50px 0;
+            box-shadow: 0 2px 10px #00eeff;
+            text-align: center;
+            margin-right: 20px;
+            margin-left: -10px;
+            text-shadow: none;
+            font-size: 18px;
+        }
+        .input-pad {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /* background-color: #00636b; */
+            color: #fff;
+            border: 2px solid #fff;
+            box-shadow: 0 0 15px 3px #00636b;
+            border-radius: 50px;
+            width: 420px;
+            height: 50px;
+            padding: 0 20px;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        form input {
+            background-color: #00000090;
+            border: 1px solid #00eeff;
+            color: #fff;
+            font-size: 20px;
+            width: 220px;
+            letter-spacing: 2px;
+        }
+        form input::placeholder{
+            font-size: 15px;
+            /* opacity: 0.7; */
+            text-align: center;
+            position:relative;
+            bottom:1px;
+        }
+
+        form input:focus {
+            outline: 1px solid #fff;
+        }
+
+        .input-pad button {
+            background-color: #00eeff;
+            color: #000;
+            border: 2px solid #fff;
+            box-shadow: 0 0 10px 3px #00636b;
+            border-radius: 50px;
+            padding: 3px 5px;
+            width: 100px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .input-pad button:active{
+            background-color: #00636b;
+        }
+
+        .fixed-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #000000c0;
+            top: 0;
+            left: 0;
+        }
+        button[disabled]{
+            opacity: 0.5;
+        }
+        button[disabled]:hover{
+            background-color: #00000080;
+            color: #fff;
+        }
+        .btn-guess[disabled]:hover{
+            background-color: #00eeff;
+            color: #000;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <div class="game">
+        <h1>1A2B Game</h1>
+        <div class="button-pad">
+            <button class="btn-start">開始</button>
+            <button class="btn-restart">放棄重來</button>
+            <button class="btn-lookAns">看答案</button>
+        </div>
+        <div class="tip-display">
+            <p>歡迎來到1A2B猜數字 ᕕ ( ᐛ ) ᕗ</p>
+        </div>
+        <div class="input-pad">
+            <form action="">
+                <label for="" >輸入區</label>
+                <input type="text" placeholder="輸入4個不重複的數字">
+            </form>
+            <button class="btn-guess" type="button">猜</button>
+        </div>
+
+    </div>
+    <div class="fixed-bg"></div>
+
+    <!-- firework -->
+    <div class="firework" id="firework1">
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+    </div>
+    <div class="firework" id="firework2">
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+    </div>
+    <div class="firework" id="firework3">
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+        <div class="explosion"></div>
+    </div>
+    <!-- firework end -->
+
+
+    <script>
+        let answer = "";
+        let btnStart, btnRestart, btnLookAns, btnGuess;
+        let input;
+        let tipDisplay;
+        let fixedBg
+        let fireworkBg
+
+
+        window.onload = function () {
+            btnStart = document.querySelector(".btn-start")
+            btnRestart = document.querySelector(".btn-restart")
+            btnLookAns = document.querySelector(".btn-lookAns")
+            btnGuess = document.querySelector(".btn-guess")
+            input = document.querySelector("input")
+            tipDisplay = document.querySelector(".tip-display")
+            fixedBg = document.querySelector(".fixed-bg")
+            fireworkBg = document.querySelectorAll(".firework")
+
+
+            setAnswer()
+
+            clearEnterSubmit()
+
+            
+
+            btnGuess.addEventListener("click", () => {
+                // 去除空白
+                // 不可出現文字
+                // 必須要是4個數
+                // 不可出現重複的數
+
+                event.preventDefault() //取消submit
+
+                if (input.value.trim() == "") {
+                    input.value = ""
+                    return
+                }
+                if (input.value != parseInt(input.value, 10)) {
+                    let p = document.createElement("p")
+                    p.innerText = "▶ 只能輸入阿拉伯數字喔"
+                    tipDisplay.append(p)
+                    input.value = ""
+                    scrollToButtom()
+                    return
+                }
+                if (input.value.trim().length != 4) {
+                    let p = document.createElement("p")
+                    p.innerText = "▶ 請輸入 4個 不重複的數字"
+                    tipDisplay.append(p)
+                    input.value = ""
+                    scrollToButtom()
+                    return
+                }
+                if (repeatOrNot(input)) {
+                    let p = document.createElement("p")
+                    p.innerText = "▶ 請勿出現重複的數字"
+                    tipDisplay.append(p)
+                    input.value = ""
+                    scrollToButtom()
+                    return
+                }
+                if(input.value == answer){
+                    let p = document.createElement("p")
+                    // p.innerText = "▶ =└(┐卍^o^)卍 答對溜!!!!!恭喜您"
+                    // p.innerText += "(重新遊戲請重整頁面)"
+                    p.innerHTML =`▶ =└(┐卍^o^)卍 答對溜!!!!!恭喜您</br>(重新遊戲請重整頁面)`
+                    tipDisplay.append(p)
+                    input.value = ""
+                    btnRestart.disabled = true
+                    btnLookAns.disabled = true
+                    btnGuess.disabled = true
+                    scrollToButtom()
+                    fireworkBg.forEach(fw => {
+                        fw.style.display = "block";
+                    })
+                    return
+                }
+
+                //判斷幾A幾B
+                HowManyAB(input)
+                
+            })
+
+            btnStart.addEventListener("click", () => {
+                fixedBg.style.display = "none";
+                btnStart.disabled = true
+            })
+
+            btnRestart.addEventListener("click", () => {
+                answer = ""
+                setAnswer()
+            })
+
+            btnLookAns.addEventListener("click", () => {
+                alert(`答案是: ${answer}`)
+            })
+
+        }
+
+        function scrollToButtom(){
+            tipDisplay.scrollTop = tipDisplay.scrollHeight - tipDisplay.clientHeight
+        }
+
+        
+        function setAnswer() {
+            var demoArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            shuffleArray(demoArray);
+            let ansArray = demoArray.slice(0, 4)
+            ansArray.forEach(num => {
+                answer += `${num}`;
+            })
+            console.log(answer)
+        }
+
+        //陣列洗牌
+        function shuffleArray(inputArray) {
+            inputArray.sort(() => Math.random() - 0.5);
+        }
+
+        function repeatOrNot(input) {
+            let array = Array.from(input.value)
+            array.sort()
+            for (let i = 0; i < array.length - 1; i++) {
+                if (array[i] == array[i + 1]) {
+                    return true
+                }
+            }
+        }
+
+        // 按Enter 取消submit 改click
+        function clearEnterSubmit(){
+            let doc = document
+            doc.addEventListener("keypress", function (element) {
+                var code = element.keyCode || element.which;
+                if (code == 13) {
+                    element.preventDefault();
+                    btnGuess.click()
+                    // return 
+                }
+            });
+        }
+
+        function HowManyAB(input) {
+            let A = 0
+            let B = 0
+
+            let inputArray = Array.from(input.value)
+            let answerArray = Array.from(answer)
+
+            for (let i = 0; i < 4; i++) {
+                if(inputArray[i] == answerArray[i]){
+                    A++
+                }else if(answerArray.includes(inputArray[i])){
+                    B++
+                }
+            }
+            let p =document.createElement("p")
+            let span =document.createElement("span")
+            span.innerText = `${A}A${B}B`;
+            console.log(span)
+            p.innerText = input.value;
+            p.prepend(span)
+            console.log(p)
+            tipDisplay.append(p)
+
+            input.value = ""
+            //捲軸自動滑到底
+            tipDisplay.scrollTop = tipDisplay.scrollHeight - tipDisplay.clientHeight
+        }
+
+
+
+    </script>
+</body>
+
+</html>
