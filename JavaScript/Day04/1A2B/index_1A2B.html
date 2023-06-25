@@ -416,7 +416,7 @@
         }
 
         function repeatOrNot(input) {
-            let array = Array.from(input.value)
+            let array = Array.from(input.value.trim())
             array.sort()
             for (let i = 0; i < array.length - 1; i++) {
                 if (array[i] == array[i + 1]) {
@@ -442,7 +442,7 @@
             let A = 0
             let B = 0
 
-            let inputArray = Array.from(input.value)
+            let inputArray = Array.from(input.value.trim())
             let answerArray = Array.from(answer)
 
             for (let i = 0; i < 4; i++) {
@@ -456,7 +456,7 @@
             let span =document.createElement("span")
             span.innerText = `${A}A${B}B`;
             console.log(span)
-            p.innerText = input.value;
+            p.innerText = input.value.trim();
             p.prepend(span)
             console.log(p)
             tipDisplay.append(p)
