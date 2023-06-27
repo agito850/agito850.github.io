@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Shopline Bootstrap demo</title>
     <!-- BS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -218,13 +218,45 @@
         .bottom-link a+a{
             border-left: 1px solid #ffffff80;
         }
+        @media screen and (max-width:768px) {
+            .main-header .top-login{
+                display: none;
+            }
+            .navbar-toggler{
+                order: 1;
+            }
+            .navbar-collapse{
+                order: 2;
+            }
+            .free-try{
+                background-color: transparent;
+                border: none;
+                border-radius: 0;
+                color: #052855;
+                border-bottom: 2px solid #304867;
+                padding: 0!important;
+                margin-left: auto;
+                margin-right: 10px;
+            }
+            nav {
+            background-color: #fff;
+            }
+            .special-list ul li{
+                width: 100% !important;
+            }
+            footer .top-link{
+                text-align: center;
+            }
+
+
+        }
     </style>
 </head>
 
 <body>
 
     <header class="main-header">
-        <div class="container ">
+        <div class="container top-login">
             <div class="row">
                 <div class="col-12 text-end pt-3">
                     <div class="login">
@@ -235,7 +267,7 @@
             </div>
         </div>
         <nav class="navbar navbar-expand-lg ">
-            <div class="container">
+            <div class="container ">
                 <a class="navbar-brand" href="#">
                     <!-- <img src="img/10019.png" alt=""> -->
                     <picture>
@@ -274,7 +306,7 @@
                         </li>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-primary px-5 py-2">免費試用</button>
+                <button type="button" class="free-try btn btn-primary px-5 py-2">免費試用</button>
             </div>
         </nav>
 
@@ -297,7 +329,7 @@
                 </div>
                 <div class="col-12 col-md-5">
                     <div class="pic">
-                        <img src="img/kv.png" width="505" height="442">
+                        <img src="img/kv.png" width="505" height="400">
                     </div>
                 </div>
             </div>
