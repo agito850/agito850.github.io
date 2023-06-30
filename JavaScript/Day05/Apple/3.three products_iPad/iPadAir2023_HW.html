@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            font-weight: 300;
+            color: #1d1d1f;
+        }
+
+        img {
+            width: 100%;
+            vertical-align: middle;
+        }
+        nav{
+            display: flex;
+            /* background-color: antiquewhite; */
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #00000015;
+        }
+        nav .logo{
+            height: 44px;
+        }
+        nav .product-link{
+            width: 80%;
+            display: flex;
+            justify-content: center;
+
+        }
+        nav .product-link a{
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            padding: 5px 20px;
+            margin: 0 30px;
+        }
+
+        section {
+            padding: 50px 60px;
+        }
+
+        .main-title {
+            display: flex;
+            justify-content: space-between;
+        }
+        .title {
+            margin-bottom: 20px;
+        }
+
+        .title h1 {
+            margin: 0;
+            font-size: 48px;
+            letter-spacing: -2px;
+        }
+
+        .title h1 span[lang="en"] {
+            font-size: 1em;
+            /* font-weight: 900; */
+        }
+
+        .title span {
+            font-size: 14px;
+        }
+        .btn-add{
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+        .change-new {
+            font-size: 12px;
+            color: #1d1d1f;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 28px 10px 14px;
+            margin: 10px 0;
+            border-radius: 100px;
+            background-color: #f5f5f7;
+            position: relative;
+        }
+
+        .change-new::after {
+            content: "⊕";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            text-align: center;
+            position: absolute;
+            right: 14px;
+        }
+        /* content */
+        .content{
+            display: flex;
+        }
+        #display-product{
+            height: 1000px;
+            
+        }
+        .pic {
+            width: 700px;
+            position: sticky;
+            top: 80px;
+            left: 50px;
+           
+        }
+        .pic img{
+            border-radius: 20px;
+        }
+
+        .content{
+            margin: 50px 0;
+            display: flex;
+            justify-content: space-between;
+        }
+        .chose-pad {
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            text-align: start;
+        }
+        h2{
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 31px;
+            margin-bottom: 30px;
+        }
+        h2 span{
+            color: #86868b;
+        }
+        .chose-color,
+        .chose-storage,
+        .chose-network{
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        /* ----- chose-color ----- */
+        .chose-color label{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-size: 12px;
+            width: 160px;
+            height: 100px;
+            border-radius: 14px;
+            border: 1px solid #86868b;
+            text-align: center;
+            /* position: relative; */
+        }
+        .chose-color label::before{
+            content: "";
+            /* position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto; */
+            display: block;
+            margin: 0 auto 10px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            box-shadow: 0 2px 3px #00000045 inset;
+        }
+        .chose-color label.btn-space-gray::before{
+            background-color: #7c7a7f;
+        }
+        .chose-color label.btn-blue::before{
+            background-color: #97b8c7;
+        }
+        .chose-color label.btn-pink::before{
+            background-color: #e8d2d0;
+        }
+        .chose-color label.btn-purple::before{
+            background-color: #c2c1d7;
+        }
+        .chose-color label.btn-starlight::before{
+            background-color: #e8e4dd;
+        }
+        /* ----- chose-storage ----- */
+        .chose-storage label{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            width: 160px;
+            height: 100px;
+            border-radius: 14px;
+            border: 1px solid #86868b;
+            text-align: center;
+        }
+        .chose-storage label span{
+            font-size: 14px;
+        }
+        .chose-storage label p{
+            width: 100%;
+            font-size: 12px;
+            font-weight: 400;
+        }
+        /* ----- chose-network ----- */
+        .chose-network label{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            height: 100px;
+            border-radius: 14px;
+            border: 1px solid #86868b;
+            box-sizing: border-box;
+            padding: 20px;
+            
+        }
+        .chose-network label p{
+            font-size: 12px;
+            font-weight: 400;
+        }
+
+        input{
+            display: none;
+        }
+        input:checked + label{
+            outline: 2px solid #0071e3;
+        }
+        .price h3{
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #7c7a7f;
+        }
+        
+
+        
+    </style>
+</head>
+
+
+<body>
+    <nav>
+        <div class="logo">
+            <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                <path d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z"></path></svg>
+        </div>
+        <div class="product-link">
+            <a href="#">iPad</a>
+            <a href="#">iPhone</a>
+            <a href="#">Mac</a>
+        </div>
+        
+    </nav>
+    <section>
+        <div class="main-title">
+            <div class="title">
+                <h1>購買 <span lang="en">iPad Air</span></h1>
+                <span>NT$19,900 起</span>
+            </div>
+            <div class="btn-add">
+                <a href="#" class="change-new">透過換購，可獲享 NT$800 – NT$16,300 折抵優惠註腳**</a>
+                <a href="#" class="change-new">可選用零利率分期付款，最長可達 12 月</a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div id='display-product'>
+                <div class="pic">
+                    <img src="./img/ipad-air.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="chose-pad">
+
+                <div class="price"></div>
+                <div class="chose-color">
+                    <h2>外觀。 <span>挑選喜愛的顏色。</span></h2>
+                    <input type="radio" name="color" value="space-gray" id="space-gray">
+                    <label for="space-gray" class="btn-space-gray">太空灰色</label>
+                    <input type="radio" name="color" value="blue" id="blue">
+                    <label for="blue" class="btn-blue">藍色</label>
+                    <input type="radio" name="color" value="pink" id="pink">
+                    <label for="pink" class="btn-pink">粉紅色</label>
+                    <input type="radio" name="color" value="purple" id="purple">
+                    <label for="purple" class="btn-purple">紫色</label>
+                    <input type="radio" name="color" value="starlight" id="starlight">
+                    <label for="starlight" class="btn-starlight">星光色</label>
+                </div>
+                <div class="chose-storage">
+                    <h2>儲存裝置。 <span>選擇需要的儲存空間大小。</span></h2>
+                    <input type="radio" name="storage" value="64GB" id="64GB">
+                    <label for="64GB">
+                        <div class="txt">
+                            64<span>GB</span> 
+                        <p>NT$19,900 起</p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storage" value="256GB" id="256GB">
+                    <label for="256GB">
+                        <div class="txt">
+                            256<span>GB</span> 
+                        <p>NT$24,900 起</p>
+                        </div>
+                        
+                    </label>
+                </div>
+                <div class="chose-network">
+                    <h2>連線能力。 <span>選擇連線方式。</span></h2>
+                    <input type="radio" name="network" value="Wi-Fi" id="Wi-Fi">
+                    <label for="Wi-Fi">
+                        <div class="txt">
+                            Wi-Fi
+                        <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。 </p>
+                        </div>
+                    </label>
+                    <input type="radio" name="network" value="Cellular" id="Cellular">
+                    <label for="Cellular">
+                        <div class="txt">
+                            Wi-Fi + Cellular
+                        <p>Wi-Fi + 行動網路機型讓你在無法使用 Wi-Fi 時也能進行連線。</p>
+                        </div>
+                    </label>
+                </div>
+    
+                <hr>
+                <div id='selection'></div>
+            </div>
+
+        </div>
+        
+
+
+
+    </section>
+
+
+
+
+
+
+    <script>
+        const url = "./ipadair-2023-change.json";
+        // const url = "./champion.json";
+
+
+        let productObject;
+        let _color, _storage, _network;
+        let selection;
+        let price;
+        let displayImg;
+
+        let ipadArray;
+
+
+        window.onload = function () {
+            selection = document.querySelector("#selection");
+            price = document.querySelector(".price");
+            pic = document.querySelector(".pic");
+
+            let radioColors = document.querySelectorAll("input[name='color']")
+            radioColors.forEach(item => {
+                item.addEventListener("change", changeColorImg);
+            })
+
+            let radioStorage = document.querySelectorAll("input[name='storage']")
+            radioStorage.forEach(item => {
+                item.addEventListener("change", checkChose);
+            })
+
+            let radioNetwork = document.querySelectorAll("input[name='network']")
+            radioNetwork.forEach(item => {
+                item.addEventListener("change", checkChose);
+            })
+
+
+            getProductJson();
+        }
+
+        function getProductJson() {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function () {
+                productObject = JSON.parse(this.responseText);
+            };
+            xhr.open("GET", url);
+            xhr.send();
+        }
+
+        //在color radio選取切換時, 顯示對應的圖片
+        function changeColorImg() {
+            //取得 選取項目
+            let checkedColor = document.querySelector("input[name='color']:checked");
+            //確定有選擇到
+            if (checkedColor == null) {
+                selection.innerHTML = "";
+                return;
+            }
+            //賦值給 結果
+            _color = checkedColor.value;
+            console.log(_color)
+
+            ipadArray = Object.values(productObject.iPad)
+            console.log(ipadArray[1])
+
+            let filterColorObject = ipadArray[1].filter(x => x.color == _color)[0]
+            console.log(filterColorObject)
+            console.log(filterColorObject.ImgUrl)
+
+            pic.innerHTML = `<img src="./img/${filterColorObject.ImgUrl}" alt="">`
+        }
+
+
+        //在三個radio選取OK後, 顯示最終選取的規格
+        function checkChose() {
+
+            //取得 選取項目
+            let checkedColor = document.querySelector("input[name='color']:checked");
+            let checkedStorage = document.querySelector("input[name='storage']:checked");
+            let checkedNetwork = document.querySelector("input[name='network']:checked");
+
+            //確定都有選擇到
+            if (checkedColor == null || checkedStorage == null || checkedNetwork == null) {
+                selection.innerHTML = "";
+                return;
+            }
+
+            //賦值給 結果
+            _color = checkedColor.value;
+            _storage = checkedStorage.value;
+            _network = checkedNetwork.value;
+
+
+            selection.innerHTML = `color: ${_color}, storage : ${_storage}, network : ${_network}<br/>`;
+            getPrice()
+        }
+
+
+        //列出符合規格的清單
+        function getPrice() {
+
+            price.innerHTML = "";
+            console.log(ipadArray[2])
+            let filterObject = ipadArray[2].filter(x => x.storage == _storage && x.network == _network)
+            console.log(filterObject)
+
+            // price.append(`NT$ ${JSON.stringify(filterObject[0].price)}`);
+            price.innerHTML = `<h3>NT$ ${JSON.stringify(filterObject[0].price)} </h3>`;
+        }
+
+    </script>
+
+</body>
+
+</html>

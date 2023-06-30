@@ -1,0 +1,23 @@
+{
+    "iPad": {
+        "product":{
+            "productName":"iPad Air",
+            "baseImgUrl":"./img/ipad-air.jpg"
+        },
+        "outWard":[
+            {"color": "space-gray","colorHEX":"#7c7a7f","ImgUrl":"space-gray.jpg"},
+            {"color": "blue","colorHEX":"#97b8c7","ImgUrl":"blue.jpg"},
+            {"color": "pink","colorHEX":"#e8d2d0","ImgUrl":"pink.jpg"},
+            {"color": "purple","colorHEX":"#c2c1d7","ImgUrl":"purple.jpg"},
+            {"color": "starlight","colorHEX":"#e8e4dd","ImgUrl":"space-gray.jpg"}
+        ],
+        "spec":[
+            {"storage":"64GB","network": "Wi-Fi","price": 19900},
+            {"storage":"64GB","network": "Cellular","price": 24900},
+            {"storage":"256GB","network": "Wi-Fi","price": 24900},
+            {"storage":"256GB","network": "Cellular","price": 29900}
+        ]
+    },
+    "iPhone": {},
+    "Mac": {}
+}

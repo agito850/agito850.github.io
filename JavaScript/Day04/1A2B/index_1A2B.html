@@ -131,19 +131,37 @@
             margin: 20px;
             padding: 0 10px;
         }
-        .tip-display p{
+
+        .tip-display::-webkit-scrollbar-track {
+            background-color: #af009880;
+        }
+
+        .tip-display::-webkit-scrollbar {
+            width: 16px;
+        }
+
+        .tip-display::-webkit-scrollbar-thumb {
+            width: 6px;
+            background-color: #edffff;
+            box-shadow:0 0 10px #00eeff;
+            border: 2px solid #00eeff;
+            /* box-sizing: border-box; */
+        }
+
+        .tip-display p {
             line-height: 1.2;
-            text-shadow: 0 0 1px #00eeff,0 0 15px #00eeff;
+            text-shadow: 0 0 1px #00eeff, 0 0 15px #00eeff;
             font-size: 20px;
 
-            
+
         }
-        .tip-display p span{
+
+        .tip-display p span {
             display: inline-block;
             width: 150px;
             height: 20px;
             padding: 4px 0 5px;
-            background-image: linear-gradient(90deg,#af0098 50%,#af0098a0 70%,transparent 100%);
+            background-image: linear-gradient(90deg, #af0098 50%, #af0098a0 70%, transparent 100%);
             border-radius: 0 50px 50px 0;
             box-shadow: 0 2px 10px #00eeff;
             text-align: center;
@@ -152,6 +170,7 @@
             text-shadow: none;
             font-size: 18px;
         }
+
         .input-pad {
             display: flex;
             align-items: center;
@@ -176,12 +195,13 @@
             width: 220px;
             letter-spacing: 2px;
         }
-        form input::placeholder{
+
+        form input::placeholder {
             font-size: 15px;
             /* opacity: 0.7; */
             text-align: center;
-            position:relative;
-            bottom:1px;
+            position: relative;
+            bottom: 1px;
         }
 
         form input:focus {
@@ -199,7 +219,8 @@
             font-size: 18px;
             font-weight: 600;
         }
-        .input-pad button:active{
+
+        .input-pad button:active {
             background-color: #00636b;
         }
 
@@ -211,19 +232,20 @@
             top: 0;
             left: 0;
         }
-        button[disabled]{
+
+        button[disabled] {
             opacity: 0.5;
         }
-        button[disabled]:hover{
+
+        button[disabled]:hover {
             background-color: #00000080;
             color: #fff;
         }
-        .btn-guess[disabled]:hover{
+
+        .btn-guess[disabled]:hover {
             background-color: #00eeff;
             color: #000;
         }
-        
-        
     </style>
 </head>
 
@@ -240,7 +262,7 @@
         </div>
         <div class="input-pad">
             <form action="">
-                <label for="" >輸入區</label>
+                <label for="">輸入區</label>
                 <input type="text" placeholder="輸入4個不重複的數字">
             </form>
             <button class="btn-guess" type="button">猜</button>
@@ -319,7 +341,7 @@
 
             clearEnterSubmit()
 
-            
+
 
             btnGuess.addEventListener("click", () => {
                 // 去除空白
@@ -357,11 +379,11 @@
                     scrollToButtom()
                     return
                 }
-                if(input.value == answer){
+                if (input.value == answer) {
                     let p = document.createElement("p")
                     // p.innerText = "▶ =└(┐卍^o^)卍 答對溜!!!!!恭喜您"
                     // p.innerText += "(重新遊戲請重整頁面)"
-                    p.innerHTML =`▶ =└(┐卍^o^)卍 答對溜!!!!!恭喜您</br>(重新遊戲請重整頁面)`
+                    p.innerHTML = `▶ =└(┐卍^o^)卍 答對溜!!!!!恭喜您</br>(重新遊戲請重整頁面)`
                     tipDisplay.append(p)
                     input.value = ""
                     btnRestart.disabled = true
@@ -376,7 +398,7 @@
 
                 //判斷幾A幾B
                 HowManyAB(input)
-                
+
             })
 
             btnStart.addEventListener("click", () => {
@@ -395,11 +417,11 @@
 
         }
 
-        function scrollToButtom(){
+        function scrollToButtom() {
             tipDisplay.scrollTop = tipDisplay.scrollHeight - tipDisplay.clientHeight
         }
 
-        
+
         function setAnswer() {
             var demoArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
             shuffleArray(demoArray);
@@ -426,7 +448,7 @@
         }
 
         // 按Enter 取消submit 改click
-        function clearEnterSubmit(){
+        function clearEnterSubmit() {
             let doc = document
             doc.addEventListener("keypress", function (element) {
                 var code = element.keyCode || element.which;
@@ -446,14 +468,14 @@
             let answerArray = Array.from(answer)
 
             for (let i = 0; i < 4; i++) {
-                if(inputArray[i] == answerArray[i]){
+                if (inputArray[i] == answerArray[i]) {
                     A++
-                }else if(answerArray.includes(inputArray[i])){
+                } else if (answerArray.includes(inputArray[i])) {
                     B++
                 }
             }
-            let p =document.createElement("p")
-            let span =document.createElement("span")
+            let p = document.createElement("p")
+            let span = document.createElement("span")
             span.innerText = `${A}A${B}B`;
             console.log(span)
             p.innerText = input.value.trim();

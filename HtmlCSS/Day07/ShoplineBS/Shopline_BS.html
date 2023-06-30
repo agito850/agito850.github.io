@@ -15,6 +15,7 @@
     <style>
         body {
             color: #052855;
+            background: linear-gradient(180deg, #EBF1F8 200px, #fff 200px, #fff 100%);
         }
 
         body * {
@@ -158,7 +159,7 @@
             text-decoration: none;
         }
 
-        footer h4{
+        footer h4 {
             margin-bottom: 8px;
             font-weight: 400;
         }
@@ -168,17 +169,20 @@
             list-style: none;
             margin-bottom: 8px;
         }
-        footer .top-link{
+
+        footer .top-link {
             padding-top: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid #ffffff50;
             margin-bottom: 20px;
         }
-        footer .top-link h4{
+
+        footer .top-link h4 {
             display: inline-block;
         }
-        footer .top-link a+a{
-            margin-left:26px;
+
+        footer .top-link a+a {
+            margin-left: 26px;
         }
 
         footer .col-md-1,
@@ -186,16 +190,19 @@
         footer .col-md-3 {
             min-width: fit-content;
         }
-        .info-security a{
+
+        .info-security a {
             color: #052855;
         }
-        .info-security{
+
+        .info-security {
             padding-top: 20px;
             padding-bottom: 20px;
             border-bottom: 1px solid #ffffff50;
             margin-bottom: 20px;
         }
-        .social-media a{
+
+        .social-media a {
             display: inline-block;
             background-color: #ffffff80;
             width: 25px;
@@ -205,50 +212,196 @@
             color: #00142D;
             margin: 0 10px;
         }
-        .service-time-copyright{
+
+        .service-time-copyright {
             font-size: 14px;
         }
-        .bottom-link a{
+
+        .bottom-link a {
             font-size: 14px;
             opacity: .5;
             padding: 0 15px;
             display: inline-block;
             height: 25px;
         }
-        .bottom-link a+a{
+
+        .bottom-link a+a {
             border-left: 1px solid #ffffff80;
         }
+        .category-link input{
+                position: absolute;
+                width: 0;
+            }
+
         @media screen and (max-width:768px) {
-            .main-header .top-login{
+            .main-header .top-login {
                 display: none;
             }
-            .navbar-toggler{
+
+            .navbar-toggler {
                 order: 1;
             }
-            .navbar-collapse{
+
+            .navbar-collapse {
                 order: 2;
             }
-            .free-try{
+
+            .free-try {
                 background-color: transparent;
                 border: none;
                 border-radius: 0;
                 color: #052855;
                 border-bottom: 2px solid #304867;
-                padding: 0!important;
+                padding: 0 !important;
                 margin-left: auto;
                 margin-right: 10px;
             }
+
             nav {
-            background-color: #fff;
+                background-color: #fff;
             }
-            .special-list ul li{
+
+            header {
+                position: relative;
+            }
+
+            header::after {
+                content: "";
+                position: absolute;
+                bottom: -8px;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background-image: linear-gradient(180deg, #3048671d 0%, #EBF1F8 100%);
+                z-index: 1;
+            }
+
+            .kv .txt h1 {
+                font-size: 34px !important;
+            }
+
+            .kv .pic {
+                width: 116%;
+                margin-left: -8%;
+            }
+
+            .free-try-14 {
                 width: 100% !important;
             }
-            footer .top-link{
+
+            .special-list ul {
+                margin-left: -8px;
+            }
+
+            .slide-section {
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .slide-cards .col-12 {
+                width: 80%;
+                margin: 0 10%;
+            }
+
+            .slide-cards {
+                animation: move 15s 0s infinite;
+            }
+
+            footer .top-link {
                 text-align: center;
             }
 
+            .category-link label{
+                width: 100%;
+                margin: 10px 0;
+            }
 
+            .category-link h4 {
+                opacity: .5;
+                position: relative;
+            }
+
+            .category-link h4::after {
+                content: ">";
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+            .category-link ul {
+                display: none;
+            }
+            .category-link ul li{
+                margin: 12px 0;
+            }
+
+            .category-link input:checked + label > h4::after {
+                content: "^";
+            }
+            .category-link input:checked + label > h4{
+                opacity: 1;
+            }
+            .category-link input:checked ~ ul{
+                display: block;
+                border-top: 1px solid #ffffff80;
+            }
+            .category-link input:checked ~ ul li{
+                opacity: 1;
+            }
+            
+
+
+
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0%);
+            }
+
+            13.3% {
+                transform: translateX(0%);
+            }
+
+            19.3% {
+                transform: translateX(-100%);
+            }
+
+            32.6% {
+                transform: translateX(-100%);
+            }
+
+            38.6% {
+                transform: translateX(-200%);
+            }
+
+            51.9% {
+                transform: translateX(-200%);
+            }
+
+            57.9% {
+                transform: translateX(-300%);
+            }
+
+            71.2% {
+                transform: translateX(-300%);
+            }
+
+            77.2% {
+                transform: translateX(-400%);
+            }
+
+            90.5% {
+                transform: translateX(-400%);
+            }
+
+            96.5% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
         }
     </style>
 </head>
@@ -317,13 +470,13 @@
             <div class="row align-items-center justify-content-around">
                 <div class="col-12 col-md-5">
                     <div class="txt d-flex flex-column  justify-content-center align-items-start  ">
-                        <h1>
+                        <h1 class="py-3">
                             想在哪開店創業？<br>
                             不管是 <span class="change">網路開店</span><br>
                             SHOPLINE 一站輕鬆開賣
                         </h1>
                         <p>從個人賣家到國際品牌，都能以 SHOPLINE 實現全通路零售，快速拓展市場到世界各地，輕鬆開始你的『 店 』商生意！</p>
-                        <a href="#" class="btn btn-primary py-2 my-2 w-75">免費試用 14 天</a>
+                        <a href="#" class="free-try-14 btn btn-primary py-2 my-2 w-75">免費試用 14 天</a>
                         <p class="note">＊無需綁定信用卡提供付款資訊</p>
                     </div>
                 </div>
@@ -359,17 +512,17 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="txt">
+                    <div class="txt pt-5 p-md-0">
                         <h2>免寫程式、多款版型<br>
                             輕鬆打造全能電商網站</h2>
                         <p>不會寫程式也能輕鬆架設品牌電商官網！任何產業都能找到合適的專業設計版型，以滑鼠拖曳就能完成網頁編輯，讓架設網站就像堆積木一樣簡單。</p>
                         <ul class="d-flex flex-wrap ">
-                            <li class="w-50">豐富版型主題與字型搭配</li>
-                            <li class="w-50">SEO 搜尋引擎優化</li>
-                            <li class="w-50">RWD 響應式網頁設計</li>
-                            <li class="w-50">一頁商店</li>
-                            <li class="w-50">獨有網址 ＆ SSL 安全憑證</li>
-                            <li class="w-50">開放 HTML／CSS 編輯</li>
+                            <li class="col-12 col-md-6">豐富版型主題與字型搭配</li>
+                            <li class="col-12 col-md-6">SEO 搜尋引擎優化</li>
+                            <li class="col-12 col-md-6">RWD 響應式網頁設計</li>
+                            <li class="col-12 col-md-6">一頁商店</li>
+                            <li class="col-12 col-md-6">獨有網址 ＆ SSL 安全憑證</li>
+                            <li class="col-12 col-md-6">開放 HTML／CSS 編輯</li>
                         </ul>
                         <a href="#">
                             <span>看看開店祕技</span>
@@ -387,17 +540,17 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="txt">
+                    <div class="txt pt-5 p-md-0">
                         <h2>支持海內外電商<br>
                             金流、物流一次搞定</h2>
                         <p>支持在地及國際金流、物流串接服務，提供海內外顧客最便利的付款及送貨服務，加速消費者完成下單交易，大幅降低購物車放棄率！</p>
                         <ul class="d-flex flex-wrap ">
-                            <li class="w-50">線上／線下信用卡刷卡</li>
-                            <li class="w-50">多溫層宅配並指定運費</li>
-                            <li class="w-50">第三方金流／行動支付整合</li>
-                            <li class="w-50">超商／宅配貨到付款</li>
-                            <li class="w-50">超商代碼／條碼繳費</li>
-                            <li class="w-50">發票開立與串接</li>
+                            <li class="col-12 col-md-6">線上／線下信用卡刷卡</li>
+                            <li class="col-12 col-md-6">多溫層宅配並指定運費</li>
+                            <li class="col-12 col-md-6">第三方金流／行動支付整合</li>
+                            <li class="col-12 col-md-6">超商／宅配貨到付款</li>
+                            <li class="col-12 col-md-6">超商代碼／條碼繳費</li>
+                            <li class="col-12 col-md-6">發票開立與串接</li>
                         </ul>
                         <a href="#">
                             <span>了解更多金物流</span>
@@ -415,17 +568,17 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="txt">
+                    <div class="txt pt-5 p-md-0">
                         <h2>刺激下單，創造回購<br>
                             行銷導流、促購模組任你玩</h2>
                         <p>多元優惠活動、會員集客機制、網紅分潤等多種優惠促銷，將電商行銷玩法一網打盡；加上廣告追蹤助你有效優化行銷活動，刺激顧客下單、吸引鐵粉回購！</p>
                         <ul class="d-flex flex-wrap ">
-                            <li class="w-50">推薦活動與分潤</li>
-                            <li class="w-50">買Ｘ享Ｙ優惠</li>
-                            <li class="w-50">A+B 優惠活動</li>
-                            <li class="w-50">會員推薦獎賞</li>
-                            <li class="w-50">會員分級／點數／購物金</li>
-                            <li class="w-50">FB／Google／LINE 廣告追蹤</li>
+                            <li class="col-12 col-md-6">推薦活動與分潤</li>
+                            <li class="col-12 col-md-6">買Ｘ享Ｙ優惠</li>
+                            <li class="col-12 col-md-6">A+B 優惠活動</li>
+                            <li class="col-12 col-md-6">會員推薦獎賞</li>
+                            <li class="col-12 col-md-6">會員分級／點數／購物金</li>
+                            <li class="col-12 col-md-6">FB／Google／LINE 廣告追蹤</li>
                         </ul>
                         <a href="#">
                             <span>看更多優惠模組</span>
@@ -443,17 +596,17 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="txt">
+                    <div class="txt pt-5 p-md-0">
                         <h2>「社群+電商」輕鬆開賣<br>
                             打造一致的社群購物體驗</h2>
                         <p>善用社群與顧客頻繁互動，讓你透過社群也能輕鬆開賣！從直播 +1 接單、聊天機器人到各管道的訊息整合，我們都為你準備好了，不放過每個銷售環節，打造全方位的社群購物體驗！</p>
                         <ul class="d-flex flex-wrap ">
-                            <li class="w-50">社群直播購物系統</li>
-                            <li class="w-50">FB／IG／LINE 直播 +1</li>
-                            <li class="w-50">FB & IG 貼文 +1</li>
-                            <li class="w-50">FB／IG／LINE 對話式購物</li>
-                            <li class="w-50">自訂聊天機器人腳本</li>
-                            <li class="w-50">訊息整合中心</li>
+                            <li class="col-12 col-md-6">社群直播購物系統</li>
+                            <li class="col-12 col-md-6">FB／IG／LINE 直播 +1</li>
+                            <li class="col-12 col-md-6">FB & IG 貼文 +1</li>
+                            <li class="col-12 col-md-6">FB／IG／LINE 對話式購物</li>
+                            <li class="col-12 col-md-6">自訂聊天機器人腳本</li>
+                            <li class="col-12 col-md-6">訊息整合中心</li>
                         </ul>
                         <a href="#">
                             <span>看更多社群購物功能</span>
@@ -471,17 +624,17 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
-                    <div class="txt">
+                    <div class="txt pt-5 p-md-0">
                         <h2>OMO 全通路無縫整併<br>
                             輕鬆管理網店、門市以及其他通路</h2>
                         <p>不論是網店拓展門市，還是門市想發展網路生意，從商品、庫存、訂單到會員等各項虛實店舖的資料都能完善整併，輕鬆實現全通路會員經營到多店營運。</p>
                         <ul class="d-flex flex-wrap ">
-                            <li class="w-50">門市 POS 系統</li>
-                            <li class="w-50">線上買門市取</li>
-                            <li class="w-50">線上線下會員／商品／庫存整合</li>
-                            <li class="w-50">進銷庫存／調撥／多店管理</li>
-                            <li class="w-50">門市快速集客工具</li>
-                            <li class="w-50">Smart OMO 會員導購工具</li>
+                            <li class="col-12 col-md-6">門市 POS 系統</li>
+                            <li class="col-12 col-md-6">線上買門市取</li>
+                            <li class="col-12 col-md-6">線上線下會員／商品／庫存整合</li>
+                            <li class="col-12 col-md-6">進銷庫存／調撥／多店管理</li>
+                            <li class="col-12 col-md-6">門市快速集客工具</li>
+                            <li class="col-12 col-md-6">Smart OMO 會員導購工具</li>
                         </ul>
                         <a href="#">
                             <span>了解更多全通路整合</span>
@@ -674,34 +827,40 @@
                         <h3>人氣品牌一致推薦使用</h3>
                     </div>
                 </div>
-                <div class="col-12 col-md-2">
-                    <div class="brand-logo opacity-50">
-                        <img src="img/10025.png" alt="">
-                    </div>
-                </div>
-                <div class="col-12 col-md-2">
-                    <div class="brand-logo opacity-50">
-                        <img src="img/10026.png" alt="">
-                    </div>
-                </div>
-                <div class="col-12 col-md-2">
-                    <div class="brand-logo opacity-50">
-                        <img src="img/10027.png" alt="">
-                    </div>
-                </div>
-                <div class="col-12 col-md-2">
-                    <div class="brand-logo opacity-50">
-                        <img src="img/10028.png" alt="">
-                    </div>
-                </div>
-                <div class="col-12 col-md-2">
-                    <div class="brand-logo">
-                        <img src="img/10029.png" alt="">
+                <div class="slide-section">
+                    <div class="slide-cards d-flex justify-content-between">
+                        <div class="col-12 col-md-2 slide-card">
+                            <div class="brand-logo opacity-50">
+                                <img src="img/10025.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="brand-logo opacity-50">
+                                <img src="img/10026.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="brand-logo opacity-50">
+                                <img src="img/10027.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="brand-logo opacity-50">
+                                <img src="img/10028.png" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-2">
+                            <div class="brand-logo">
+                                <img src="img/10029.png" alt="">
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+
+
                 <div class="col-12">
-                    <div class="txt mx-auto text-center w-50  py-5">
+                    <div class="txt mx-auto text-center col-12 col-md-6  py-5">
                         <p>“ 使用 SHOPLINE 像請了 24 小時的員工可以不停地接單，省去了本來需要人工紀錄的金流、物流作業，我們有更多的時間可以專心做出更好的產品。 ”</p>
                         <p class="shop-name">
                             <span class="fw-bold">Roy ＆ Boyeong</span><br>
@@ -745,7 +904,11 @@
                 </div>
                 <div class="col-md-1">
                     <div class="category-link">
-                        <h4 class="fs-6 ">網路開店</h4>
+                        <input type="checkbox" id="title-check1">
+                        <label for="title-check1">
+                            <h4 class="fs-6 ">網路開店
+                            </h4>
+                        </label>
                         <ul class="ps-0">
                             <li>特色總覽</li>
                             <li>功能介紹</li>
@@ -756,7 +919,11 @@
                 </div>
                 <div class="col-md-1">
                     <div class="category-link">
-                        <h4 class="fs-6 ">社群購物</h4>
+                        <input type="checkbox" id="title-check2">
+                        <label for="title-check2">
+                            <h4 class="fs-6 ">社群購物</h4>
+                        </label>
+                        
                         <ul class="ps-0">
                             <li>特色總覽</li>
                             <li>功能介紹</li>
@@ -766,7 +933,10 @@
                 </div>
                 <div class="col-md-1">
                     <div class="category-link">
-                        <h4 class="fs-6 ">零售 POS</h4>
+                        <input type="checkbox" id="title-check3">
+                        <label for="title-check3">
+                            <h4 class="fs-6 ">零售 POS</h4>
+                        </label>
                         <ul class="ps-0">
                             <li>特色總覽</li>
                             <li>功能介紹</li>
@@ -776,7 +946,11 @@
                 </div>
                 <div class="col-md-1">
                     <div class="category-link">
-                        <h4 class="fs-6 ">我要開店</h4>
+                        <input type="checkbox" id="title-check4">
+                        <label for="title-check4">
+                            <h4 class="fs-6 ">我要開店</h4>
+                        </label>
+                        
                         <ul class="ps-0">
                             <li>開店方案</li>
                             <li>開店說明會</li>
@@ -786,7 +960,10 @@
                 </div>
                 <div class="col-md-2">
                     <div class="category-link">
-                        <h4 class="fs-6 ">更多資源</h4>
+                        <input type="checkbox" id="title-check5">
+                        <label for="title-check5">
+                            <h4 class="fs-6 ">更多資源</h4>
+                        </label>
                         <ul class="ps-0">
                             <li>新手問答</li>
                             <li>電商教室</li>
@@ -800,7 +977,10 @@
                 </div>
                 <div class="col-md-1">
                     <div class="category-link">
-                        <h4 class="fs-6 ">SHOPLINE</h4>
+                        <input type="checkbox" id="title-check6">
+                        <label for="title-check6">
+                            <h4 class="fs-6 ">SHOPLINE</h4>
+                        </label>
                         <ul class="ps-0">
                             <li>認識團隊</li>
                             <li>合作機會</li>
@@ -813,14 +993,14 @@
                         <a href="#" class="btn btn-warning px-5 py-2 my-2 fw-bold rounded-0 ms-auto">資訊安全保護專區</a>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="service-time-copyright">
+                <div class="col-md-3 order-1 order-md-0 ">
+                    <div class="service-time-copyright text-center text-md-start py-4 py-md-0">
                         <p>服務時間 星期一至五 上午 10 點至晚上 7 點<br>
                             © Copyright 2023 SHOPLINE Tech Co., Ltd.</p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="social-media">
+                    <div class="social-media text-center text-md-start">
                         <a href="#" target="_blank">
                             <i class="fa-brands fa-facebook-f"></i>
                         </a>
@@ -839,10 +1019,10 @@
                         <a href="#">
                             <i class="fa-regular fa-envelope"></i>
                         </a>
-                      </div>
+                    </div>
                 </div>
-                <div class="col-12">
-                    <div class="bottom-link">
+                <div class="col-12 order-1 order-md-0">
+                    <div class="bottom-link text-center text-md-start">
                         <a href="#">
                             網站地圖
                         </a>
