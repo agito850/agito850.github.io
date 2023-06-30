@@ -9,7 +9,7 @@
             {"color": "blue","colorHEX":"#97b8c7","ImgUrl":"blue.jpg"},
             {"color": "pink","colorHEX":"#e8d2d0","ImgUrl":"pink.jpg"},
             {"color": "purple","colorHEX":"#c2c1d7","ImgUrl":"purple.jpg"},
-            {"color": "starlight","colorHEX":"#e8e4dd","ImgUrl":"space-gray.jpg"}
+            {"color": "starlight","colorHEX":"#e8e4dd","ImgUrl":"starlight.jpg"}
         ],
         "spec":[
             {"storage":"64GB","network": "Wi-Fi","price": 19900},
