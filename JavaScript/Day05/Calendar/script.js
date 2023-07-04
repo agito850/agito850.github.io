@@ -19,6 +19,8 @@ let btnAddSchedule;
 let btnReviseSchedule;
 let btnClearSchedule;
 
+let clickP
+
 let timeArray;
 let timeYear;
 let timeMonth;
@@ -86,6 +88,8 @@ window.onload = function () {
 
 
 
+
+
     // ----------新增活動---------------
 
 
@@ -94,7 +98,13 @@ window.onload = function () {
     btnReviseSchedule = document.querySelector("#btn-revise-schedule")
     btnClearSchedule = document.querySelector("#btn-clear-schedule")
 
+    //按下+號
     btnAdd.addEventListener("click", () => {
+        document.querySelector('input[type="date"]').value = ""
+        document.querySelector('input[type="time"]').value = ""
+        document.querySelector('.sched-location').value = ""
+        document.querySelector('.sched-content').value = ""
+        document.querySelector('input[type="color"]').value = "#f4a460"
         scheduleModal.style.display = "block"
         coverBg.style.display = "block"
     })
@@ -107,32 +117,12 @@ window.onload = function () {
     })
 
 
-    //刪除所有活動(重置)
-    btnClearSchedule.addEventListener("click", () => {
-        // localStorage.getItem('EverySchedule')
-        localStorage.removeItem('EverySchedule');
-
-        // 行程以JSON格式設計
-        let sched = {
-            id:"2023-7-15",completeDate: "2023-07-15",year:2023,month:7,date:15,
-            todolist:[{ time:"18:00",at:"學校",todo:"寫作業",color:"#992445" }]
-        }
-        let sched2 = {
-            id:"2023-7-24",completeDate: "2023-07-24",year:2023,month:7,date:24,
-            todolist:[{ time:"09:00",at:"家",todo:"看書",color:"#226445" }]
-        }
-        downLoad=[sched,sched2]
-        // 行程陣列(資料們)轉成字串 儲存在LocalStorage
-        localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
-    })
-
-
     //按下每個活動p 就跳出該活動的Modal視窗
     document.querySelectorAll("p").forEach((elementP) => {
         elementP.addEventListener("click", () => {
 
             //從downLoad裡尋找與p相同id的物件
-
+            clickP = elementP
             let s = downLoad.find(element => element.id == elementP.id)
             //開啟Modal
             scheduleModal.style.display = "block"
@@ -146,19 +136,47 @@ window.onload = function () {
 
 
         })
+    })
+
+    //修改活動 按鈕
+    btnReviseSchedule.addEventListener("click", () => {
+        //刪除downLoad裡 同id的活動
+        let clearId = downLoad.findIndex(element => element.id == clickP.id)
+        downLoad.splice(clearId, 1)
 
 
-        //修改活動 按鈕
-        btnReviseSchedule.addEventListener("click", () => {
-            //刪除downLoad裡 同id的活動
-            let clearId = downLoad.findIndex(element => element.id == elementP.id)
-            downLoad.splice(clearId, 1)
+        saveModalToDownload()
+        changeModalToP()
+    })
 
+    //刪除所有活動(重置)
+    btnClearSchedule.addEventListener("click", () => {
+        // 重置功能:
+        // localStorage.removeItem('EverySchedule');
 
-            saveModalToDownload()
-            changeModalToP()
-        })
+        // // 行程以JSON格式設計
+        // let sched = {
+        //     id:"2023-7-15",completeDate: "2023-07-15",year:2023,month:7,date:15,
+        //     todolist:[{ time:"18:00",at:"學校",todo:"寫作業",color:"#992445" }]
+        // }
+        // let sched2 = {
+        //     id:"2023-7-24",completeDate: "2023-07-24",year:2023,month:7,date:24,
+        //     todolist:[{ time:"09:00",at:"家",todo:"看書",color:"#226445" }]
+        // }
+        // downLoad=[sched,sched2]
+        // // 行程陣列(資料們)轉成字串 儲存在LocalStorage
+        // localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
 
+        let clearId = downLoad.findIndex(element => element.id == clickP.id)
+        downLoad.splice(clearId, 1)
+        let theDay = document.querySelector(`.day-${clickP.id}`)
+        theDay.innerHTML=""
+
+        // 行程陣列(資料們)轉成字串 儲存在LocalStorage
+        localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
+
+        scheduleModal.style.display = "none"
+        coverBg.style.display = "none"
     })
 
 
@@ -268,8 +286,8 @@ function changeModalToP() {
     let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
     let theSchedDay = document.querySelector(SchedDayClass)
     //刪除原本的p 建立新p
-    theSchedDay.innerHTML = ""
-    let p = document.createElement("p")
+    //theSchedDay.innerHTML = ""//用這句會跳出錯誤 不知道為什麼QQ
+    let p = theSchedDay.querySelector("p")
     p.setAttribute("id", `${timeYear}-${timeMonth}-${timeDate}`);
     if (schedLocation) {
         p.innerHTML = `<span>● </span> ${schedTime} 在${schedLocation} ${schedContent}`
