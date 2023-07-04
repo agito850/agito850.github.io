@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="schedule-modal">
+        <div class="close">x</div>
+        <div class="input-group">
+            <label for="start">活動日期</label>
+            <input type="date" id="start" name="trip-start" value="2023-07-03">
+        </div>
+
+        <div class="input-group">
+            <label for="appt">活動開始時間</label>
+            <input type="time" id="appt" name="appt" min="09:00" max="18:00" required>
+        </div>
+
+        <div class="input-group">
+            <label for="">活動地點</label>
+            <input type="text" class="sched-location">
+        </div>
+
+        <div class="input-group">
+            <label for="">活動內容</label>
+            <input type="text" class="sched-content">
+        </div>
+
+        <div class="input-group">
+            <label for="head">標記顏色</label>
+            <input type="color" id="head" name="head" value="#f4a460">
+        </div>
+
+
+        <hr>
+        <div class="button-group">
+            <button id="btn-add-schedule">新增</button>
+            <button id="btn-revise-schedule">修改</button>
+            <button id="btn-clear-schedule">刪除</button>
+        </div>
+
+
+    </div>
+    <div class="cover-bg"></div>
+
+
+
+
+
 
     <div class="calendar">
+        <button id="add-schedule">+</button>
         <div class="calendar-header">
             <!-- 年 -->
             <div class="year-picker">
@@ -17,7 +63,7 @@
                 </span>
                 <span id="year">20XX</span>
                 <span class="year-change" id="next-year">
-                    <pre>▸</pre>   
+                    <pre>▸</pre>
                 </span>
             </div>
 
@@ -43,7 +89,13 @@
         <div class="month-list"></div>
 
     </div>
-    
+
+
+    </div>
+
+
+
     <script src="script.js"></script>
 </body>
+
 </html>

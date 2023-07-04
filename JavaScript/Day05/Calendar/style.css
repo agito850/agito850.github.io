@@ -4,18 +4,50 @@ body{
     justify-content: center;
     align-items: center;
     background-color: rgb(210, 233, 188);
+    font-family: 'Noto Sans TC', sans-serif;
 }
 .calendar{
     height: 500px;
     width: 900px;
     background-color: #fff;
     color: #888;
-    font-family: 'Noto Sans TC', sans-serif;
     border-radius: 25px;
     padding: 20px;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 6px 10px rgba(114, 132, 90, 0.416);
+    overflow: hidden;
+}
+
+#add-schedule{
+    background-color: sandybrown;
+    color: #fff;
+    border: none;
+    position: fixed;
+    width: 60px;
+    height: 45px;
+    top: 5px;
+    left: 20%;
+    /* box-shadow: 0 5px 5px #cbcbcb; */
+    font-size: 30px;
+    padding-top: 4px;
+    border-top: 2px solid rgb(201, 135, 78);
+    cursor: pointer;
+    transition: .3s;
+}
+#add-schedule:hover{
+    font-size: 39px;
+    padding-top: 0;
+    color: #777;
+}
+#add-schedule::before{
+    content: "";
+    border-left: 30px solid sandybrown;
+    border-right: 30px solid sandybrown;
+    border-bottom: 30px solid transparent;
+    position: absolute;
+    top: calc(100% - 8px);
+    left: 0;
+    transform: scaleY(.5);
 }
 .calendar-header{
     margin: auto;
@@ -63,8 +95,7 @@ body{
 }
 
 .calendar-days .day-container{
-    
-    border: 2px solid #fff;
+    margin: 2px;
     animation: to-top 1s forwards;
     position: relative;
 }
@@ -72,39 +103,34 @@ body{
     background-color: rgb(243, 250, 236);
     height: 100%;
 }
-
-.dayBC div{
-    width: 22px;
-    height: 22px;
-    margin: 2px 0 0 2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-radius: 50%;
+.dayBC{
+    transition: .5s;
+    /* border: 1px solid transparent; */
+    box-shadow: 0 3px 3px #fff;
     font-size: 14px;
 }
-
-/* 摸到出現圓圈動畫 */
-.dayBC div span{
-    position: absolute;
-    transition: .5s ease-in-out;
-    border: 1px solid transparent;
-}
-.dayBC div:hover span{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid sandybrown;
+.dayBC:hover{
+    /* border: 1px solid sandybrown; */
+    box-shadow: 0 2px 6px #aaa;
 }
 
 /* 點選到 顏色不同 */
-.dayBC div.curr-date,
-.dayBC div.curr-date:hover{
+.dayBC .day-num.curr-date{
+    width: 22px;
+    height: 22px;
+    text-align: center;
     background-color: rgb(129, 175, 68);
     color: #fff;
     border-radius: 50%;
+    display: inline-block;
+}
+.schedToday p{
+    margin: 0;
+    font-size: 12px;
+    padding: 0;
+    display: block;
+    width: 100%;
+    cursor: pointer;
 }
 /* 月份選擇板 */
 .month-list{
@@ -114,7 +140,7 @@ body{
     justify-content: space-between;
     position: absolute;
     top: 0;
-    right: -100%;
+    right: -341px;
     width: 300px;
     height: 500px;
     text-align: center;
@@ -139,4 +165,111 @@ body{
 @keyframes to-top{
     0%{ top: 20px;}
     100%{ top: 0;}
+}
+
+/* ------------------ Modal------------------ */
+.schedule-modal{
+    position: fixed;
+    width: 500px;
+    height: 400px;
+    background-color: #fff;
+    z-index: 2;
+    border-radius: 25px;
+    display: none;
+}
+.schedule-modal .close{
+    position: absolute;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 17px;
+    background-color: #888;
+    color: #fff;
+    cursor: pointer;
+}
+.schedule-modal .input-group{
+    display: block;
+    margin: 20px auto;
+    width: 80%;
+    background-color: rgb(129, 175, 68);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+}
+.input-group label{
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+.input-group input{
+    color: #777;
+    background-color: rgb(243, 250, 236);
+    border:none;
+    width: 70%;
+    height: 40px;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 5px 10px;
+}
+.input-group input:focus{
+    outline: 1px solid #888;
+}
+input[type="color"]{
+    cursor: pointer;
+    padding: 5px 40px;
+}
+input[type="time"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator{
+    filter: invert(63%) sepia(98%) saturate(330%) hue-rotate(333deg) brightness(100%) contrast(92%);
+  }
+hr{
+    border:1px solid #ccc;
+    width: 90%;
+}
+.button-group{
+    display: flex;
+    justify-content: end;
+    padding: 10px 20px 0 0;
+
+}
+#btn-add-schedule,
+#btn-revise-schedule,
+#btn-clear-schedule{
+    background-color: sandybrown;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-shadow: 0 0 5px #999;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 3px #ccc;
+    cursor: pointer;
+}
+#btn-revise-schedule{
+    background-color: rgb(129, 175, 68);
+}
+#btn-clear-schedule{
+    background-color: rgb(250, 114, 114);
+}
+
+
+
+
+.cover-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000000a0;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
 }
