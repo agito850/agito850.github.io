@@ -259,7 +259,11 @@ hr{
 #btn-clear-schedule{
     background-color: rgb(250, 114, 114);
 }
-
+.schedule-modal button[disabled]{
+    background-color: #ccc !important;
+    color: #fff!important;
+    cursor: default!important;
+}
 
 
 

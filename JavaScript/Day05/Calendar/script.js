@@ -35,18 +35,19 @@ window.onload = function () {
     // localStorage 刪除重置魔法
     // localStorage.removeItem('EverySchedule');
 
+    // DOM
+    
+    scheduleModal = document.querySelector(".schedule-modal")// Modal視窗
+    coverBg = document.querySelector(".cover-bg")// fixed背景
+    
+    calendar = document.querySelector(".calendar")// 月曆本體
+    monthList = calendar.querySelector(".month-list")// 月份總表
+    monthPicker = calendar.querySelector("#month-picker")// 月份按鈕(目前顯示的月份)
 
-    // 抓 Modal視窗
-    scheduleModal = document.querySelector(".schedule-modal")
-    // 抓 fixed背景
-    coverBg = document.querySelector(".cover-bg")
-
-    // 抓 月曆本體
-    calendar = document.querySelector(".calendar")
-    // 抓 月份總表 
-    monthList = calendar.querySelector(".month-list")
-    // 抓 月份按鈕(目前顯示的月份)
-    monthPicker = calendar.querySelector("#month-picker")
+    btnAdd = document.querySelector("#add-schedule")
+    btnAddSchedule = document.querySelector("#btn-add-schedule")
+    btnReviseSchedule = document.querySelector("#btn-revise-schedule")
+    btnClearSchedule = document.querySelector("#btn-clear-schedule")
 
 
     // 製作 月份總表
@@ -61,7 +62,7 @@ window.onload = function () {
     makeMonthList()
 
 
-    // 按下月份後 會跳出各個月份的月曆
+    // 按下右上的月份後 會跳出12個月
     monthPicker.addEventListener("click", () => {
         monthList.classList.add("show")
     })
@@ -80,11 +81,7 @@ window.onload = function () {
         pAddClickEvent()
     })
 
-    // 按下x Modal消失
-    document.querySelector(".close").addEventListener("click", () => {
-        scheduleModal.style.display = "none"
-        coverBg.style.display = "none"
-    })
+    
 
     //  ----------印出所有localStorage活動---------------
     downLoad = JSON.parse(localStorage.getItem('EverySchedule'))
@@ -98,10 +95,7 @@ window.onload = function () {
     // ----------新增活動---------------
 
 
-    btnAdd = document.querySelector("#add-schedule")
-    btnAddSchedule = document.querySelector("#btn-add-schedule")
-    btnReviseSchedule = document.querySelector("#btn-revise-schedule")
-    btnClearSchedule = document.querySelector("#btn-clear-schedule")
+    
 
     //按下+號
     btnAdd.addEventListener("click", () => {
@@ -112,10 +106,13 @@ window.onload = function () {
         document.querySelector('input[type="color"]').value = "#f4a460"
         scheduleModal.style.display = "block"
         coverBg.style.display = "block"
+        btnAddSchedule.disabled = false
+        btnReviseSchedule.disabled = true
+        btnClearSchedule.disabled = true
     })
 
 
-    //新增活動 按鈕
+    //新增活動
     btnAddSchedule.addEventListener("click", () => {
         saveModalToDownload()
         creatModalToP()
@@ -124,7 +121,7 @@ window.onload = function () {
 
 
 
-    //修改活動 按鈕
+    //修改活動
     btnReviseSchedule.addEventListener("click", () => {
         //刪除downLoad裡 同id的活動
         let clearId = downLoad.findIndex(element => element.id == clickP.id)
@@ -136,23 +133,8 @@ window.onload = function () {
         pAddClickEvent()
     })
 
-    //刪除所有活動(重置)
+    //刪除活動
     btnClearSchedule.addEventListener("click", () => {
-        // 重置功能:
-        // localStorage.removeItem('EverySchedule');
-
-        // // 行程以JSON格式設計
-        // let sched = {
-        //     id:"2023-7-15",completeDate: "2023-07-15",year:2023,month:7,date:15,
-        //     todolist:[{ time:"18:00",at:"學校",todo:"寫作業",color:"#992445" }]
-        // }
-        // let sched2 = {
-        //     id:"2023-7-24",completeDate: "2023-07-24",year:2023,month:7,date:24,
-        //     todolist:[{ time:"09:00",at:"家",todo:"看書",color:"#226445" }]
-        // }
-        // downLoad=[sched,sched2]
-        // // 行程陣列(資料們)轉成字串 儲存在LocalStorage
-        // localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
 
         let clearId = downLoad.findIndex(element => element.id == clickP.id)
         downLoad.splice(clearId, 1)
@@ -166,15 +148,24 @@ window.onload = function () {
         coverBg.style.display = "none"
     })
 
+    // 關閉 Modal
+    document.querySelector(".close").addEventListener("click", () => {
+        scheduleModal.style.display = "none"
+        coverBg.style.display = "none"
+        btnAddSchedule.disabled = true
+        btnReviseSchedule.disabled = false
+        btnClearSchedule.disabled = false
+    })
+
 
 
 
 
 }
 
-
+//印出現有的活動 
 function printAllSched() {
-    //抓到現有的活動 
+     
 
     if (downLoad == null) {
         downLoad = []
@@ -185,7 +176,8 @@ function printAllSched() {
         idYear = parseInt(idArray[0], 10)
         idMonth = parseInt(idArray[1], 10)
         idDate = parseInt(idArray[2], 10)
-        // 找出符合的日期格子
+        if(idYear == currYear.value && idMonth == currMonth.value+1){ 
+            // 找出符合的日期格子
         let theSchedDay = document.querySelector(`.day-${idYear}-${idMonth}-${idDate}`)
 
         // 建立 p
@@ -204,19 +196,23 @@ function printAllSched() {
 
         theSchedDay.append(p)
 
+        }
+        
+
 
     })
 
 }
 
+//按下每個活動p 就跳出該活動的Modal視窗
 function pAddClickEvent() {
-    //按下每個活動p 就跳出該活動的Modal視窗
+    
     document.querySelectorAll("p").forEach((elementP) => {
         elementP.addEventListener("click", () => {
 
             //從downLoad裡尋找與p相同id的物件
             clickP = elementP
-            let s = downLoad.find(element => element.id == elementP.id)
+            let s = downLoad.find(element => element.id == elementP.id )
             //開啟Modal
             scheduleModal.style.display = "block"
             coverBg.style.display = "block"
@@ -232,6 +228,8 @@ function pAddClickEvent() {
     })
 
     btnAddSchedule.disabled = true
+    btnReviseSchedule.disabled = false
+    btnClearSchedule.disabled = false
 
 }
 
@@ -277,6 +275,16 @@ function creatModalToP() {
     let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
     let theSchedDay = document.querySelector(SchedDayClass)
     let p = document.createElement("p")
+
+    //判斷同日期裡面 是否已經有其他行程
+    if(document.querySelector(`#${timeYear}-${timeMonth}-${timeDate}`)){
+        //判斷同格子裡有幾個p 
+        document.querySelectorAll(`#${timeYear}-${timeMonth}-${timeDate}`)
+        //算出新加入的是第幾個p
+    }
+    
+    // p.setAttribute("class", `${timeYear}-${timeMonth}-${timeDate}`);
+
     p.setAttribute("id", `${timeYear}-${timeMonth}-${timeDate}`);
     if (schedLocation) {
         p.innerHTML = `<span>● </span> ${schedTime} 在${schedLocation} ${schedContent}`
@@ -302,7 +310,6 @@ function changeModalToP() {
     let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
     let theSchedDay = document.querySelector(SchedDayClass)
     //刪除原本的p 建立新p
-    //theSchedDay.innerHTML = ""//用這句會跳出錯誤 不知道為什麼QQ
     let p = theSchedDay.querySelector("p")
     p.setAttribute("id", `${timeYear}-${timeMonth}-${timeDate}`);
     if (schedLocation) {
@@ -324,6 +331,8 @@ function changeModalToP() {
     theSchedDay.append(p)
 }
 
+
+//-----------------------------------------------月曆生成
 
 // 設定閏月的規則
 function isLeapYear(year) {
@@ -347,6 +356,8 @@ function makeMonthList() {
             monthList.classList.remove("show")
             currMonth.value = index
             generateCalendar(index, currYear.value)
+            printAllSched()
+            pAddClickEvent()
         })
 
         monthList.append(monthDiv)
@@ -363,13 +374,6 @@ function generateCalendar(month, year) {
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
     calendar_days.innerHTML = ""
-
-
-    // // 抓現在的日期
-    // let currDate = new Date()
-    // // if(!month) 什麼意思? undefined嗎?
-    // if (!month) { month = currDate.getMonth() }
-    // if (!year) { year = currDate.getFullYear() }
 
     currMonth_name = `${monthNames[month]}`
     monthPicker.innerHTML = currMonth_name
