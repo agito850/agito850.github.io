@@ -85,6 +85,7 @@ window.onload = function () {
     //  ----------印出所有localStorage活動---------------
     downLoad = JSON.parse(localStorage.getItem('EverySchedule'))
     printAllSched()
+    pAddClickEvent()
 
 
 
@@ -110,34 +111,15 @@ window.onload = function () {
     })
 
 
-    //檢測 是否 日期 時間 活動內容有寫(地點不一定要)
+    //新增活動 按鈕
     btnAddSchedule.addEventListener("click", () => {
         saveModalToDownload()
         creatModalToP()
+        pAddClickEvent()
     })
 
 
-    //按下每個活動p 就跳出該活動的Modal視窗
-    document.querySelectorAll("p").forEach((elementP) => {
-        elementP.addEventListener("click", () => {
-
-            //從downLoad裡尋找與p相同id的物件
-            clickP = elementP
-            let s = downLoad.find(element => element.id == elementP.id)
-            //開啟Modal
-            scheduleModal.style.display = "block"
-            coverBg.style.display = "block"
-
-            document.querySelector('input[type="date"]').value = s.completeDate
-            document.querySelector('input[type="time"]').value = s.todolist[0].time
-            document.querySelector('.sched-location').value = s.todolist[0].at
-            document.querySelector('.sched-content').value = s.todolist[0].todo
-            document.querySelector('input[type="color"]').value = s.todolist[0].color
-
-
-        })
-    })
-
+    
     //修改活動 按鈕
     btnReviseSchedule.addEventListener("click", () => {
         //刪除downLoad裡 同id的活動
@@ -147,6 +129,7 @@ window.onload = function () {
 
         saveModalToDownload()
         changeModalToP()
+        pAddClickEvent()
     })
 
     //刪除所有活動(重置)
@@ -189,7 +172,10 @@ window.onload = function () {
 function printAllSched() {
     //抓到現有的活動 
 
-    if (downLoad == null) { return }
+    if (downLoad == null) {
+      downLoad = [] 
+      localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
+    }
     downLoad.forEach(s => {
         let idArray = s.id.split("-")
         idYear = parseInt(idArray[0], 10)
@@ -215,6 +201,30 @@ function printAllSched() {
         theSchedDay.append(p)
 
 
+    })
+
+}
+
+function pAddClickEvent(){
+    //按下每個活動p 就跳出該活動的Modal視窗
+    document.querySelectorAll("p").forEach((elementP) => {
+        elementP.addEventListener("click", () => {
+
+            //從downLoad裡尋找與p相同id的物件
+            clickP = elementP
+            let s = downLoad.find(element => element.id == elementP.id)
+            //開啟Modal
+            scheduleModal.style.display = "block"
+            coverBg.style.display = "block"
+
+            document.querySelector('input[type="date"]').value = s.completeDate
+            document.querySelector('input[type="time"]').value = s.todolist[0].time
+            document.querySelector('.sched-location').value = s.todolist[0].at
+            document.querySelector('.sched-content').value = s.todolist[0].todo
+            document.querySelector('input[type="color"]').value = s.todolist[0].color
+
+
+        })
     })
 
 }
