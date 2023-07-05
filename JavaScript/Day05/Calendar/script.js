@@ -70,10 +70,14 @@ window.onload = function () {
     document.querySelector("#prev-year").addEventListener("click", () => {
         --currYear.value
         generateCalendar(currMonth.value, currYear.value)
+        printAllSched()
+        pAddClickEvent()
     })
     document.querySelector("#next-year").addEventListener("click", () => {
         ++currYear.value
         generateCalendar(currMonth.value, currYear.value)
+        printAllSched()
+        pAddClickEvent()
     })
 
     // 按下x Modal消失
@@ -119,7 +123,7 @@ window.onload = function () {
     })
 
 
-    
+
     //修改活動 按鈕
     btnReviseSchedule.addEventListener("click", () => {
         //刪除downLoad裡 同id的活動
@@ -153,7 +157,7 @@ window.onload = function () {
         let clearId = downLoad.findIndex(element => element.id == clickP.id)
         downLoad.splice(clearId, 1)
         let theDay = document.querySelector(`.day-${clickP.id}`)
-        theDay.innerHTML=""
+        theDay.innerHTML = ""
 
         // 行程陣列(資料們)轉成字串 儲存在LocalStorage
         localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
@@ -173,8 +177,8 @@ function printAllSched() {
     //抓到現有的活動 
 
     if (downLoad == null) {
-      downLoad = [] 
-      localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
+        downLoad = []
+        localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
     }
     downLoad.forEach(s => {
         let idArray = s.id.split("-")
@@ -205,7 +209,7 @@ function printAllSched() {
 
 }
 
-function pAddClickEvent(){
+function pAddClickEvent() {
     //按下每個活動p 就跳出該活動的Modal視窗
     document.querySelectorAll("p").forEach((elementP) => {
         elementP.addEventListener("click", () => {
@@ -226,6 +230,8 @@ function pAddClickEvent(){
 
         })
     })
+
+    btnAddSchedule.disabled = true
 
 }
 
