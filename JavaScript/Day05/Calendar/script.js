@@ -276,15 +276,6 @@ function creatModalToP() {
     let theSchedDay = document.querySelector(SchedDayClass)
     let p = document.createElement("p")
 
-    //判斷同日期裡面 是否已經有其他行程
-    if(document.querySelector(`#${timeYear}-${timeMonth}-${timeDate}`)){
-        //判斷同格子裡有幾個p 
-        document.querySelectorAll(`#${timeYear}-${timeMonth}-${timeDate}`)
-        //算出新加入的是第幾個p
-    }
-    
-    // p.setAttribute("class", `${timeYear}-${timeMonth}-${timeDate}`);
-
     p.setAttribute("id", `${timeYear}-${timeMonth}-${timeDate}`);
     if (schedLocation) {
         p.innerHTML = `<span>● </span> ${schedTime} 在${schedLocation} ${schedContent}`
