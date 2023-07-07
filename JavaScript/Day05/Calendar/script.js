@@ -4,37 +4,21 @@ const monthNames = ["January", "February", "March", "April", "May", "June", "Jul
 let calendar;
 let monthList;
 let monthPicker;
-let currMonth;
-let currYear;
-let currDate;
-
+let currMonth, currYear, currDate;
 let downLoad;
 
-let schedDate;
-let schedTime;
-let schedLocation;
-let schedContent;
-let schedColor;
-let btnAddSchedule;
-let btnReviseSchedule;
-let btnClearSchedule;
+let schedDate, schedTime, schedLocation, schedContent, schedColor;
+let btnAddSchedule, btnReviseSchedule, btnClearSchedule;
 
 let clickP
 
-let timeArray;
-let timeYear;
-let timeMonth;
-let timeDate;
+let timeArray, timeYear, timeMonth, timeDate;
 
-let scheduleModal;
-let coverBg;
+let scheduleModal, coverBg;
 
 
 
 window.onload = function () {
-    // localStorage 刪除重置魔法
-    // localStorage.removeItem('EverySchedule');
-
     // DOM
 
     scheduleModal = document.querySelector(".schedule-modal")// Modal視窗
@@ -50,17 +34,12 @@ window.onload = function () {
     btnClearSchedule = document.querySelector("#btn-clear-schedule")
 
 
-    // 製作 月份總表
-
-
     // 先製作一次"現在" 的月曆
     currDate = new Date() // () 中間沒給值的話 就是"現在"的意思
     currMonth = { value: currDate.getMonth() }
     currYear = { value: currDate.getFullYear() }
     generateCalendar(currMonth.value, currYear.value)
-
-    makeMonthList()
-
+    makeMonthList()// 製作 月份總表
 
     // 按下右上的月份後 會跳出12個月
     monthPicker.addEventListener("click", () => {
@@ -81,8 +60,6 @@ window.onload = function () {
         pAddClickEvent()
     })
 
-
-
     //  ----------印出所有localStorage活動---------------
     downLoad = JSON.parse(localStorage.getItem('EverySchedule'))
     printAllSched()
@@ -93,14 +70,17 @@ window.onload = function () {
     // ----------新增活動---------------
 
 
+    //按下各日期格子
+
+
 
 
     //按下+號
     btnAdd.addEventListener("click", () => {
         document.querySelector('input[type="date"]').value = ""
-        let maxDay =new Date(currYear.value,currMonth.value+1,0).getDate()
-        let month = currMonth.value+1
-        if(month<10){ month="0"+month}
+        let maxDay = new Date(currYear.value, currMonth.value + 1, 0).getDate()
+        let month = currMonth.value + 1
+        if (month < 10) { month = "0" + month }
         document.querySelector('input[type="date"]').max = `${currYear.value}-${month}-${maxDay}`
         document.querySelector('input[type="date"]').min = `${currYear.value}-${month}-01`
         document.querySelector('input[type="time"]').value = ""
@@ -127,7 +107,7 @@ window.onload = function () {
 
     //修改活動
     btnReviseSchedule.addEventListener("click", () => {
-      
+
         clearThisP()
         saveModalToDownload()
         creatModalToP()
@@ -199,8 +179,8 @@ function printAllSched() {
 
 }
 
-function clearThisP(){
-    let clickpDay = clickP.className.replace("p-","");//移除前面 p-
+function clearThisP() {
+    let clickpDay = clickP.className.replace("p-", "");//移除前面 p-
     let theDay = document.querySelector(`.day-${clickpDay}`)
 
     let day = downLoad.find(element => "p-" + element.id == clickP.className)
@@ -221,7 +201,7 @@ function clearThisP(){
                 theDay.removeChild(clickP)
             }
         }
-        
+
     }
 }
 
@@ -229,13 +209,14 @@ function clearThisP(){
 function pAddClickEvent() {
 
     document.querySelectorAll("p").forEach((elementP) => {
-        elementP.addEventListener("click", () => {
-
+        elementP.addEventListener("click", (e) => {
+            
+            e.stopPropagation();
             //從downLoad裡尋找與p相同id的物件
             clickP = elementP
             let day = downLoad.find(element => "p-" + element.id == elementP.className)
             let s;
-            
+
 
             for (let i = 0; i < day.todolist.length; i++) {
                 if (elementP.id == "count-" + (i + 1)) {
@@ -330,7 +311,7 @@ function creatModalToP() {
     let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
     let theSchedDay = document.querySelector(SchedDayClass)
     let p = document.createElement("p")
-    
+
     p.setAttribute("class", `p-${timeYear}-${timeMonth}-${timeDate}`);
     p.setAttribute("id", "count-1");
     if (schedLocation) {
@@ -436,6 +417,24 @@ function generateCalendar(month, year) {
 
                 // day.classList.add("curr-date")
             }
+            day.addEventListener("click", function () {
+                let monthWith0 = month + 1
+                if (monthWith0 < 10) { monthWith0 = "0" + monthWith0 }
+                let dayWith0 = i - first_day.getDay() + 1
+                if (dayWith0 < 10) { dayWith0 = "0" + dayWith0 }
+                document.querySelector('input[type="date"]').value = `${year}-${monthWith0}-${dayWith0}`
+                document.querySelector('input[type="time"]').value = ""
+                document.querySelector('.sched-location').value = ""
+                document.querySelector('.sched-content').value = ""
+                document.querySelector('input[type="color"]').value = "#f4a460"
+                scheduleModal.style.display = "block"
+                coverBg.style.display = "block"
+                btnAddSchedule.disabled = false
+                btnReviseSchedule.disabled = true
+                btnClearSchedule.disabled = true
+            })
+
+
             dayContainer.append(day)
         }
 
