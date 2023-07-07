@@ -127,59 +127,19 @@ window.onload = function () {
 
     //修改活動
     btnReviseSchedule.addEventListener("click", () => {
-        //刪除downLoad裡 同id的活動
-        let day = downLoad.find(element => "p-" + element.id == clickP.className)
-        let clearId = downLoad.findIndex(element => "p-" + element.id == clickP.className)
-        if (day.todolist.length == 1) { //假如這天只有一個活動
-            downLoad.splice(clearId, 1)//刪掉這天
-        } else {
-            for (let i = 0; i < day.todolist.length; i++) {
-                if (clickP.id == "count-" + (i + 1)) {
-                    day.todolist.splice(i, 1)
-                }
-            }
-            console.log(downLoad)
-        }
-
+      
+        clearThisP()
         saveModalToDownload()
-        changeModalToP()
+        creatModalToP()
         pAddClickEvent()
     })
 
     //刪除活動
     btnClearSchedule.addEventListener("click", () => {
 
-
-        let clickpDay = clickP.className.replace("p-","");//移除前面 p-
-        let theDay = document.querySelector(`.day-${clickpDay}`)
-
-        let day = downLoad.find(element => "p-" + element.id == clickP.className)
-        let clearId = downLoad.findIndex(element => "p-" + element.id == clickP.className)
-        if (day.todolist.length == 1) { //假如這天只有一個活動
-            downLoad.splice(clearId, 1)//刪掉這天
-
-            //清空格子
-            let clickpDay = clickP.className.stringify().TrimStart("p-");//移除前面 p-
-            let theDay = document.querySelector(`.day-${clickpDay}`)
-            theDay.innerHTML = ""
-        } else {
-            for (let i = 0; i < day.todolist.length; i++) {
-                if (clickP.id == "count-" + (i + 1)) {
-                    day.todolist.splice(i, 1)
-                    console.log(theDay)
-                    console.log(clickP)
-                    theDay.removeChild(clickP)
-                }
-            }
-            
-        }
-
-
+        clearThisP()
         // 行程陣列(資料們)轉成字串 儲存在LocalStorage
         localStorage.setItem("EverySchedule", JSON.stringify(downLoad));
-
-
-
         scheduleModal.style.display = "none"
         coverBg.style.display = "none"
 
@@ -239,6 +199,32 @@ function printAllSched() {
 
 }
 
+function clearThisP(){
+    let clickpDay = clickP.className.replace("p-","");//移除前面 p-
+    let theDay = document.querySelector(`.day-${clickpDay}`)
+
+    let day = downLoad.find(element => "p-" + element.id == clickP.className)
+    let clearId = downLoad.findIndex(element => "p-" + element.id == clickP.className)
+    if (day.todolist.length == 1) { //假如這天只有一個活動
+        downLoad.splice(clearId, 1)//刪掉這天
+
+        //清空格子
+        let clickpDay = clickP.className.stringify().TrimStart("p-");//移除前面 p-
+        let theDay = document.querySelector(`.day-${clickpDay}`)
+        theDay.innerHTML = ""
+    } else {
+        for (let i = 0; i < day.todolist.length; i++) {
+            if (clickP.id == "count-" + (i + 1)) {
+                day.todolist.splice(i, 1)
+                console.log(theDay)
+                console.log(clickP)
+                theDay.removeChild(clickP)
+            }
+        }
+        
+    }
+}
+
 //按下每個活動p 就跳出該活動的Modal視窗
 function pAddClickEvent() {
 
@@ -293,10 +279,6 @@ function saveModalToDownload() {
     timeDate = parseInt(timeArray[2], 10)
 
     // 行程以JSON格式設計
-    // let sched = {
-    //     id:"2023-07-15",year:2023,month:7,date:28,
-    //     todoolist:[{ time:"18:00",at:"學校",todo:"寫作業",color:"#ff0000" }]
-    // }
 
     //判斷是否同一天已經有p 有->創進todolist 沒有->創sched
     let sched;
@@ -384,33 +366,6 @@ function creatModalToP() {
     scheduleModal.style.display = "none"
     coverBg.style.display = "none"
 }
-
-function changeModalToP() {
-    // 將localStorage的行程顯示在月曆上
-    let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
-    let theSchedDay = document.querySelector(SchedDayClass)
-    //刪除原本的p 建立新p
-    let p = theSchedDay.querySelector("p")
-    p.setAttribute("id", `${timeYear}-${timeMonth}-${timeDate}`);
-    if (schedLocation) {
-        p.innerHTML = `<span>● </span> ${schedTime} 在${schedLocation} ${schedContent}`
-    } else {
-        p.innerHTML = `<span>● </span> ${schedTime} ${schedContent}`
-    }
-
-
-    //圓點icon換色
-    let pointIcon = p.querySelector("span")
-    pointIcon.style.color = schedColor
-
-
-    //關閉Modal
-    scheduleModal.style.display = "none"
-    coverBg.style.display = "none"
-
-    theSchedDay.append(p)
-}
-
 
 //-----------------------------------------------月曆生成
 
