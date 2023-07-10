@@ -73,6 +73,27 @@ body{
 
 .month-picker{
     cursor: pointer;
+    position: relative;
+    padding: 0 30px;
+}
+.month-picker::after{
+    content: "≡";
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    padding: 0 0 1px;
+    color: #fff;
+    background-color: rgb(129, 175, 68);
+    width: 20px;
+    height: 18px;
+    font-size: 16px;
+
+    
 }
 .calendar-week-day{
     height: 50px;
@@ -147,11 +168,25 @@ body{
     padding: 20px;
     cursor: pointer;
     transition: right .5s;
+    color: #fff;
+}
+.month-list .close-area{
+    position: absolute;
+    top: 0;
+    left: -340px;
+    height: 100%;
+    width: 100%;
+    /* background-color: palevioletred;   */
+    display: none;  
+    cursor: default;
 }
 .month-list div{
     transition:   .3s;
-    color: #fff;
     font-size: 18px;
+}
+.month-list div.curr{
+    color: #ffee8b;
+    font-size: 22px;
 }
 .month-list div:hover{
     /* color: #888; */
@@ -160,6 +195,9 @@ body{
 }
 .month-list.show{
     right: 0;
+}
+.month-list.show::after{
+    display: block;  
 }
 
 @keyframes to-top{

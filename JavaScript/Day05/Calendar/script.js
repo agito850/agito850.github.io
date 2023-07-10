@@ -26,6 +26,7 @@ window.onload = function () {
 
     calendar = document.querySelector(".calendar")// 月曆本體
     monthList = calendar.querySelector(".month-list")// 月份總表
+    // monthListCloseArea = monthList.querySelector(".close-area")// 月份總表收回區
     monthPicker = calendar.querySelector("#month-picker")// 月份按鈕(目前顯示的月份)
 
     btnAdd = document.querySelector("#add-schedule")
@@ -44,7 +45,9 @@ window.onload = function () {
     // 按下右上的月份後 會跳出12個月
     monthPicker.addEventListener("click", () => {
         monthList.classList.add("show")
+        monthListCloseArea.style.display="block"
     })
+    
 
     // 按下前 後三角 會顯示不同年份
     document.querySelector("#prev-year").addEventListener("click", () => {
@@ -78,11 +81,10 @@ window.onload = function () {
     //按下+號
     btnAdd.addEventListener("click", () => {
         document.querySelector('input[type="date"]').value = ""
-        let maxDay = new Date(currYear.value, currMonth.value + 1, 0).getDate()
-        let month = currMonth.value + 1
-        if (month < 10) { month = "0" + month }
-        document.querySelector('input[type="date"]').max = `${currYear.value}-${month}-${maxDay}`
-        document.querySelector('input[type="date"]').min = `${currYear.value}-${month}-01`
+        // let maxDay = new Date(currYear.value, currMonth.value + 1, 0).getDate()
+        // let month = (currMonth.value + 1).toString().padStart(2, '0')
+        // document.querySelector('input[type="date"]').max = `${currYear.value}-${month}-${maxDay}`
+        // document.querySelector('input[type="date"]').min = `${currYear.value}-${month}-01`
         document.querySelector('input[type="time"]').value = ""
         document.querySelector('.sched-location').value = ""
         document.querySelector('.sched-content').value = ""
@@ -98,6 +100,9 @@ window.onload = function () {
 
     //新增活動
     btnAddSchedule.addEventListener("click", () => {
+        schedContent = document.querySelector('.sched-content').value
+        schedTime = document.querySelector('input[type="time"]').value
+        if(schedContent == ""||schedTime == ""){return}
         saveModalToDownload()
         creatModalToP()
         pAddClickEvent()
@@ -180,6 +185,7 @@ function printAllSched() {
 }
 
 function clearThisP() {
+    //清空格子
     let clickpDay = clickP.className.replace("p-", "");//移除前面 p-
     let theDay = document.querySelector(`.day-${clickpDay}`)
 
@@ -187,9 +193,6 @@ function clearThisP() {
     let clearId = downLoad.findIndex(element => "p-" + element.id == clickP.className)
     if (day.todolist.length == 1) { //假如這天只有一個活動
         downLoad.splice(clearId, 1)//刪掉這天
-
-        //清空格子
-        let clickpDay = clickP.className.stringify().TrimStart("p-");//移除前面 p-
         let theDay = document.querySelector(`.day-${clickpDay}`)
         theDay.innerHTML = ""
     } else {
@@ -310,7 +313,10 @@ function creatModalToP() {
     // 將localStorage的行程顯示在月曆上
     let SchedDayClass = `.day-${timeYear}-${timeMonth}-${timeDate}`
     let theSchedDay = document.querySelector(SchedDayClass)
-    let p = document.createElement("p")
+    if(timeMonth == currMonth.value + 1){
+        //如果是目前顯示的月份才印出來
+
+        let p = document.createElement("p")
 
     p.setAttribute("class", `p-${timeYear}-${timeMonth}-${timeDate}`);
     p.setAttribute("id", "count-1");
@@ -341,6 +347,9 @@ function creatModalToP() {
             theSchedDay.append(p)
         }
     }
+        
+    }
+    
 
 
     //關閉Modal
@@ -366,17 +375,32 @@ function makeMonthList() {
     monthNames.forEach((m, index) => {
         let monthDiv = document.createElement("div")
         monthDiv.innerHTML = `<div date-month="${index}">${m}</div>`
-
+        if(index == currMonth.value){
+            monthDiv.classList.add("curr")}
         // 設置每個月的 按鈕事件
         monthDiv.querySelector("div").addEventListener("click", () => {
+            monthList.querySelector(".curr").classList.remove("curr")
             monthList.classList.remove("show")
             currMonth.value = index
             generateCalendar(index, currYear.value)
+            monthDiv.classList.add("curr")
             printAllSched()
             pAddClickEvent()
+            monthListCloseArea.style.display="none"
+            console.log(`addEvent ${m}`)
         })
 
         monthList.append(monthDiv)
+    })
+    makeMonthListCloseArea()
+   
+}
+
+function makeMonthListCloseArea(){
+    monthListCloseArea = monthList.querySelector(".close-area")
+    monthListCloseArea.addEventListener("click", () => {
+        monthList.classList.remove("show")
+        monthListCloseArea.style.display="none"
     })
 }
 
@@ -418,10 +442,10 @@ function generateCalendar(month, year) {
                 // day.classList.add("curr-date")
             }
             day.addEventListener("click", function () {
-                let monthWith0 = month + 1
-                if (monthWith0 < 10) { monthWith0 = "0" + monthWith0 }
-                let dayWith0 = i - first_day.getDay() + 1
-                if (dayWith0 < 10) { dayWith0 = "0" + dayWith0 }
+                let monthWith0 = (month + 1).toString().padStart(2, '0')
+                // if (monthWith0 < 10) { monthWith0 = "0" + monthWith0 }
+                let dayWith0 = (i - first_day.getDay() + 1).toString().padStart(2, '0')
+                // if (dayWith0 < 10) { dayWith0 = "0" + dayWith0 }
                 document.querySelector('input[type="date"]').value = `${year}-${monthWith0}-${dayWith0}`
                 document.querySelector('input[type="time"]').value = ""
                 document.querySelector('.sched-location').value = ""
