@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Little Mary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url(https://fonts.googleapis.com/earlyaccess/cwtexyen.css);
+
+        @font-face {
+            font-family: 'BpmfGenSenRounded-M';
+            src: url('./font/BpmfGenSenRounded-M.woff') format("woff"),
+                url('./font/BpmfGenSenRounded-M.ttf') format("truetype");
+        }
+        html{
+            min-height: 100%; 
+        }
+        body {
+            font-family: "BpmfGenSenRounded-M", "cwTeXYen", sans-serif;
+            background:  url("./img/bg.png") repeat-x bottom OldLace;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .row>* {
+            padding: 5px !important;
+        }
+
+        .col-1 img {
+            border: 3px dashed #000;
+            border-radius: 10px;
+        }
+        .col-1{
+            position: relative;
+        }
+        .col-1 img.img-end{
+            position: absolute;
+            scale: 0.8;
+            border: none;
+        }
+
+        [box-id] {
+            /* height: 80px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            transition: 0.3s;
+        }
+
+        [box-id].active {
+            /* border: solid 5px sandybrown; */
+            outline: ridge 5px dimgrey;
+            box-shadow: 0 3px 15px rgb(100, 72, 48);
+            transition: 0s;
+
+        }
+
+        [box-id].active img {
+            filter: grayscale(100%);
+        }
+
+        #center {
+            left: 14%;
+            top: 18%;
+            text-align: center;
+            position: absolute;
+
+        }
+
+        #center h3 {
+            font-size: 22px;
+            color: #333;
+        }
+
+        #center img {
+            width: 480px;
+            border-radius: 10px;
+            border: 4px solid #fff;
+            box-shadow: 0 3px 8px rgb(177, 137, 102);
+
+        }
+
+        #msg {
+            font-size: 36px;
+            text-align: center;
+            color: sandybrown;
+        }
+
+        .btn-div {
+            display: flex;
+            justify-content: right;
+
+        }
+
+        #btn-start {
+            height: 160px;
+            width: 160px;
+            border: 4px solid #fff;
+            border-radius: 100px;
+            background-color: sandybrown;
+            color: #fff;
+            font-size: 20px;
+            box-shadow: 0 3px 8px #aaa;
+            position: absolute;
+            top: 42%;
+            right: 12%;
+            animation: jump .8s alternate infinite ease
+        }
+
+        #btn-start:hover {
+            background-color: rgb(160, 199, 144);
+        }
+
+        @keyframes jump {
+            0% {
+                top: 36%;
+            }
+            100% {
+                top: 32%;
+            }
+        }
+        @media (min-width: 1201px) {
+            #center img {
+            width: 520px;
+            }
+            #btn-start {
+            height: 230px;
+            width: 230px;
+            font-size: 28px;
+            border-radius: 300px;
+            top: 36%;
+            right: 14%;
+            }
+        }
+        @media (min-width: 992px) and (max-width: 1200px) {
+            #center img {
+            width: 450px;
+            }
+            #btn-start {
+            height: 200px;
+            width: 200px;
+            font-size: 26px;
+            border-radius: 300px;
+            top: 36%;
+            }
+
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .container {
+              max-width: 760px;
+            }
+            #center{
+                text-align: left;
+            }
+            #center img {
+            width: 340px;
+            }
+            #btn-start {
+            height: 145px;
+            width: 145px;
+            font-size: 18px;
+            top: 36%;
+            right: 14%;
+            }
+            .col-1 img.img-end{
+            scale: 0.75;
+            }
+            
+
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <div id="center">
+            <h3>巧虎的肚子好餓喔!<br>但是忘記帶便當了，怎麼辦呢?</h3>
+        </div>
+        <div class="row">
+            <div box-id="1" class="col-1"></div>
+            <div box-id="2" class="col-1"></div>
+            <div box-id="3" class="col-1"></div>
+            <div box-id="4" class="col-1"></div>
+            <div box-id="5" class="col-1"></div>
+            <div box-id="6" class="col-1"></div>
+            <div box-id="7" class="col-1"></div>
+            <div box-id="8" class="col-1"></div>
+            <div box-id="9" class="col-1"></div>
+            <div box-id="10" class="col-1"></div>
+            <div box-id="11" class="col-1"></div>
+            <div box-id="12" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="32" class="col-1"></div>
+            <div class="col-10"></div>
+            <div box-id="13" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="31" class="col-1"></div>
+            <div class="col-10"></div>
+            <div box-id="14" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="30" class="col-1"></div>
+            <div class="col-10"></div>
+            <div box-id="15" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="29" class="col-1"></div>
+            <div class="col-10 btn-div">
+                <button id="btn-start">找<br>好朋友們<br>幫忙吧!</button>
+            </div>
+            <div box-id="16" class="col-1"></div>
+        </div>
+        <div class="row">
+            <div box-id="28" class="col-1"></div>
+            <div box-id="27" class="col-1"></div>
+            <div box-id="26" class="col-1"></div>
+            <div box-id="25" class="col-1"></div>
+            <div box-id="24" class="col-1"></div>
+            <div box-id="23" class="col-1"></div>
+            <div box-id="22" class="col-1"></div>
+            <div box-id="21" class="col-1"></div>
+            <div box-id="20" class="col-1"></div>
+            <div box-id="19" class="col-1"></div>
+            <div box-id="18" class="col-1"></div>
+            <div box-id="17" class="col-1"></div>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
