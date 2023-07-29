@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map HW</title>
+    <!-- Leaflet CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <!-- plugins: Leaflet MarkerCluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        /* .container-fluid>.row {
+            height: 90vh;
+        } */
+        body {
+            position: relative;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #6ad133;
+            opacity: 0.7;
+            background-image: linear-gradient(135deg, #ffe771 25%, transparent 25%), linear-gradient(225deg, #ffe771 25%, transparent 25%), linear-gradient(45deg, #ffe771 25%, transparent 25%), linear-gradient(315deg, #ffe771 25%, #6ad133 25%);
+            background-position: 32px 0, 32px 0, 0 0, 0 0;
+            background-size: 64px 64px;
+            background-repeat: repeat;
+        }
+
+
+        #map {
+            height: 50vh;
+        }
+
+        .leaflet-control-attribution.leaflet-control span {
+            display: inline;
+            align-items: none;
+            justify-content: none;
+            font-size: 12px;
+            color: #333333;
+            width: auto;
+            height: auto;
+            border-radius: 0;
+            background: none;
+        }
+
+        div>span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #FFFFFF;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(39, 180, 0, 0.8);
+        }
+
+        img.huechange {
+            filter: hue-rotate(120deg);
+        }
+
+        .control-pad {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 10px rgb(18, 93, 118);
+            height: 100%;
+        }
+        img{
+            width: 100%;
+        }
+
+        h2{
+            font-weight: bold;
+        }
+        h3 {
+            font-size: 15px;
+        }
+
+        .renew-btn,
+        .input-group-text{
+            background-color: #ffe771;
+            font-weight: 600;
+        }
+        .search-btn{
+            background-color: #6ad133;
+            font-weight: 600;
+        }
+        .map-btn{
+            background-color: #212529;
+            color: #fff;
+            width: 100%;
+            font-size: 12px;
+            padding: 8px 2px;
+            font-weight: 600;
+        }
+        .map-btn:hover{
+            background-color: #6ad133;
+            color: #212529;
+            
+        }
+        #queryResult{
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+
+            /* 在md及以上的尺寸地圖改為視窗高度 */
+            #map {
+                height: 100vh;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid ps-0 pe-0">
+        <div class="row m-0">
+            <div class="col-12 col-md-6 p-0 pb-md-0  " id="content">
+                <div id="map" class=""></div>
+            </div>
+            <div class="col-12 col-md-6 py-5">
+                <div class="control-pad">
+                    <div>
+            
+                        <h2>休閒農業快樂遊!🌱</h2>
+                        <h3>全國休閒農業區旅遊資訊</h3>
+                        <p id="updateInfo">最後更新時間: 2021/08/20 12:00:00</p>
+                        <p><button class="renew-btn btn btn-outline-dark border-2" onclick="renew()">更新地圖資料</button></p>
+                        <!-- <p><button onclick="geoFindMe()">Show my location</button></p> -->
+                        <div id="out"></div>
+                        <div class="input-group mb-3 ">
+                            <div class="input-group-text border-dark border-2" id="basic-addon2">請輸入關鍵字</div>
+    
+                            <input type="text" class="form-control border-dark border-2" placeholder="" aria-label=""
+                                aria-describedby="basic-addon2" id="input">
+                            <button type="button" class="search-btn btn btn-outline-dark border-2" id="query">查詢</button>
+    
+                        </div>
+                    </div>
+    
+                    <div id="queryResult">
+    
+                        <!-- <div class="col-12 d-flex text-center">
+                            <div class="col-3 p-1"><strong>農場名稱</strong></div>
+                            <div class="col-3 p-1"><strong>農場地點</strong></div>
+                            <div class="col-3 p-1"><strong>連絡電話</strong></div>
+                            <div class="col-2 p-1"><strong>當地景色</strong></div>
+                            <div class="col-1 p-1"><strong></strong></div>
+                        </div>
+                        <div class="col-12 d-flex">
+                            <div class="col-3 p-1 text-center">黃金小鎮休閒農業區</div>
+                            <div class="col-3 p-1 text-center">苗栗縣公館鄉福基村6鄰154號</div>
+                            <div class="col-3 p-1 text-center">
+                                (037) 237-698
+                            </div>
+                            <div class="col-2 p-1">
+                                <a href="https://ezgo.coa.gov.tw/Uploads/opendata/FUNTHEME01/APPLY_D/20151111165433.jpg">
+                                    <img src="https://ezgo.coa.gov.tw/Uploads/opendata/FUNTHEME01/APPLY_D/20151111165433.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="col-1 p-1 text-end">
+                                <button type="button" class="map-btn btn btn-outline-dark">地圖</button>
+                            </div>
+                        </div> -->
+    
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        //宣告
+
+        let latitude = 0
+        let longitude = 0
+        let zoom = 13
+
+        //const url = "https://cultureexpress.taipei/OpenData/Event/C000003"
+        const url = "https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAttractions.aspx?IsTransData=1&UnitId=192"
+        let farmData = []
+        let map
+        var markers = L.markerClusterGroup();
+        let mapBtn
+
+        //DOM
+        const updateInfoDom = document.querySelector('#updateInfo')
+        const inputDom = document.querySelector('#input')
+        const queryBtn = document.querySelector('#query')
+        const queryResultDom = document.querySelector('#queryResult')
+
+        // console.log(updateInfoDom)
+        // console.log(inputDom)
+        // console.log(queryDom)
+        // console.log(queryResultDom)
+
+        window.onload = function () {
+
+            try {
+                //取得使用者座標
+
+                geoFindMe()
+                    .then(res => {
+                        console.log(res)
+                        // latitude = res[0]
+                        // longitude = res[1]
+                        initFN()
+                    })
+                    .catch(e => {
+                        console.log(e)
+                    })
+            } catch (e) {
+                console.log(e)
+            }
+        }
+
+        function initFN() {
+            //初始化地圖
+            initMap()
+            //取得 活動資料
+            getMapData()
+            //渲染地圖
+        }
+
+        queryBtn.addEventListener("click", function () {
+            if (inputDom == '') {
+                alert('請輸入關鍵字')
+                return
+            } else {
+                // 撈出關鍵字相關資料
+                query()
+            }
+        })
+
+        //查詢關鍵字邏輯 以及 顯示查詢結果
+        function query() {
+
+            //初始化 清空
+            queryResultDom.innerHTML = ""
+
+            //過濾資料
+            let filterData = farmData.filter(item => {
+                //邏輯
+                return item.Name.includes(inputDom.value)
+                    || item.Address.includes(inputDom.value)
+                    || item.Introduction.includes(inputDom.value)
+            })
+            console.log(filterData)
+
+            let str =
+                `
+            <div class="col-12 d-flex text-center">
+                <div class="col-4 p-1"><strong>農場名稱</strong></div>
+                <div class="col-4 p-1"><strong>農場地點</strong></div>
+                <div class="col-3 p-1"><strong>連絡電話</strong></div>
+                <div class="col-1 p-1"><strong></strong></div>
+            </div>
+            `
+
+            //關鍵字查詢是否有資料 如果沒有 要顯示"查無資料"
+            if (filterData.length === 0) { //為什麼filterData == [] 會是false?
+                str +=
+                    `
+                <div class="col-12 d-flex text-center">
+                    <div class="col-4 p-1"><strong>查無資料</strong></div>
+                </div>
+                `
+            } else {
+                //迭代查詢結果 將資料印出
+
+                filterData.forEach(item => {
+                    str +=
+                    `
+                    <div class="col-12 d-flex">
+                        <div class="col-3 p-1 text-center">${item.Name}</div>
+                        <div class="col-3 p-1 text-center">${item.Address}</div>
+                        <div class="col-3 p-1 text-center">${item.Tel}</div>
+                        <div class="col-2 p-1">
+                            <a href="${item.Photo}">
+                                <img src="${item.Photo}" alt="">
+                            </a>
+                        </div>
+                        <div class="col-1 p-1 text-end">
+                            <button type="button" class="map-btn btn btn-outline-dark border-2" onclick="goMap(${item.Latitude},${item.Longitude})">地圖</button>
+                        </div>
+                    </div>
+                    `
+                })
+            }
+
+            queryResultDom.innerHTML = str
+        }
+
+        
+
+        // 查詢結果 按下地圖按鈕
+        function goMap(lat, lng) {
+            // 設定地圖位置
+
+            getMapData()
+            //修改地圖位置
+            map.setView([lat, lng], 14);
+
+        }
+
+        function renew() {
+            //更新farmData
+            getMapData()
+            if (inputDom != '') {
+                query()
+            }
+        }
+
+        function getMapData() {
+            //取得 JSON 資料
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data)
+                    farmData = data
+
+                    // 渲染地圖
+                    renderMap()
+
+                    // 更新日期時間
+                    let today = new Date()
+                    // console.log(today)
+                    let year = today.getFullYear()
+                    let month = today.getMonth() + 1
+                    let day = today.getDate()
+                    let hour = today.getHours()
+                    let min = today.getMinutes()
+                    // 補足兩位數
+                    month = updateInfo(month)
+                    day = updateInfo(day)
+                    hour = updateInfo(hour)
+                    min = updateInfo(min)
+
+                    console.log(`${year}/${month}/${day} ${hour}:${min}`)
+                    updateInfoDom.textContent = `最後更新時間 : ${year}/${month}/${day} ${hour}:${min}`
+
+                })
+        }
+
+        function renderMap() {
+
+            if (markers) {
+                markers.clearLayers()//清除舊的makers圖層
+            }
+
+            // 取得每一筆farmData 並 加上 marker 及 popup
+            farmData.forEach(item => {
+
+                // 把每一筆的 經緯度 設定到 marker
+
+
+                //新增標記 (去掉.addTo(map)才不會讓圓圈跟原本的marker重複到 !!)
+                // var marker = L.marker([item.lat, item.lng]).addTo(map);
+                // var marker = L.marker([item.lat, item.lng])
+
+
+                //更換marker icon
+                var greenIcon = L.icon({
+                        iconUrl: './img/marker-icon-2x-green.png',
+                        iconSize: [55, 60]
+                    });
+                var marker = L.marker([item.Latitude, item.Longitude], { icon: greenIcon })
+
+
+                //新增標記的popup
+                marker.bindPopup(
+                    `
+                    <h6>${item.Name}</h6>
+                    <p>${item.Address}</p>
+                    <p>連絡電話: ${item.Tel}</p>
+                    <p>介紹: ${item.Introduction}</p>
+                    `
+                );
+
+                markers.addLayer(marker);
+            })
+            map.addLayer(markers);
+        }
+
+        //補足兩位數字
+        function updateInfo(data) {
+            return data.toString().padStart(2, '0')
+        }
+
+        function initMap() {
+            // .setView([緯度座標,經度座標],縮放程度0~19)
+            //初始化地圖位置
+            //拿掉 var
+            map = L.map('map').setView([latitude, longitude], zoom);
+
+            //載入圖層
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        }
+
+
+
+        function geoFindMe() {
+            //1.新增 Promise 包住本來函式內的語法 做非同步
+            return new Promise((resolve, reject) => {
+                var output = document.getElementById("out");
+
+                if (!navigator.geolocation) {
+                    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+                    return;
+                }
+
+                function success(position) {
+
+                    //2.把 var 拿掉
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
+
+                    output.innerHTML =
+                        "<p>Latitude is " +
+                        latitude +
+                        "° <br>Longitude is " +
+                        longitude +
+                        "°</p>";
+
+
+                    // 3.成功時 回傳 使用者的緯度經度
+                    return resolve([latitude, longitude])
+                }
+
+                function error() {
+                    output.innerHTML = "Unable to retrieve your location";
+
+                    // 4.失敗時 指定預設值給 緯度經度
+                    latitude = 25.04169927753749 //緯度
+                    longitude = 121.53630962317342 //經度
+
+                    // 5.呼叫接下來的方法..
+                    initFN()
+                }
+
+                output.innerHTML = "<p>Locating…</p>";
+
+                navigator.geolocation.getCurrentPosition(success, error);
+            })
+
+        }
+
+    </script>
+
+</body>
+
+</html>
