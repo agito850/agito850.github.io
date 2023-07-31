@@ -81,27 +81,31 @@
             box-shadow: 0 5px 10px rgb(18, 93, 118);
             height: 100%;
         }
-        img{
+
+        img {
             width: 100%;
         }
 
-        h2{
+        h2 {
             font-weight: bold;
         }
+
         h3 {
             font-size: 15px;
         }
 
         .renew-btn,
-        .input-group-text{
+        .input-group-text {
             background-color: #ffe771;
             font-weight: 600;
         }
-        .search-btn{
+
+        .search-btn {
             background-color: #6ad133;
             font-weight: 600;
         }
-        .map-btn{
+
+        .map-btn {
             background-color: #212529;
             color: #fff;
             width: 100%;
@@ -109,14 +113,23 @@
             padding: 8px 2px;
             font-weight: 600;
         }
-        .map-btn:hover{
+
+        .map-btn:hover {
             background-color: #6ad133;
             color: #212529;
-            
+
         }
-        #queryResult{
+
+        #queryResult {
             font-size: 12px;
         }
+
+        .popup-dsec {
+            height: 120px;
+            overflow-y: scroll;
+        }
+
+        
 
         @media (min-width: 768px) {
 
@@ -125,6 +138,10 @@
                 height: 100vh;
 
             }
+            .popup-dsec {
+            height: 160px;
+            overflow-y: scroll;
+        }
         }
     </style>
 </head>
@@ -138,7 +155,7 @@
             <div class="col-12 col-md-6 py-5">
                 <div class="control-pad">
                     <div>
-            
+
                         <h2>休閒農業快樂遊!🌱</h2>
                         <h3>全國休閒農業區旅遊資訊</h3>
                         <p id="updateInfo">最後更新時間: 2021/08/20 12:00:00</p>
@@ -147,16 +164,17 @@
                         <div id="out"></div>
                         <div class="input-group mb-3 ">
                             <div class="input-group-text border-dark border-2" id="basic-addon2">請輸入關鍵字</div>
-    
+
                             <input type="text" class="form-control border-dark border-2" placeholder="" aria-label=""
                                 aria-describedby="basic-addon2" id="input">
-                            <button type="button" class="search-btn btn btn-outline-dark border-2" id="query">查詢</button>
-    
+                            <button type="button" class="search-btn btn btn-outline-dark border-2"
+                                id="query">查詢</button>
+
                         </div>
                     </div>
-    
+
                     <div id="queryResult">
-    
+
                         <!-- <div class="col-12 d-flex text-center">
                             <div class="col-3 p-1"><strong>農場名稱</strong></div>
                             <div class="col-3 p-1"><strong>農場地點</strong></div>
@@ -179,11 +197,11 @@
                                 <button type="button" class="map-btn btn btn-outline-dark">地圖</button>
                             </div>
                         </div> -->
-    
+
                     </div>
 
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -295,7 +313,7 @@
 
                 filterData.forEach(item => {
                     str +=
-                    `
+                        `
                     <div class="col-12 d-flex">
                         <div class="col-3 p-1 text-center">${item.Name}</div>
                         <div class="col-3 p-1 text-center">${item.Address}</div>
@@ -316,7 +334,7 @@
             queryResultDom.innerHTML = str
         }
 
-        
+
 
         // 查詢結果 按下地圖按鈕
         function goMap(lat, lng) {
@@ -386,9 +404,9 @@
 
                 //更換marker icon
                 var greenIcon = L.icon({
-                        iconUrl: './img/marker-icon-2x-green.png',
-                        iconSize: [55, 60]
-                    });
+                    iconUrl: './img/marker-icon-2x-green.png',
+                    iconSize: [55, 60]
+                });
                 var marker = L.marker([item.Latitude, item.Longitude], { icon: greenIcon })
 
 
@@ -398,7 +416,9 @@
                     <h6>${item.Name}</h6>
                     <p>${item.Address}</p>
                     <p>連絡電話: ${item.Tel}</p>
-                    <p>介紹: ${item.Introduction}</p>
+                    <div class="popup-dsec">
+                        <p>介紹: ${item.Introduction}</p>
+                    </div>
                     `
                 );
 
