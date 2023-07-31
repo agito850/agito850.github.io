@@ -64,7 +64,6 @@ const brickData =[
         color: 'FireBrick',
         icon: 'head_chichi.jpg',
         iconEnd: 'head_chichi_2.jpg',
-        iconEnd: 'head_chichi_2.jpg',
         finalImg: 'center_chichi.jpg',
         target: function(){
             return '琪琪'
@@ -134,7 +133,6 @@ const brickData =[
         id: '14',
         color: 'FireBrick',
         icon: 'head_chichi.jpg',
-        iconEnd: 'head_chichi_2.jpg',
         iconEnd: 'head_chichi_2.jpg',
         finalImg: 'center_chichi.jpg',
         target: function(){
@@ -217,7 +215,6 @@ const brickData =[
         icon: 'head_pupu.jpg',
         iconEnd: 'head_pupu_2.jpg',
         finalImg: 'center_pupu.jpg',
-        finalImg: 'center_linlin.jpg',
         target: function(){
             return '普普'
         }
@@ -227,7 +224,6 @@ const brickData =[
         color: 'HotPink',
         icon: 'head_linlin.jpg',
         iconEnd: 'head_linlin_2.jpg',
-        finalImg: 'center_linlin.jpg',
         finalImg: 'center_linlin.jpg',
         target: function(){
             return '玲玲'
@@ -289,7 +285,6 @@ const brickData =[
         icon: 'head_pupu.jpg',
         iconEnd: 'head_pupu_2.jpg',
         finalImg: 'center_pupu.jpg',
-        finalImg: 'center_linlin.jpg',
         target: function(){
             return '普普'
         }
@@ -299,7 +294,6 @@ const brickData =[
         color: 'HotPink',
         icon: 'head_linlin.jpg',
         iconEnd: 'head_linlin_2.jpg',
-        finalImg: 'center_linlin.jpg',
         finalImg: 'center_linlin.jpg',
         target: function(){
             return '玲玲'
@@ -354,7 +348,7 @@ window.onload = function(){
         //Math.random會取 0 ~ 31 之間的數  取完再+1 給random(1~32之間)
         let random = Math.floor(Math.random() * brickData.length) + 1
         console.log(random)
-        steps = random + (2 * bricks.length)//多跑兩圈再走到獎項
+        steps = random + (1 * bricks.length)//多跑兩圈再走到獎項
         allSteps = steps
         turnAround()
         restartNum++
@@ -401,6 +395,9 @@ function makeBricksEnd(){
             imgEnd.src=`./img/${data.iconEnd}`
             imgEnd.classList.add('img-end')
             x.append(imgEnd)
+            let blueBg = document.createElement('div')
+            blueBg.classList.add('blue-bg')
+            x.append(blueBg)
         }
         
     })
@@ -411,6 +408,8 @@ function restart(){
         if(index != currentIndex){
             let imgEnd = x.querySelector('.img-end')
             x.removeChild(imgEnd)
+            let blueBg = x.querySelector('div')
+            x.removeChild(blueBg)
         }
     })
     centerImg.src = `./img/center_Q.jpg`
@@ -446,10 +445,11 @@ function turnAround(){
     }else{
         //  跑完了
         let val = brickData[currentIndex].target()
-        h3.innerText = `謝謝 ${val} \\|/`
+        h3.innerText = `謝謝 ${val} 的犧牲 \\|/`
         h3.style.fontSize = "44px"
         centerImg.src = `./img/${brickData[currentIndex].finalImg}`
         makeBricksEnd()
+        
     }
 
 }

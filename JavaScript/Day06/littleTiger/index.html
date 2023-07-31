@@ -18,12 +18,14 @@
             src: url('./font/BpmfGenSenRounded-M.woff') format("woff"),
                 url('./font/BpmfGenSenRounded-M.ttf') format("truetype");
         }
-        html{
-            min-height: 100%; 
+
+        html {
+            min-height: 100%;
         }
+
         body {
             font-family: "BpmfGenSenRounded-M", "cwTeXYen", sans-serif;
-            background:  url("./img/bg.png") repeat-x bottom OldLace;
+            background: url("./img/bg.png") repeat-x bottom OldLace;
         }
 
         img {
@@ -44,12 +46,14 @@
             border: 3px dashed #000;
             border-radius: 10px;
         }
-        .col-1{
+
+        .col-1 {
             position: relative;
         }
-        .col-1 img.img-end{
+
+        .col-1 img.img-end {
             position: absolute;
-            scale: 0.8;
+            scale: 0.85;
             border: none;
         }
 
@@ -60,6 +64,7 @@
             align-items: center;
             border: none;
             transition: 0.3s;
+            position: relative;
         }
 
         [box-id].active {
@@ -72,6 +77,15 @@
 
         [box-id].active img {
             filter: grayscale(100%);
+        }
+
+        [box-id] .blue-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            scale: 0.85;
+            border-radius: 10px;
+            background: linear-gradient(rgba(11, 57, 57,.8) 0%, transparent 60%);
         }
 
         #center {
@@ -125,66 +139,83 @@
         #btn-start:hover {
             background-color: rgb(160, 199, 144);
         }
+        .btn-top{
+            position: absolute;
+            width: 90px;
+            height: 100px;
+            bottom: 20%;
+            right: 38%;
+
+        }
+
 
         @keyframes jump {
             0% {
                 top: 36%;
             }
+
             100% {
                 top: 32%;
             }
         }
+
         @media (min-width: 1201px) {
             #center img {
-            width: 520px;
+                width: 520px;
             }
+
             #btn-start {
-            height: 230px;
-            width: 230px;
-            font-size: 28px;
-            border-radius: 300px;
-            top: 36%;
-            right: 14%;
+                height: 230px;
+                width: 230px;
+                font-size: 28px;
+                border-radius: 300px;
+                top: 36%;
+                right: 14%;
             }
         }
+
         @media (min-width: 992px) and (max-width: 1200px) {
             #center img {
-            width: 450px;
+                width: 450px;
             }
+
             #btn-start {
-            height: 200px;
-            width: 200px;
-            font-size: 26px;
-            border-radius: 300px;
-            top: 36%;
+                height: 200px;
+                width: 200px;
+                font-size: 26px;
+                border-radius: 300px;
+                top: 36%;
             }
 
         }
 
         @media (min-width: 768px) and (max-width: 991px) {
             .container {
-              max-width: 760px;
+                max-width: 760px;
             }
-            #center{
+
+            #center {
                 text-align: left;
             }
+
             #center img {
-            width: 340px;
+                width: 340px;
             }
+
             #btn-start {
-            height: 145px;
-            width: 145px;
-            font-size: 18px;
-            top: 36%;
-            right: 14%;
+                height: 145px;
+                width: 145px;
+                font-size: 18px;
+                top: 36%;
+                right: 14%;
             }
-            .col-1 img.img-end{
-            scale: 0.75;
+
+            .col-1 img.img-end {
+                scale: 0.75;
             }
-            
+
 
         }
-        
     </style>
 </head>
 
@@ -225,6 +256,7 @@
         <div class="row">
             <div box-id="29" class="col-1"></div>
             <div class="col-10 btn-div">
+                <img src="/img/btn-top.png" alt="" class="btn-top">
                 <button id="btn-start">找<br>好朋友們<br>幫忙吧!</button>
             </div>
             <div box-id="16" class="col-1"></div>
