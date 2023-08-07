@@ -1,18 +1,38 @@
-img {
+header img ,
+footer img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+img{
     width: 100%;
     height: 100%;
     vertical-align: middle;
 }
 
-a {
+header a {
     text-decoration: none;
     color: #2B3340;
 }
 
-/* body{
-    background-color: palevioletred;
-} */
+
 /* ---------------Reset------------------ */
+header .container,
+header .container-lg,
+header .container-md,
+header .container-sm,
+header .container-xl {
+    max-width: 1200px !important;
+}
+
+footer .container,
+footer .container-lg,
+footer .container-md,
+footer .container-sm,
+footer .container-xl {
+    max-width: 1200px !important;
+}
+
 .container,
 .container-lg,
 .container-md,
@@ -63,36 +83,36 @@ header .haban-logo-mascot {
     display: none;
 }
 
-.navbar {
+header .navbar {
     background: #FA3461 !important;
 }
 
-.login-for-sp {
+header .login-for-sp {
     background-color: transparent;
     border: none;
 }
 
-.login-for-sp .material-symbols-outlined {
+header .login-for-sp .material-symbols-outlined {
     color: #fff;
     font-size: 28px;
 }
 
 /* ----- item-list ----- */
-.nav-container {
+header .nav-container {
     display: flex;
     justify-content: space-between;
     width: 65%;
 }
 
-.navbar-toggler {
+header .navbar-toggler {
     border: none;
 }
 
-.navbar-toggler-icon {
+header .navbar-toggler-icon {
     background-image: url(./img/nav-toggler.svg) !important;
 }
 
-.item-group {
+header .item-group {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -102,14 +122,14 @@ header .haban-logo-mascot {
     background-color: #232A3580;
 }
 
-.item-group .btn-close {
+header .item-group .btn-close {
     font-size: 20px;
     color: #fff;
     background-image: url(./img/btn-close-white.svg) !important;
     opacity: 1;
 }
 
-.item-group .item-list {
+header .item-group .item-list {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -123,12 +143,12 @@ header .haban-logo-mascot {
     text-align: center;
 }
 
-.nav-item {
+header .nav-item {
     display: block;
     position: relative;
 }
 
-.nav-link {
+header .nav-link {
     display: inline-block;
     padding: 8px 0;
     transition: all 0.2s ease-out;
@@ -140,12 +160,7 @@ header .haban-logo-mascot {
     font-weight: bold;
 }
 
-.is-m .comp_href img {
-    position: relative;
-    top: -20px;
-}
-
-.is-m .comp_img {
+header .is-m .comp_img {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -153,34 +168,41 @@ header .haban-logo-mascot {
     height: fit-content;
 }
 
-.member-list {
+header .member-list {
     display: none;
 }
 
-.comp_banner {
+header .comp_banner {
     display: none;
 }
 
-.dropdown {
+header .dropdown {
     list-style: none;
     display: block;
 }
 
-.dropdown-toggle .icon {
+header .dropdown-item.active, 
+header .dropdown-item:active {
+    text-decoration: none;
+    color: var(--bs-dropdown-link-hover-color);
+    background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+header .dropdown-toggle .icon {
     position: relative;
     top: 6px;
 }
 
-.dropdown-menu {
+header .dropdown-menu {
     border-radius: 0 !important;
 }
 
-.dropdown-menu li span {
+header .dropdown-menu li span {
     position: relative;
     top: 6px;
 }
 
-.dropdown-toggle::after {
+header .dropdown-toggle::after {
     content: "";
     display: inline-block;
     width: 8px;
@@ -198,7 +220,7 @@ header .haban-logo-mascot {
     top: -2px;
 }
 
-.nav-item:hover .dropdown-toggle::after {
+header .nav-item:hover .dropdown-toggle::after {
     top: 2px !important;
     -webkit-transform: rotate(225deg) !important;
     transform: rotate(225deg) !important;
@@ -206,7 +228,7 @@ header .haban-logo-mascot {
 
 /* 手機版會員登入 */
 
-.modal-member {
+.header.modal-member {
     position: fixed;
     left: 0;
     right: 0;
@@ -224,29 +246,29 @@ header .haban-logo-mascot {
     background-position: top 158px center;
 }
 
-.modal-member .btn-close {
+.header.modal-member .btn-close {
     margin-left: auto;
     font-size: 25px;
 }
 
-.modal-content {
+.header.modal-member .modal-content {
     background-color: transparent;
     border: none;
     text-align: center;
 }
 
-.modal-member .member-type {
+.header.modal-member .member-type {
     color: #232A35;
     font-size: 24px;
     font-weight: bold;
 }
 
-.modal-member ul {
+.header.modal-member ul {
     padding: 0;
     margin-bottom: 50px;
 }
 
-.modal-member .nav-link {
+.header.modal-member .nav-link {
     color: #000;
     font-size: 16px;
     font-weight: normal;
@@ -272,19 +294,19 @@ header .haban-logo-mascot {
         top: 1px;
     }
 
-    .navbar {
+    header .navbar {
         background: #fff !important;
     }
 
-    .nav-container {
+    header .nav-container {
         width: 100%;
     }
 
-    .login-for-sp {
+    header .login-for-sp {
         display: none;
     }
 
-    .item-group {
+    header .item-group {
         position: initial;
         align-items: end;
         width: initial;
@@ -293,7 +315,7 @@ header .haban-logo-mascot {
         background-color: transparent;
     }
 
-    .item-group .item-list {
+    header .item-group .item-list {
         position: initial;
         width: initial;
         height: initial;
@@ -303,22 +325,22 @@ header .haban-logo-mascot {
         text-align: center;
     }
 
-    .nav-item {
+    header .nav-item {
         margin-right: 28px;
     }
 
-    .nav-item:hover .dropdown-menu {
+    header .nav-item:hover .dropdown-menu {
         display: block;
     }
 
-    .nav-link {
+    header .nav-link {
         color: #2B3340 !important;
         font-size: var(--bs-nav-link-font-size);
         font-weight: var(--bs-nav-link-font-weight);
         padding: 4px 0;
     }
 
-    .comp_banner {
+    header .comp_banner {
         display: block;
         position: absolute;
         z-index: 1;
@@ -332,11 +354,11 @@ header .haban-logo-mascot {
         animation: slide-in-fwd-bottom 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both, float-loop-center 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.2s infinite;
     }
 
-    .is-m {
+    header .is-m {
         display: none;
     }
 
-    .member-list {
+    header .member-list {
         display: flex;
         border-left: 1px solid #E3E8F0;
     }
@@ -506,6 +528,508 @@ header .haban-logo-mascot {
     display: none;
 }
 
+/* --- 搜尋框 Modal --- */
+
+/* 共用 */
+.modal-location,
+.modal-category {
+    border-radius: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-location .modal-content,
+.modal-category .modal-content {
+    border-radius: 0;
+}
+
+.modal-header {
+    display: block;
+    text-align: center;
+    position: relative;
+}
+
+.modal-header h1 {
+    color: #232a35;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.modal-header .btn-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.modal-body-top {
+    text-align: center;
+    /* border-bottom: 1px solid #F2F5F9; */
+}
+
+.modal-body-top .btn-group .btn {
+    color: #2B3340;
+    border: 1px solid #353D49;
+    width: 128px;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.modal-body-top .btn-group .active {
+    color: #fff;
+    background-color: #353D49;
+}
+
+.modal-footer .row {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 45px;
+}
+
+.modal-footer .btn-clear {
+    border: 1px solid #FA1E50;
+    color: #FA1E50;
+    width: calc(40% - 15px);
+}
+
+.modal-footer .btn-submit {
+    border: 1px solid #FA1E50;
+    background-color: #FA1E50;
+    color: #fff;
+    width: 60%;
+}
+/* 捲軸 */
+
+.list-group-district,
+.list-group-job{
+    /* max-height: 400px;
+    min-height: 400px; */
+    height: 400px;
+}
+.distance-selector {
+    padding: 15px 30px;
+    max-height: 400px;
+}
+.list-group-country,
+.list-group-category,
+.list-group-job {
+    max-height: 460px;
+}
+.list-group-country,
+.list-group-district,
+.distance-selector,
+.list-group-category,
+.list-group-job {
+    overflow-y: scroll;
+}
+.list-group-country::-webkit-scrollbar,
+.list-group-district::-webkit-scrollbar,
+.distance-selector::-webkit-scrollbar,
+.list-group-category::-webkit-scrollbar,
+.list-group-job::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    /* or add it to the track */
+}
+.list-group-country::-webkit-scrollbar,
+.list-group-district::-webkit-scrollbar-thumb,
+.distance-selector::-webkit-scrollbar-thumb,
+.list-group-category::-webkit-scrollbar-thumb,
+.list-group-job::-webkit-scrollbar-thumb {
+    background: #aaa;
+}
+/* -------- 地區 / 距離 -------- */
+
+/* --- 工作地區 頁籤內容 --- */
+.btn-distance {
+    position: relative;
+}
+
+.modal-location .btn-distance img {
+    position: absolute;
+    width: 36px;
+    height: 15px;
+    -webkit-transform: rotate(14deg);
+    transform: rotate(14deg);
+    right: -8px;
+    top: -6px;
+}
+
+.modal-location .modal-body.location-list {
+    padding: 0;
+}
+
+.modal-location ul {
+    --bs-list-group-border-color: none;
+    width: 100%;
+}
+
+.modal-location ul li {
+    width: 100%;
+    border-top: 1px solid #F2F5F9 !important;
+    padding: 0;
+    font-size: 15px;
+    color: #6A7079;
+}
+
+.modal-location ul li:hover {
+    background: #F2F5F9;
+}
+
+/* --- 縣市 選單 --- */
+.modal-location .list-group-country li label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+.modal-location .list-group-country li input {
+    opacity: .3;
+}
+
+.modal-location label span {
+    color: #232A35;
+}
+
+/* --- 區 選單 --- */
+.modal-location .item-county {
+    background: #F2F5F9;
+}
+
+.modal-location .item-county label {
+    align-items: center;
+    display: flex;
+}
+
+.modal-location .item-county label input {
+    display: none;
+}
+ul.list-group-district li{
+    padding: 15px 30px;
+}
+.list-group-district .district-checkbox-group li {
+    padding-left: 60px;
+    border-top: 1px solid #F2F5F9;
+}
+
+.list-group-district .select-all-district{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.list-group-district .select-all-district{
+    padding: 0;
+}
+.list-group-district .select-all-district .all-checkbox{
+    padding: 15px 30px;
+}
+.list-group-district .select-all-district .more-checkbox{
+    padding: 15px 30px 15px 90px;
+}
+.list-group-district .select-all-district .more-checkbox input{
+    opacity: .5;
+}
+.district-checkbox-group{
+    display: none;
+}
+.list-group-district #MoreDistrictCheckbox{
+    display: none;
+}
+.list-group-district #MoreDistrictCheckbox:checked + ul.district-checkbox-group{
+    display: block ;
+}
+
+
+
+
+/* --- 通勤距離 頁籤內容 --- */
+
+/* 你的位置 */
+
+.distance-selector .distance-selector-box {
+    margin-bottom: 32px;
+}
+
+.distance-selector .title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.distance-selector .distance-selector-geolocation-btn {
+    display: block;
+    padding: 10px 0 10px 48px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 700;
+    border: 1px solid #E9EAEB;
+    border-radius: 4px;
+    background-color: #F4F7FF;
+    color: #2369FF;
+    background-image: url("./img/ic_gps_blue700.svg");
+    background-repeat: no-repeat;
+    background-size: 24px;
+    background-position: left 16px center;
+}
+
+.distance-selector .distance-selector-section-btn {
+    margin-bottom: 8px;
+    background-image: url("./img/ic_arrow_down_24.svg");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    color: #BFC1C5;
+    background-size: 24px;
+}
+
+.distance-selector .distance-selector-section-btn,
+.distance-selector .distance-selector-address-input {
+    border: 1px solid #BFC1C5;
+    border-radius: 4px;
+    padding: 10px 16px;
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100%;
+}
+
+.distance-selector .history-btn {
+    color: #2369FF;
+    font-size: 14px;
+}
+
+.distance-selector .history-btn span {
+    color: #2369FF;
+    font-size: 18px;
+}
+
+.distance-selector .required-icon {
+    color: #FA1E50;
+    margin-left: 3px;
+    font-style: normal;
+}
+
+.distance-selector .error-txt {
+    color: #FA1E50;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.distance-selector .distance-selector-address-input {
+    color: #232A35;
+}
+
+/* 通勤方式 */
+.distance-selector .distance-selector-box {
+    margin-bottom: 32px;
+}
+
+.distance-selector .distance-selector-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.distance-selector .distance-selector-title span {
+    font-weight: 700;
+    color: #404753;
+}
+
+.distance-selector .distance-selector-title span,
+.distance-selector .distance-selector-title a {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.distance-selector .distance-selector-commuting-by-selects {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 11px;
+}
+
+.distance-selector .distance-selector-commuting-by-select {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal.pop_wrap.job-m_main label,
+.modal.pop_wrap.job-m_main button {
+    cursor: pointer;
+}
+
+.distance-selector .distance-selector-commuting-by-select input[type=radio] {
+    display: none;
+}
+
+.distance-selector .distance-selector-commuting-by-select span.material-symbols-outlined {
+    border: 1px solid #D5D6D9;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 6px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 1.8;
+    color: #727b8b;
+}
+
+.distance-selector .distance-selector-commuting-by-select span {
+    color: #404753;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.distance-selector .distance-selector-commuting-by-select input[type=radio]:checked~span.material-symbols-outlined {
+    color: #2369FF;
+}
+
+.distance-selector .distance-selector-commuting-by-select input[type=radio]:checked~span.material-symbols-outlined {
+    border: 1px solid #BDD2FF;
+    background-color: #E9F0FF;
+}
+
+/* 通勤時間 */
+.distance-selector .distance-selector-commuting-time-selects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.distance-selector .distance-selector-commuting-time-select {
+    flex: 1 1 30%;
+}
+
+.distance-selector .distance-selector-commuting-time-select input {
+    display: none;
+}
+
+.distance-selector .distance-selector-commuting-time-select span {
+    padding: 10px 0;
+    text-align: center;
+    background-color: #F2F5F9;
+    border-radius: 4px;
+    color: #2B3340;
+    font-size: 13px;
+    line-height: 16px;
+    display: block;
+    border: 1px solid #F2F5F9;
+}
+
+.distance-selector .distance-selector-commuting-time-select input[type=radio]:checked~span {
+    border: 1px solid #BDD2FF;
+    background-color: #E9F0FF;
+    color: #2369FF;
+}
+
+
+/* -------- 職務類別 -------- */
+
+.modal-category .modal-body {
+    padding: 0;
+}
+
+.modal-category ul {
+    --bs-list-group-border-color: none;
+    width: 100%;
+}
+
+.modal-category ul li {
+    width: 100%;
+    border-bottom: 1px solid #F2F5F9;
+    padding: 0;
+    font-size: 15px;
+    color: #6A7079;
+}
+.modal-category ul li:nth-last-child(1) {
+    border-bottom: none;
+}
+
+.modal-category ul li:hover {
+    background: #F2F5F9;
+}
+
+/* --- 類別 選單 --- */
+.modal-category .list-group-category li label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+.modal-category .list-group-category li input {
+    opacity: .3;
+}
+.modal-category label span {
+    color: #232A35;
+}
+/* --- 群組-細項 選單 --- */
+.modal-category .item-category {
+    background: #F2F5F9;
+}
+
+.modal-category .item-category label {
+    align-items: center;
+    display: flex;
+}
+
+.modal-category .item-category label input {
+    display: none;
+}
+ul.list-group-job li{
+    padding: 15px 30px;
+}
+.list-group-job .job-checkbox-group li {
+    padding-left: 60px;
+    border-top: 1px solid #F2F5F9;
+}
+
+.list-group-job .group-all-job{
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    position: relative;
+    
+}
+.modal-category ul li.group-all-job{
+    background: #fff !important;
+    padding: 0;
+}
+.list-group-job .group-all-job .all-checkbox{
+    padding: 15px 30px;
+}
+.list-group-job .group-all-job .more-checkbox{
+    padding: 15px 30px 15px 90px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.list-group-job .group-all-job #MoreJobCheckbox-gp1,
+.list-group-job .group-all-job #MoreJobCheckbox-gp2{
+    display: none;
+}
+
+.job-checkbox-group{
+    display: none;
+}
+
+.list-group-job #MoreJobCheckbox-gp1:checked + ul.job-checkbox-group,
+.list-group-job #MoreJobCheckbox-gp2:checked + ul.job-checkbox-group{
+    display: block ;
+}
+/* 個別工作 */
 
 /* --- 電腦版 --- */
 @media (min-width: 992px) {
@@ -612,6 +1136,12 @@ header .haban-logo-mascot {
         font-size: 18px;
     }
 
+    /* --- 搜尋框 Modal --- */
+
+    .modal-location,
+    .modal-category {
+        --bs-modal-width: 450px;
+    }
 
 
 }
@@ -879,8 +1409,8 @@ header .haban-logo-mascot {
     border-radius: 8px;
 }
 
-.recommend-section .banner.banner-mbti{
-    display: none ;
+.recommend-section .banner.banner-mbti {
+    display: none;
 }
 
 /* --- 電腦版 --- */
@@ -903,8 +1433,9 @@ header .haban-logo-mascot {
         min-width: 560px;
         min-height: 100px;
     }
-    .recommend-section .banner.banner-mbti{
-        display: block ;
+
+    .recommend-section .banner.banner-mbti {
+        display: block;
     }
 }
 
@@ -1084,10 +1615,13 @@ footer .footer-bottom-content .footer-box p {
 }
 
 footer .footer-box .logo-img {
-    width: 110px;
+    position: relative;
+    top: 5px;
+    width: 120px;
+    height: initial;
 }
 
-.media-img {
+footer .media-img {
     width: 36px;
     height: 36px;
     margin-left: 10px;
@@ -1170,10 +1704,10 @@ footer .footer-bottom-content .footer-end-wrap {
     }
 
     footer .footer-box .logo-img {
-        width: initial;
+        width: 160px;
     }
 
-    .media-img {
+    footer.media-img {
         margin-left: 14px;
     }
 
