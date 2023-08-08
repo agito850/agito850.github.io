@@ -1,0 +1,661 @@
+* {
+    font-family: Arial, "新微軟正黑體", Helvetica, Meiryo, Microsoft JhengHei, "微軟正黑體", sans-serif;
+    line-height: 1.5;
+    box-sizing: border-box;
+    letter-spacing: 0.4px;
+
+}
+
+.price-container {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+}
+
+/* ----- 上方banner ----- */
+.price-banner img{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.price-banner {
+    padding: 16.1vw 0 6.6vw;
+    background-color: #2369FF;
+    position: relative;
+}
+.price-banner .price-banner-items>picture,
+.price-banner .price-banner-items>div {
+    position: absolute;
+    display: block;
+    
+}
+.price-banner .price-banner-items .price-banner-light {
+    top: 0;
+    animation: fade-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    width: 100vw;
+}
+.price-banner .price-banner-items .price-banner-buildings {
+    bottom: 8.8vw;
+}
+.price-banner .price-banner-items .price-banner-floor {
+    bottom: 0;
+}
+
+
+.price-banner .price-banner-items .price-banner-house {
+    width: 37.7vw;
+    bottom: 7.3vw;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-animation: first-section-house-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: first-section-house-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.price-banner .price-banner-items .price-banner-title {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    top: 72px;
+    max-width: 37.2vw;
+}
+.price-banner .price-banner-items .price-banner-title .price-banner-bling-left.is-animating {
+    -webkit-animation: blink 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+    animation: blink 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+.price-banner .price-banner-items .price-banner-title .price-banner-bling-left {
+    position: absolute;
+    top: -2.1vw;
+    left: -2.4vw;
+    width: 5.2vw;
+    -webkit-animation: fade-in-fwd 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+    animation: fade-in-fwd 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+}
+.price-banner .price-banner-items .price-banner-title .price-banner-bling-right.is-animating {
+    -webkit-animation: blink 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both infinite;
+    animation: blink 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both infinite;
+}
+.price-banner .price-banner-items .price-banner-title .price-banner-bling-right {
+    position: absolute;
+    bottom: -6.2vw;
+    right: 0.7vw;
+    width: 3.3vw;
+    -webkit-animation: fade-in-fwd 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+    animation: fade-in-fwd 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s both;
+}
+.price-banner .price-banner-items .price-banner-hero-words-top-animation {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-animation: first-section-hero-words-top-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: first-section-hero-words-top-animation 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.price-banner .price-banner-items .price-banner-hero-words-top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width: 28.3vw;
+    height: 110px;
+}
+.price-banner .price-banner-items .price-banner-hero-words-top.z-idx-1{
+    z-index: 1;
+}
+.price-banner .price-banner-items .price-banner-hero-words-top.top-2{
+    top: 2px;
+}
+
+.price-banner .price-banner-items .price-banner-people-left {
+    width: 43.2vw;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    -webkit-animation: fade-in-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+    animation: fade-in-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+.price-banner .price-banner-items .price-banner-people-right {
+    width: 43.2vw;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    -webkit-animation: fade-in-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+    animation: fade-in-bottom 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+}
+.price-banner .price-banner-items .price-banner-cloud {
+    bottom: -1px;
+    z-index: 2;
+}
+@media screen and (max-width:1024px){
+    .price-banner .price-banner-items .price-banner-title .price-banner-bling-left {
+        width: 9.6vw;
+        top: 13vw;
+        left: -4.69vw;
+    }
+    .price-banner .price-banner-items .price-banner-title .price-banner-bling-right {
+        width: 6.9vw;
+        right: 3.13vw;
+        bottom: 6.25vw;
+    }
+}
+@media screen and (max-width:1280px){
+    .price-banner {
+        padding: 12vw 0 4.3vw;
+    }
+    .price-banner .price-banner-items .price-banner-house {
+        width: 40.31vw;
+        bottom: 3.8vw;
+    }
+    .price-banner .price-banner-items .price-banner-title {
+        max-width: 33.6vw;
+        top: 36px;
+    }
+    .price-banner .price-banner-items .price-banner-title .price-banner-bling-left {
+        width: 5vw;
+        top: 0vw;
+    }
+    .price-banner .price-banner-items .price-banner-title .price-banner-bling-right {
+        width: 3.6vw;
+        top: 5vw;
+    }
+    .price-banner .price-banner-items .price-banner-hero-words-top {
+        width: 24.5vw;
+        height: 68px;
+    }
+    .price-banner .price-banner-items .price-banner-people-left {
+        width: 42.19vw;
+    }
+    .price-banner .price-banner-items .price-banner-people-right {
+        width: 42.19vw;
+    }
+}
+
+/* 第二部分(上層按鈕 代言人) */
+.price-banner .price-banner-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+.price-banner .price-banner-center .price-banner-endorser {
+    width: 22.3vw;
+    animation: fixed-slide-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    aspect-ratio: 428/410;
+}
+.price-banner .price-banner-center .price-banner-bubble {
+    position: absolute;
+    width: 7vw;
+    height: 6.7vw;
+    background-image: url("./images/works-vip_pay/img_hero_bubble.svg");
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    left: calc(50% + 3.13vw);
+    top: 6.7vw;
+    -webkit-animation: fixed-slide-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: fixed-slide-top 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.price-banner .price-banner-center .price-banner-btn {
+    z-index: 3;
+    position: absolute;
+    cursor: pointer;
+    bottom: -36px;
+    overflow: hidden;
+    border-radius: 100000px;
+    padding: 20px
+39px;
+    background-color: #FF0;
+    -webkit-animation: fade-in 0.4s 0.8s ease-in-out both;
+    animation: fade-in 0.4s 0.8s ease-in-out both;
+}
+.price-banner .price-banner-center .price-banner-bubble>img {
+    display: inline-block;
+    -webkit-transform: translateX(4px);
+    transform: translateX(4px);
+    width: 4.4vw;
+}
+@media screen and (max-width:1280px){
+    .price-banner .price-banner-center .price-banner-endorser {
+        width: 20.3vw;
+    }
+    .price-banner .price-banner-center .price-banner-btn {
+        padding: 13px
+    25px;
+        bottom: -17px;
+    }
+    .price-banner .price-banner-center .price-banner-bubble>img {
+        -webkit-transform: translateX(4px);
+        transform: translateX(4px);
+    }
+}
+
+@keyframes blink {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        opacity: 0;
+    }
+}
+
+
+
+
+
+/* .price-banner {
+display: flex;
+    padding: 16.1vw 0 6.6vw;
+    background-color: #2369FF;
+    position: relative;
+    background-image: url("images/works-vip_pay/img_hero_bg_light.webp"),url("images/works-vip_pay/img_hero_buildings.webp"),url("images/works-vip_pay/img_bg_hero_floor_m.webp");
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-size:  cover, auto,auto;
+    background-position: left top , left bottom 30%, left bottom;
+    color:#fff;
+}
+
+.price-background{
+    top: 0;
+    width: 100vw;
+    animation: fade-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    position: absolute;
+    display: block;
+}
+/* .buildings{
+    bottom: 8.8vw;
+    position: absolute;
+
+} */
+
+/* .payBg-banner{
+    background-image: url("images/works-vip_pay/img_hero_bg_light.webp");
+    position: absolute;
+} */
+
+/* .house{
+    display: flex;
+    background-image: url("images/works-vip_pay/img_hero_houses.webp");
+    background-repeat: no-repeat;
+    background-size:  50%;
+    background-position: left bottom ;
+    position: absolute;
+   
+} */ 
+
+/* ----- 上方banner end ----- */
+
+.price-section{
+    padding: 140px 0 100px;
+    background-color: #F4F7FF;
+    background-image: url("images/works-vip_pay/img_plan_bg_ribbon_left.png"), url("images/works-vip_pay/img_plan_bg_resume.png"), url(images/works-vip_pay/img_plan_card_bg_hold.png), url("images/works-vip_pay/img_plan_card_bg_ribbon_right.png");
+    background-repeat: no-repeat;
+    background-size: 442px auto, 374px auto, 532px auto, 410px auto;
+    background-position: top 390px left, top 77px right, bottom -28px left, bottom 860px right;
+    position: relative;
+    z-index: 1;
+}
+.price-section .pic {
+    text-align: center;
+    margin-bottom: 32px;
+    width: auto;
+    height: 60px;
+}
+
+
+.price-section .pic img {
+    width: 300px;
+}
+
+.price-content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.price-content h3 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.price-wrap {
+    margin-top: 30px;
+
+}
+
+.price-wrap ul {
+    display: flex;
+    justify-content: center;
+}
+
+.price-wrap li {
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    width: 170px;
+    background-color: #fff;
+    color: #555C66;
+    box-shadow: 3px 3px 5px #dcdcdc;
+
+}
+
+.price-wrap .free-price {
+    background-color: #fa3461;
+    color: #fff;
+}
+
+.price-wrap li span {
+    font-size: 24px;
+}
+.price-wrap a:hover{
+    background-color: #fa3461;
+}
+
+.limit-free .tag {
+    margin-top: 30px;
+
+    display: flex;
+    color: #6596FF;
+
+}
+
+.limit-free .tag p {
+    padding: 0 10px;
+}
+
+.cp-box{
+    background-color: #fff;
+    box-shadow: 3px 3px 5px #dcdcdc;
+    width: 870px;
+}
+.cp-box th{
+    width: 141px;
+    background: #f2f5f9;
+    font-size: 16px;
+    line-height: 1.4;
+    color: #80858c;
+    padding: 0 20px;
+    text-align: left !important;
+    white-space: nowrap;
+    border: 1px solid #e9eaeb;
+}
+.cp-box td{
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    border: 1px solid #e9eaeb;
+}
+
+.red-text{
+    font-size: 32px;
+    font-weight: bold;
+  text-align: center;
+    color: #FA3461;
+}
+.sm-red-text{
+    color: #FA3461;
+}
+.blue-text{
+    color: #3978ff;
+    font-size: 24px;
+    font-weight: bold;
+}
+.price-box .sm-text{
+    font-weight: normal;
+    font-size: 24px;
+}
+.cp-box .title{
+    padding-top: 16px;
+}
+.price-box .day-price{
+    color: #80858C;
+    font-size: 14px;
+}
+.flexible-box span{
+    font-size: 24px;
+    font-weight: bold;
+}
+.buy-btn{
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.14;
+    padding: 15px 20px;
+    border-radius: 4px;
+    color: #fff;
+    background: #fa1e50;
+    display: inline-block;
+    text-decoration: none;
+}
+
+
+.card{
+    background-image: url("images/works-vip_pay/img-ticket.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 440px;
+    padding: 40px 160px;
+    text-align: center;
+    margin-bottom: 155px;
+   
+}
+
+
+.card-border{
+    border: 3px solid #FED2DC;
+    border-radius: 10px;
+    height: 100%;
+    position: relative;
+
+}
+.card-solution{
+    display: inline-flex;
+    width: 440px;
+}
+.card-list{
+  width: 200px;
+  background-color: #FEF4F6;
+  padding: 10px 10px;
+  display: flex;
+ align-items: center;
+   
+}
+.card-topic{
+    /* display: inline-flex;
+    align-items: center; */
+    border-right: 1px solid #fa3461;
+    color: #555C66;
+    padding-right:10px;
+     
+}
+.card-text{
+    /* display: inline-flex;
+    align-items: center; */
+    color: #555C66;
+    padding-left:10px;
+}
+.card-bear{
+    display: inline-block;
+    width: 181px;
+    height: 134px;
+    background-image: url("images/works-vip_pay/img-ticket-ben@2x.png?v3");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    left: 17px;
+    bottom: 0;
+}
+.card-person{
+    display: inline-block;
+    width: 181px;
+    height: 134px;
+    background-image: url("images/works-vip_pay/img-ticket-person@2x.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: absolute;
+    right: 17px;
+    bottom: 0;
+}
+.free{
+    display: block;
+    margin: 0 auto;
+    margin-top: 45px;
+}
+.origin-price{
+    margin-top: 15px;
+    font-size: 14px;
+    line-height: 1.17;
+    color: #80858C;
+    text-decoration: line-through;
+}
+.join-btn{
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-section{
+    background-image: url("images/works-vip_pay/group_28.png");
+    color: #fff;
+    position: relative;
+    display: block;
+    padding: 120px 0;
+}
+
+.price-container img{   
+    height: 70px;
+}
+
+.freeAd-Section{
+    padding: 120px 0;
+    background-color: #F4F7FF;
+    background-image: url("images/works-vip_pay/img_free_bg_left.pn"), url("images/works-vip_pay/img_free_bg_right.png");
+    background-repeat: no-repeat;
+    background-size: 790px auto, 819px auto;
+    background-position: left top 159px, right bottom;
+}
+
+.Ad-box{
+    padding-top: 150px;
+}
+.row-reverse{
+    display: flex;
+    flex-direction:row-reverse; 
+}
+.freeAd-Section .card-Ad{
+    border: 3px solid #FED2DC;
+    border-radius: 8px;
+    padding: 10px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 166px;
+    background: #fff;
+}
+
+
+.freeAd-Section .card-Ad img{
+    width: 250px;
+    height: 240px;
+    position: absolute;
+    left:20px;
+    bottom: 0px;
+    
+}
+.card-AD-text{
+    padding-left: 200px;
+    
+}
+
+.rate-section{
+    background-image: url("images/works-vip_pay/img-bg-darkblue-repeat.png");
+    color: #fff;
+    position: relative;
+    padding: 120px 0;
+}
+
+.reputation-section{
+    position: relative;
+    padding-top: 270px;
+    background: url("images/works-vip_pay/img-bg-red-repeat.png")
+}
+.reputation-card-group{
+    box-sizing: border-box;
+    display: flex;
+}
+.reputation-section .card{
+    width: 300px;
+}
+.card-person{
+    display: flex;
+    align-items: flex-start;
+}
+.reputation-section .card img{
+    width: 30%;
+}
+.app-section{
+    background-image: url("images/works-vip_pay/img_app_bg_star.png"), url("images/works-vip_pay/img_app_bg_circle.png"), url("images/works-vip_pay/img_app_bg_center_bottom.png"), url("images/works-vip_pay/img_bg_light_blue500_repeat.png");
+    background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+    background-size: 391px auto, 316px auto, cover, auto;
+    background-position: left top 24%, right bottom, left bottom 60%, left top;
+    padding-bottom: 0;
+    color:#fff;
+    padding-top: 120px;
+}
+
+.app-content{
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 60px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+.free-test{
+    margin-right: 80px;
+}
+
+.qrcode-pic{
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 110px;
+    padding-right: 30px;
+}
+.qrcode-pic img{
+    padding-bottom: 50px;
+}
+
+.qa-section{
+    padding: 120px 0;
+}
+.qa-section ol li{
+    padding-bottom: 12px;
+}
+.qa-section h2{
+    margin-bottom: 60px;
+}

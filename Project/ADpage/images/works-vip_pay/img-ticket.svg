@@ -1,0 +1,25 @@
+<svg width="820" height="441" viewBox="0 0 820 441" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-1.8%" y="-2.4%" width="103.5%" height="106.6%" filterUnits="objectBoundingBox" id="a">
+            <feMorphology radius=".5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"/>
+            <feOffset dy="4" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"/>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+            <feColorMatrix values="0 0 0 0 0.0431372549 0 0 0 0 0.231372549 0 0 0 0 0.423529412 0 0 0 0.05 0" in="shadowBlurOuter1" result="shadowMatrixOuter1"/>
+            <feMorphology radius=".5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter2"/>
+            <feOffset dy="2" in="shadowSpreadOuter2" result="shadowOffsetOuter2"/>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter2" result="shadowBlurOuter2"/>
+            <feComposite in="shadowBlurOuter2" in2="SourceAlpha" operator="out" result="shadowBlurOuter2"/>
+            <feColorMatrix values="0 0 0 0 0.0431372549 0 0 0 0 0.231372549 0 0 0 0 0.423529412 0 0 0 0.05 0" in="shadowBlurOuter2" result="shadowMatrixOuter2"/>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"/>
+                <feMergeNode in="shadowMatrixOuter2"/>
+            </feMerge>
+        </filter>
+        <path d="M819 60.456a60.255 60.255 0 0 1-15.902-3.005C779.013 49.455 761.63 26.767 761.62 0L54.916.26c.01 26.448-16.95 48.928-40.584 57.191A60.22 60.22 0 0 1 0 60.571v8.466c4.61 0 8.35 3.81 8.35 8.513 0 4.7-3.74 8.512-8.35 8.512v7.093c4.61 0 8.35 3.811 8.35 8.51 0 4.702-3.74 8.513-8.35 8.513v7.096c4.61 0 8.35 3.808 8.35 8.51s-3.74 8.513-8.35 8.513v7.095c4.61 0 8.35 3.809 8.35 8.51 0 4.702-3.74 8.513-8.35 8.513v7.093c4.61 0 8.35 3.81 8.35 8.513 0 4.702-3.74 8.513-8.35 8.513v7.092c4.61 0 8.35 3.811 8.35 8.513 0 4.7-3.74 8.51-8.35 8.51v7.096c4.61 0 8.35 3.81 8.35 8.51 0 4.704-3.74 8.513-8.35 8.513v7.095c4.61 0 8.35 3.811 8.35 8.513 0 4.7-3.74 8.51-8.35 8.51v7.093c4.61 0 8.35 3.813 8.35 8.513 0 4.702-3.74 8.513-8.35 8.513v7.092c4.61 0 8.35 3.811 8.35 8.513 0 4.7-3.74 8.513-8.35 8.513v7.093c4.61 0 8.35 3.81 8.35 8.51 0 4.704-3.74 8.513-8.35 8.513v7.095c4.61 0 8.35 3.809 8.35 8.513 0 4.7-3.74 8.513-8.35 8.513v7.09c4.61 0 8.35 3.813 8.35 8.513 0 4.702-3.74 8.513-8.35 8.513v4.243a60.129 60.129 0 0 1 13.591 2.83c24.084 7.998 41.465 30.687 41.473 57.451l706.707-.26c-.01-26.448 16.946-48.928 40.584-57.191A60.367 60.367 0 0 1 819 379.253v-3.777c-4.61 0-8.35-3.811-8.35-8.513 0-4.7 3.74-8.513 8.35-8.513v-7.09c-4.61 0-8.35-3.814-8.35-8.513 0-4.704 3.74-8.513 8.35-8.513v-7.095c-4.61 0-8.35-3.809-8.35-8.513 0-4.7 3.74-8.51 8.35-8.51v-7.093c-4.61 0-8.35-3.813-8.35-8.513 0-4.702 3.74-8.513 8.35-8.513v-7.092c-4.61 0-8.35-3.811-8.35-8.513 0-4.7 3.74-8.513 8.35-8.513v-7.093c-4.61 0-8.35-3.81-8.35-8.51 0-4.702 3.74-8.513 8.35-8.513v-7.095c-4.61 0-8.35-3.809-8.35-8.513 0-4.7 3.74-8.51 8.35-8.51v-7.096c-4.61 0-8.35-3.81-8.35-8.51 0-4.702 3.74-8.513 8.35-8.513v-7.092c-4.61 0-8.35-3.811-8.35-8.513s3.74-8.513 8.35-8.513v-7.093c-4.61 0-8.35-3.81-8.35-8.513 0-4.701 3.74-8.51 8.35-8.51v-7.095c-4.61 0-8.35-3.811-8.35-8.513s3.74-8.51 8.35-8.51v-7.096c-4.61 0-8.35-3.81-8.35-8.512 0-4.7 3.74-8.51 8.35-8.51v-7.094c-4.61 0-8.35-3.813-8.35-8.512 0-4.702 3.74-8.513 8.35-8.513v-8.58z" id="b"/>
+    </defs>
+    <g transform="translate(.955 .405)" fill="none" fill-rule="evenodd">
+        <use fill="#000" filter="url(#a)" xlink:href="#b"/>
+        <use stroke="#E9EAEB" fill="#FFF" xlink:href="#b"/>
+    </g>
+</svg>
