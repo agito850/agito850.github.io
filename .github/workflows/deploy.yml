@@ -20,11 +20,23 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Install, build, and upload your site
-        uses: withastro/action@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
-          package-manager: pnpm@latest
+          # Astro 5.13.10 (Fuwari) crashes on Node >=22.12 (ERR_REQUIRE_CYCLE_MODULE).
+          # Pin to Node 20.x, which builds it cleanly.
+          node-version: 20.18.0
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build (Astro + Pagefind)
+        run: pnpm build
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
