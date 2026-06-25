@@ -1,0 +1,104 @@
+---
+title: 當雪花 ID 飄過 2⁵³：一場表單集體失蹤事件
+published: 2026-06-25
+description: "後端用 Snowflake ID、前端用 JS Number 接，數字一大就集體出包——記一次意外學到的精度教訓。"
+tags: [雪花ID, JavaScript, 精度, 後端, 踩坑]
+category: 技術
+draft: false
+---
+
+## 事發當天
+
+某天，表單系統開始「鬧鬼」。
+
+使用者回報：**不能申請、不能簽核、連點開以前的表單都直接 404**。但詭異的是——不是全部壞掉，是「有些人有事、有些人沒事」，而且越晚建立的單越容易出問題。
+
+聽起來像隨機，其實一點都不隨機。這是一個藏在數字裡、慢慢逼近的定時炸彈。
+
+## 兇手：一個你以為很大、其實沒那麼大的數字
+
+後端的主鍵用的是 **Snowflake ID**（雪花演算法）——一個 64 位元的整數，長這樣：
+
+```
+1739284756392834561
+```
+
+19 位數，看起來很安全對吧？問題是，這個 id 傳到前端後，是被 **JavaScript 的 `Number`** 接住的。
+
+而 JavaScript 的 `Number` 是 IEEE 754 雙精度浮點數，它能「精準」表示的整數上限是：
+
+```js
+Number.MAX_SAFE_INTEGER // 9007199254740991  ← 也就是 2⁵³ - 1
+```
+
+`9007199254740991` 是 16 位數。我們的雪花 ID 是 **19 位數**。
+
+超過這條線之後，JS 不會報錯，它會**默默地四捨五入**：
+
+```js
+9007199254740992 === 9007199254740993 // true 😱
+```
+
+沒看錯。在 JS 眼裡，這兩個不同的數字是「相等」的，因為它已經沒有足夠的精度去區分它們了。
+
+## 災難是怎麼發生的
+
+把上面的事實串起來，整個慘案就清楚了：
+
+1. 後端產生 id：`...834561`
+2. 透過 JSON 傳到前端，`JSON.parse` 用 `Number` 接 → 尾數被磨掉，變成 `...834560`
+3. 使用者操作後，前端把這個「被竄改過」的 id 傳回後端
+4. 後端拿 `...834560` 去查 → **查無此單** → 404 / 簽核失敗 / 申請噴錯
+
+> 最陰險的地方是：**後端完全無辜，資料也完全正確**。資料是在「前端用 Number 接住的那一瞬間」就被悄悄改掉的，沒有任何例外、沒有任何 log 哀號。
+
+至於為什麼「越晚的單越容易中」？因為雪花 ID 的高位是時間戳，**時間往前走，數字就越大**。一旦越過 2⁵³ 這條線，新生成的 id 就全員中招。它不是突然壞掉，是「準時」壞掉。
+
+## 解法：別用數字接，用字串
+
+修法意外地樸素——**把 id 當字串傳，全程不要碰 `Number`**。
+
+後端序列化時，把 `long` 轉成 `string` 再吐給前端。以 .NET / `System.Text.Json` 為例：
+
+```csharp
+public class LongToStringConverter : JsonConverter<long>
+{
+    public override long Read(ref Utf8JsonReader reader, Type t, JsonSerializerOptions o)
+        => long.Parse(reader.GetString()!);
+
+    public override void Write(Utf8JsonWriter writer, long value, JsonSerializerOptions o)
+        => writer.WriteStringValue(value.ToString()); // 1739284756392834561 → "1739284756392834561"
+}
+```
+
+前端從頭到尾把 id 當成不透明的字串看待——不做數學運算、不比大小、只拿來查資料。字串沒有精度問題，尾數一個都不會少。
+
+## 意外學到的一課
+
+最有意思的是——**這個坑我本來「應該」要早就知道，卻因為運氣好一直沒踩到。**
+
+我以前碰的系統，主鍵都是用 **GUID**。GUID 長這樣：
+
+```
+3f2504e0-4f89-41d3-9a0c-0305e82c3301
+```
+
+它天生就是字串，所以我**從以前就習慣用 `string` 接 id**，從來沒機會遇到 Number 精度問題。
+
+換句話說，是「舊習慣」幫我擋掉了這顆雷——直到換成雪花 ID，數字型的主鍵第一次出現，這個我從沒意識到的前提就咬了我一口。
+
+這件事給我的提醒是：
+
+> 很多「我一直都這樣做也沒事」的安全感，其實只是**剛好沒踩到那個前提**而已。
+> 換了一個技術、換了一種型別，原本看不見的假設就會浮上來討債。
+
+雪花很美，但飄過 2⁵³ 的時候，記得幫它換上一件叫 `string` 的外套。❄️
+
+---
+
+## 參考資料
+
+- [MDN — `Number.MAX_SAFE_INTEGER`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER)：官方說明 JS 安全整數上限為 2⁵³ - 1（`9007199254740991`），以及為何雙精度浮點只能精準表示到這裡。
+- [RFC 8259 §6 — JSON 的 Number 互通性](https://www.rfc-editor.org/rfc/rfc8259#section-6)：JSON 規範直言，為了互通性，數字最好落在 IEEE 754 double 能表示的範圍（即 2⁵³）內，否則各家實作可能精度不一。
+- [Discord 開發者文件 — Snowflakes](https://docs.discord.com/developers/reference)：知名實戰案例。Discord 明講「Snowflake 是 64 位元，API 一律以字串回傳，以避免某些語言的整數溢位」。
+- [Twitter Snowflake（原始專案，已封存）](https://github.com/twitter-archive/snowflake)：雪花演算法的出處，64 位元 = 時間戳 + 機器碼 + 序號的設計緣由。
