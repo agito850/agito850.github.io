@@ -53,9 +53,9 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "assets/images/avatar.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Shon",
-	bio: "一點創作、一點踩坑，還有一點作為人類的思考與祈願。",
+	bio: "一點創作、一點踩坑，一個人類。",
 	links: [
 		{
 			name: "GitHub",
