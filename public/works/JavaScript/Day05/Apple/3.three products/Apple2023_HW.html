@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <input type="radio" name="product" id="iPad-page" checked>
+    <input type="radio" name="product" id="iPhone-page">
+    <input type="radio" name="product" id="Mac-page">
+    <nav>
+        <div class="logo">
+            <svg height="44" viewBox="0 0 14 44" width="14" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m13.0729 17.6825a3.61 3.61 0 0 0 -1.7248 3.0365 3.5132 3.5132 0 0 0 2.1379 3.2223 8.394 8.394 0 0 1 -1.0948 2.2618c-.6816.9812-1.3943 1.9623-2.4787 1.9623s-1.3633-.63-2.613-.63c-1.2187 0-1.6525.6507-2.644.6507s-1.6834-.9089-2.4787-2.0243a9.7842 9.7842 0 0 1 -1.6628-5.2776c0-3.0984 2.014-4.7405 3.9969-4.7405 1.0535 0 1.9314.6919 2.5924.6919.63 0 1.6112-.7333 2.8092-.7333a3.7579 3.7579 0 0 1 3.1604 1.5802zm-3.7284-2.8918a3.5615 3.5615 0 0 0 .8469-2.22 1.5353 1.5353 0 0 0 -.031-.32 3.5686 3.5686 0 0 0 -2.3445 1.2084 3.4629 3.4629 0 0 0 -.8779 2.1585 1.419 1.419 0 0 0 .031.2892 1.19 1.19 0 0 0 .2169.0207 3.0935 3.0935 0 0 0 2.1586-1.1368z">
+                </path>
+            </svg>
+        </div>
+        <div class="product-link">
+            <label for="iPad-page">iPad</label>
+            <label for="iPhone-page">iPhone</label>
+            <label for="Mac-page">Mac</label>
+        </div>
+        <div class="total-price">
+
+        </div>
+
+    </nav>
+    <section id="section-iPad">
+        <div class="main-title">
+            <div class="title">
+                <h1>購買 <span lang="en">iPad Air</span></h1>
+                <span>NT$19,900 起</span>
+            </div>
+            <div class="btn-add">
+                <a href="#" class="change-new">透過換購，可獲享 NT$800 – NT$16,300 折抵優惠註腳**</a>
+                <a href="#" class="change-new">可選用零利率分期付款，最長可達 12 月</a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div id='display-product'>
+                <div class="iPad-pic">
+                    <img src="./img/iPad/ipad-air.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="chose-pad">
+
+                <div class="iPad-price"></div>
+                <div class="chose-color">
+                    <h2>外觀。 <span>挑選喜愛的顏色。</span></h2>
+                    <input type="radio" name="color" value="space-gray" id="iPad-space-gray">
+                    <label for="iPad-space-gray" class="btn-space-gray">太空灰色</label>
+                    <input type="radio" name="color" value="blue" id="iPad-blue">
+                    <label for="iPad-blue" class="btn-blue">藍色</label>
+                    <input type="radio" name="color" value="pink" id="iPad-pink">
+                    <label for="iPad-pink" class="btn-pink">粉紅色</label>
+                    <input type="radio" name="color" value="purple" id="iPad-purple">
+                    <label for="iPad-purple" class="btn-purple">紫色</label>
+                    <input type="radio" name="color" value="starlight" id="iPad-starlight">
+                    <label for="iPad-starlight" class="btn-starlight">星光色</label>
+                </div>
+                <div class="chose-storage">
+                    <h2>儲存裝置。 <span>選擇需要的儲存空間大小。</span></h2>
+                    <input type="radio" name="storage" value="64GB" id="iPad-64GB">
+                    <label for="iPad-64GB">
+                        <div class="txt">
+                            64<span>GB</span>
+                            <p>NT$19,900 起</p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storage" value="256GB" id="iPad-256GB">
+                    <label for="iPad-256GB">
+                        <div class="txt">
+                            256<span>GB</span>
+                            <p>NT$24,900 起</p>
+                        </div>
+
+                    </label>
+                </div>
+                <div class="chose-network">
+                    <h2>連線能力。 <span>選擇連線方式。</span></h2>
+                    <input type="radio" name="network" value="Wi-Fi" id="iPad-Wi-Fi">
+                    <label for="iPad-Wi-Fi">
+                        <div class="txt">
+                            Wi-Fi
+                            <p>每部 iPad 都可連接到 Wi-Fi 網路，使你能保持連線。 </p>
+                        </div>
+                    </label>
+                    <input type="radio" name="network" value="Cellular" id="iPad-Cellular">
+                    <label for="iPad-Cellular">
+                        <div class="txt">
+                            Wi-Fi + Cellular
+                            <p>Wi-Fi + 行動網路機型讓你在無法使用 Wi-Fi 時也能進行連線。</p>
+                        </div>
+                    </label>
+                </div>
+
+                <hr>
+                <div id='iPad-selection'></div>
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </section>
+
+    <section id="section-iPhone">
+        <div class="main-title">
+            <div class="title">
+                <h1>購買 <span lang="en">iPhone SE</span></h1>
+                <span>NT$14,900 起</span>
+            </div>
+            <div class="btn-add">
+                <a href="#" class="change-new">透過換購，可獲享 NT$900 – NT$21,600 折抵優惠**</a>
+                <a href="#" class="change-new">可選用零利率分期付款，最長可達 12 月</a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div id='display-product'>
+                <div class="iPhone-pic">
+                    <img src="./img/iPhone/iphone-se.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="chose-pad">
+
+                <div class="iPhone-price"></div>
+                <div class="chose-color">
+                    <h2>外觀。 <span>挑選喜愛的外觀。</span></h2>
+                    <input type="radio" name="color" value="midnight" id="iPhone-midnight">
+                    <label for="iPhone-midnight" class="btn-midnight">午夜色</label>
+                    <input type="radio" name="color" value="starlight" id="iPhone-starlight">
+                    <label for="iPhone-starlight" class="btn-starlight">星光色</label>
+                    <input type="radio" name="color" value="product-red" id="iPhone-product-red">
+                    <label for="iPhone-product-red" class="btn-product-red">(PRODUCT)RED</label>
+                    <span class="donate">每筆 iPhone SE (PRODUCT)RED 銷售的收入會直接捐助 The Global Fund 基金，以幫助對抗 COVID‑19 ◊◊◊。</span>
+                    
+                </div>
+                <div class="chose-storage">
+                    <h2>儲存裝置。 <span>選擇需要的儲存空間大小。</span></h2>
+                    <input type="radio" name="storage" value="64GB" id="iPhone-64GB">
+                    <label for="iPhone-64GB">
+                        <div class="txt">
+                            64<span>GB</span>
+                            <p>NT$14,900 起</p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storage" value="128GB" id="iPhone-128GB">
+                    <label for="iPhone-128GB">
+                        <div class="txt">
+                            128<span>GB</span>
+                            <p>NT$16,500 起</p>
+                        </div>
+
+                    </label>
+                    <input type="radio" name="storage" value="256GB" id="iPhone-256GB">
+                    <label for="iPhone-256GB">
+                        <div class="txt">
+                            256<span>GB</span>
+                            <p>NT$20,000 起</p>
+                        </div>
+
+                    </label>
+                </div>
+                <hr>
+                <div id='iPhone-selection'></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="section-Mac">
+        <div class="main-title">
+            <div class="title">
+                <h1>購買 <span lang="en">MacBook Air</span></h1>
+                <span>NT$42,900 起</span>
+            </div>
+            <div class="btn-add">
+                <a href="#" class="change-new">可選用零利率分期付款，最長可達 12 月</a>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <div id='display-product'>
+                <div class="Mac-pic">
+                    <img src="./img/Mac/Mac.jpg" alt="">
+                </div>
+            </div>
+
+            <div class="chose-pad">
+
+                <div class="Mac-price"></div>
+                <div class="chose-color">
+                    <h2>四款色系，都是天際美色。 <span>各個選項都絕美，各自備有顏色相襯的 MagSafe 充電線。</span></h2>
+                    <input type="radio" name="color" value="midnight" id="Mac-midnight">
+                    <label for="Mac-midnight" class="btn-midnight">午夜色</label>
+                    <input type="radio" name="color" value="starlight" id="Mac-starlight">
+                    <label for="Mac-starlight" class="btn-starlight">星光色</label>
+                    <input type="radio" name="color" value="space-gray" id="Mac-space-gray">
+                    <label for="Mac-space-gray" class="btn-space-gray">太空灰色</label>
+                    <input type="radio" name="color" value="silver" id="Mac-silver">
+                    <label for="Mac-silver" class="btn-silver">銀色</label>
+                </div>
+                <div class="chose-storage">
+                    <h2>記憶體。 <span>你需要多少記憶體?</span></h2>
+                    <input type="radio" name="storageRAM" value="8GB" id="Mac-8GB">
+                    <label for="Mac-8GB">
+                        <div class="txt">
+                            8<span>GB 統一記憶體</span>
+                            <p> </p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storageRAM" value="16GB" id="Mac-16GB">
+                    <label for="Mac-16GB">
+                        <div class="txt">
+                            16<span>GB 統一記憶體</span>
+                            <p>+ NT$6,000</p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storageRAM" value="24GB" id="Mac-24GB">
+                    <label for="Mac-24GB">
+                        <div class="txt">
+                            24<span>GB 統一記憶體</span>
+                            <p>+ NT$12,000</p>
+                        </div>
+                    </label>
+                    
+                </div>
+                <div class="chose-storage">
+                    <h2>儲存裝置。 <span>你需要多少儲存空間?</span></h2>
+                    <input type="radio" name="storageSSD" value="256GB-SSD" id="Mac-256GB">
+                    <label for="Mac-256GB">
+                        <div class="txt">
+                            256<span>GB SSD 儲存裝置</span>
+                            <p> </p>
+                        </div>
+                    </label>
+                    <input type="radio" name="storageSSD" value="512GB-SSD" id="Mac-512GB">
+                    <label for="Mac-512GB">
+                        <div class="txt">
+                            512<span>GB SSD 儲存裝置</span>
+                            <p>+ NT$6,000</p>
+                        </div>
+                    </label>
+                    
+                    
+                </div>
+                <hr>
+                <div id='Mac-selection'></div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+{
+    "iPad": {
+        "product":{
+            "productName":"iPad Air",
+            "baseImgUrl":"./img/iPad/ipad-air.jpg"
+        },
+        "outWard":[
+            {"color": "space-gray","colorHEX":"#7c7a7f","ImgUrl":"iPad/space-gray.jpg"},
+            {"color": "blue","colorHEX":"#97b8c7","ImgUrl":"iPad/blue.jpg"},
+            {"color": "pink","colorHEX":"#e8d2d0","ImgUrl":"iPad/pink.jpg"},
+            {"color": "purple","colorHEX":"#c2c1d7","ImgUrl":"iPad/purple.jpg"},
+            {"color": "starlight","colorHEX":"#f0e5d3","ImgUrl":"iPad/starlight.jpg"}
+        ],
+        "spec":[
+            {"storage":"64GB","network": "Wi-Fi","price": 19900},
+            {"storage":"64GB","network": "Cellular","price": 24900},
+            {"storage":"256GB","network": "Wi-Fi","price": 24900},
+            {"storage":"256GB","network": "Cellular","price": 29900}
+        ]
+    },
+    "iPhone": {
+        "product":{
+            "productName":"iPhone SE",
+            "baseImgUrl":"./img/iPhone/iphone-se.jpg"
+        },
+        "outWard":[
+            {"color": "midnight","colorHEX":"#2e3641","ImgUrl":"iPhone/midnight.jpg"},
+            {"color": "starlight","colorHEX":"#f0e5d3","ImgUrl":"iPhone/starlight.jpg"},
+            {"color": "product-red","colorHEX":"#ba0c2f","ImgUrl":"iPhone/product-red.jpg"}
+        ],
+        "spec":[
+            {"storage":"64GB","price": 14900},
+            {"storage":"128GB","price": 16500},
+            {"storage":"256GB","price": 20000}
+        ]
+    },
+    "Mac": {
+        "product":{
+            "productName":"MacBook Air 15inch",
+            "baseImgUrl":"./img/Mac/Mac.jpg"
+        },
+        "outWard":[
+            {"color": "midnight","colorHEX":"#2e3641","ImgUrl":"Mac/midnight.jpg"},
+            {"color": "starlight","colorHEX":"#f0e5d3","ImgUrl":"Mac/starlight.jpg"},
+            {"color": "space-gray","colorHEX":"#7d7e80","ImgUrl":"Mac/space-gray.jpg"},
+            {"color": "silver","colorHEX":"#e3e4e6","ImgUrl":"Mac/silver.jpg"}
+        ],
+        "spec":[
+            {"storageRAM":"8GB","storageSSD": "256GB-SSD","price": 42900},
+            {"storageRAM":"8GB","storageSSD": "512GB-SSD","price": 48900},
+            {"storageRAM":"16GB","storageSSD": "256GB-SSD","price": 48900},
+            {"storageRAM":"16GB","storageSSD": "512GB-SSD","price": 54900},
+            {"storageRAM":"24GB","storageSSD": "256GB-SSD","price": 54900},
+            {"storageRAM":"24GB","storageSSD": "512GB-SSD","price": 60900}
+        ]
+    }
+}

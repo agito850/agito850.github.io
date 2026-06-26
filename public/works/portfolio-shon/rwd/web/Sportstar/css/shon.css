@@ -1,0 +1,8 @@
+@charset "utf-8";
+.bg-nav{
+    background-color: rgba(64,69,102,1.00);
+}
+.ftco-bg-color{
+    background-color: rgba(83,241,194,1.00);	
+	z-index: -1;
+}

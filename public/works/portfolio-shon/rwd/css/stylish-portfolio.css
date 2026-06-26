@@ -1,0 +1,251 @@
+/* Global Styles */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body{
+	background-color: #FBF2C9
+}
+
+.vert-text {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.vert-text h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 4.5em;
+  font-weight: 700;
+}
+
+/* Nav */
+
+.bg-nav{
+	background-color: #BCB2D9;
+}
+.bg-toggler{
+    background-color: #7567AA;
+}
+
+#mainNav{
+	
+	font-weight: 700;
+}
+#mainNav .navbar-brand{
+	color: #fff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link{
+	color: #fff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link:hover{
+	color: #18bc9c;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link:active,#mainNav .navbar-nav li.nav-item a.nav-link:focus{
+	color: #fff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link.active{
+	color: #18bc9c;
+}
+#mainNav .navbar-toggler{
+	font-size: 80%;
+	padding: .8rem;
+}
+@media (min-width:992px){
+	#mainNav{
+		padding-top: 1.5rem;
+		padding-bottom: 1.5rem;
+		transition: padding-top .3s,padding-bottom .3s
+	}
+	#mainNav .navbar-brand{
+		font-size: 2em;
+		transition: font-size .3s
+	}
+	#mainNav .navbar-nav{
+		margin-top: 0;
+	}
+	#mainNav .navbar-nav>li.nav-item>a.nav-link.active{
+    color: #fff;
+    background-color: #FFAE00
+	}
+	#mainNav .navbar-nav>li.nav-item>a.nav-link.active:active,#mainNav .navbar-nav>li.nav-item>a.nav-link.active:focus,#mainNav .navbar-nav>li.nav-item>a.nav-link.active:hover{
+    color: #fff;
+    background-color: #006CFF
+	}
+	#mainNav.navbar-shrink{
+		padding-top: .5rem;
+		padding-bottom: .5rem;
+	}
+	#mainNav.navbar-shrink .navbar-brand{
+		font-size: 1.5em;
+	}
+}
+/* Nav */
+
+/* Full Page Image Header Area */
+
+.header {
+  display: table;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: url("../images/logo_bg.png") no-repeat center center fixed; 
+  background-size: cover;
+}
+
+
+/* Services */
+
+.services {
+    background-color: #7567AA;
+    padding: 50px 0;
+    color: #ffffff;
+}
+.about {
+  background: #F3DB00;
+  padding: 50px 0;
+  color: #ffffff;
+}
+
+.ani,.web,.graphic {
+  padding: 50px 0;
+}
+
+.service-item {
+  margin-bottom: 15px;
+}
+
+span.service-icon {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
+}
+
+/* Callout */
+
+.callout {
+  color: #ffffff;
+  display: table;
+  height: 400px;
+  width: 100%;
+  background: url(../img/callout.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* Portfolio */
+
+.portfolio {
+  padding: 50px 0;
+}
+
+.portfolio-item {
+  margin-bottom: 25px;
+}
+
+.img-portfolio {
+  margin: 0 auto;
+}
+
+
+/* Call to Action */
+
+.call-to-action {
+  color: #ffffff;
+  background: #0a5175;
+  padding: 50px 0;
+}
+
+.call-to-action .btn {
+  margin: 10px;
+}
+
+
+.top-scroll {
+  margin-top: 50px;
+}
+
+.top-scroll a {
+  text-decoration: none;
+  color: inherit;
+}
+
+i.scroll {
+  color: #333333;
+}
+
+i.scroll:hover {
+  color: #0a5175;
+}
+
+.media-object{
+	border: 1px solid rgba(114,114,114,1.00);
+	padding-top: 3px;
+	padding-right: 3px;
+	padding-bottom: 3px;
+	padding-left: 3px;
+	margin-top: 5px;
+	margin-left: 5px;
+  }
+.logo{
+	height: 75%;
+	width: 75%;
+	margin: auto;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+	
+  .header {
+	background: url(../images/logo_bg_s.png) no-repeat center center scroll; 
+  }
+
+  .callout {
+	background: url(../img/callout.jpg) no-repeat center center scroll; 
+  }
+
+  .map {
+	height: 75%;
+  }
+  .media-object{
+	  transform:scale(0.5);
+	  margin-left:-50px;
+	  margin-right:-50px;
+	  margin-top:-60px;
+  }
+  .img-rounded{
+	  transform:scale(0.8);
+	  margin-left:auto;
+	  margin-right:auto;
+  }
+ .logo{
+	height: 100%;
+	width: 100%;
+	margin: auto;
+}
+}/*768*/
+
+@media (max-width:576px){
+	
+
+ .card-body p{
+		display: none;
+  }
+  .card{
+	  transform: scale(0.8);
+	  margin:-8% auto -8%;
+  }	
+	
+}/*576*/

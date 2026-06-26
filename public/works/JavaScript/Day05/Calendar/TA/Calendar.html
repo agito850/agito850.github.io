@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>行事曆</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>我的行事曆</h1>
+            <h3>yyyy年xx月</h3>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-success" id="preMonth">上個月</button>
+                <button type="button" class="btn btn-warning mx-1" id="thisMonth">這個月</button>
+                <button type="button" class="btn btn-success" id="nextMonth">下個月</button>
+            </div>
+
+            <table class="table table-bordered mt-3">
+                <thead>
+                    <tr class="table-danger">
+                        <td scope="col">日</td>
+                        <td scope="col">一</td>
+                        <td scope="col">二</td>
+                        <td scope="col">三</td>
+                        <td scope="col">四</td>
+                        <td scope="col">五</td>
+                        <td scope="col">六</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+
+
+            <!-- Button trigger modal -->
+            
+
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary me-1" data-bs-toggle="modal" data-bs-target="#addModal">
+                    新增行程
+                </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                    編輯行程
+                </button>
+            </div>
+            <!-- Button trigger modal -->
+            
+        </div>
+    </div>
+
+
+
+    <!-- 新增行程 -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addModalLabel">新增行程</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- yyyy-mm-dd -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">日期</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="add-addon1" id="add-addon1" data-index="">
+                    </div>
+                    <!-- 標題 -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">地點</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="add-addon2" id="add-addon2">
+                    </div>
+                    <!-- 內容 -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">活動</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="add-addon3" id="add-addon3">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="add-addon4">新增</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 編輯行程 -->
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editModalLabel">編輯行程</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- yyyy-mm-dd -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">日期</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="edit-addon1" id="edit-addon1">
+                    </div>
+                    <!-- 標題 -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">地點</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="edit-addon2" id="edit-addon2">
+                    </div>
+                    <!-- 內容 -->
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">活動</span>
+                        <input type="text" class="form-control" placeholder="" aria-label=""
+                            aria-describedby="edit-addon3" id="edit-addon3">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button type="button" class="btn btn-primary" id="edit-addon4">修改</button>
+                    <button type="button" class="btn btn-danger" id="edit-addon5">刪除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

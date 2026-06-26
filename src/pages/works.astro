@@ -1,0 +1,166 @@
+---
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+
+// 作品集資料：有 thumb 就顯示縮圖，沒有就顯示文字卡（emoji 佔位）
+const categories = [
+	{
+		name: "📄 完整切版專案",
+		items: [
+			{ title: "首頁 Index", url: "/works/Project/Index/index.html", desc: "含輪播的形象首頁", emoji: "🏠" },
+		],
+	},
+	{
+		name: "🎮 小遊戲 & 互動（JavaScript）",
+		items: [
+			{ title: "1A2B", url: "/works/JavaScript/Day04/1A2B/index_1A2B.html", desc: "霓虹風數字推理遊戲", thumb: "/thumbs/1a2b.webp" },
+			{ title: "小瑪莉・巧虎版", url: "/works/JavaScript/Day06/littleTiger/index.html", desc: "巧虎換皮跑馬燈拉霸", thumb: "/thumbs/littletiger.webp" },
+			{ title: "Apple 官網模擬", url: "/works/JavaScript/Day05/Apple/3.three%20products/Apple2023_HW.html", desc: "iPad Air 產品頁互動", thumb: "/thumbs/apple.png" },
+			{ title: "行事曆", url: "/works/JavaScript/Day05/Calendar/calendar.html", desc: "月曆與日期運算", thumb: "/thumbs/calendar.png" },
+			{ title: "休閒農場地圖", url: "/works/JavaScript/Day08/FarmMap/MapHW.html", desc: "全台休閒農場（農業部開放資料）", thumb: "/thumbs/farmmap.png" },
+			{ title: "YouBike 地圖", url: "/works/JavaScript/Day08/youBikeMap/MapHW.html", desc: "即時站點地圖（YouBike 2.0）", emoji: "🚲" },
+			{ title: "猜數字", url: "/works/JavaScript/Day01/GuessNumber/index.html", desc: "經典猜數字", emoji: "🔢" },
+			{ title: "小瑪莉", url: "/works/JavaScript/Day06/littleMary/index.html", desc: "跑馬燈拉霸原版", emoji: "🎰" },
+			{ title: "行銷佔比圖表", url: "/works/JavaScript/Day03/1.Chart/MarketingShare.html", desc: "資料視覺化", emoji: "📊" },
+			{ title: "LoL 角色轉表格", url: "/works/JavaScript/Day03/2.LoL/LoL.html", desc: "資料渲染練習", emoji: "🎯" },
+		],
+	},
+	{
+		name: "🎨 切版練習（HTML / CSS）",
+		items: [
+			{ title: "課表", url: "/works/HtmlCSS/Day01/1.table/index.html", desc: "表格排版", emoji: "📅" },
+			{ title: "貓咪版", url: "/works/HtmlCSS/Day01/2.cat%20web/index.html", desc: "圖文網頁", emoji: "🐱" },
+			{ title: "Shopline", url: "/works/HtmlCSS/Day02/1.Shopline/index.html", desc: "電商頁切版", emoji: "🛒" },
+			{ title: "Toyota", url: "/works/HtmlCSS/Day04/Toyota/index.html", desc: "汽車品牌頁", emoji: "🚗" },
+			{ title: "Hawaii（RWD）", url: "/works/HtmlCSS/Day05/1.Hawaii/index_RWD_min.html", desc: "響應式版面", emoji: "🌺" },
+			{ title: "Toyota 轉 Grid", url: "/works/HtmlCSS/Day05/2.Toyota轉grid/index_grid.html", desc: "CSS Grid 重構", emoji: "🔲" },
+			{ title: "RWD 格線切版", url: "/works/HtmlCSS/Day06/2.HawaiiRWD/index_RWD_12column.html", desc: "12 欄格線系統", emoji: "📐" },
+			{ title: "格線卡片練習", url: "/works/HtmlCSS/Day06/1.gridRWD/index.html", desc: "Grid 卡片排版", emoji: "🃏" },
+			{ title: "Shopline（Bootstrap）", url: "/works/HtmlCSS/Day07/ShoplineBS/Shopline_BS.html", desc: "Bootstrap 重製", emoji: "🅱️" },
+		],
+	},
+	{
+		name: "🎬 動畫／平面／3D 作品集",
+		items: [
+			{ title: "互動作品集", url: "/works/portfolio-shon/index.html", desc: "Adobe Animate 進場動畫，點「Click Me」進入動畫／平面／3D 作品集", thumb: "/thumbs/portfolio-shon.png" },
+		],
+	},
+];
+---
+<MainGridLayout title="作品集" description="Shon 的作品集">
+	<div class="card-base z-10 px-6 md:px-9 py-6 relative w-full">
+		<h1 class="text-3xl font-bold mb-2 text-90">作品集</h1>
+		<p class="text-neutral-500 dark:text-neutral-400 mb-8">
+			從團隊專案、前端切版到小遊戲，記錄我「服裝設計 → 程式設計」這條路上的足跡。🧵→💻
+			<br />點縮圖即可開啟 demo（新分頁開啟）。
+		</p>
+
+		<!-- 團隊專案：蛤班 HaBan -->
+		<section class="mb-10">
+			<h2 class="text-xl font-bold mb-4 text-90">🌟 團隊專案</h2>
+			<div class="haban-feature">
+				<div class="haban-thumb">
+					<img src="/thumbs/haban-home.png" alt="蛤班 HaBan 首頁" loading="lazy" />
+					<img src="/thumbs/haban-dashboard.png" alt="蛤班 HaBan 後台" loading="lazy" />
+				</div>
+				<div class="haban-info">
+					<h3 class="text-lg font-bold text-90">蛤班 HaBan — 人力資源媒合平台</h3>
+					<p class="haban-meta">Build School 畢業專案 · 2023 · 6 人團隊・我擔任組長</p>
+					<ul class="text-75">
+						<li><b>技術</b>：C# / ASP.NET Core MVC / SQL Server / Vue.js / Azure DevOps</li>
+						<li><b>架構</b>：Repository / Service 分層、DI、CI/CD Pipeline</li>
+						<li><b>亮點</b>：導入 Redis 快取，分類表載入效率提升 <b>6.5 倍</b></li>
+					</ul>
+					<p class="haban-offline">⚠️ 網站目前已下線，暫無 live demo。</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- 各分類卡片牆 -->
+		{categories.map((cat) => (
+			<section class="mb-10">
+				<h2 class="text-xl font-bold mb-4 text-90">{cat.name}</h2>
+				<div class="works-grid">
+					{cat.items.map((item) => (
+						<a class="work-card" href={item.url} target="_blank" rel="noopener noreferrer">
+							{item.thumb ? (
+								<div class="work-thumb"><img src={item.thumb} alt={item.title} loading="lazy" /></div>
+							) : (
+								<div class="work-thumb work-placeholder"><span>{item.emoji}</span></div>
+							)}
+							<div class="work-body">
+								<div class="work-title text-90">{item.title}</div>
+								<div class="work-desc text-50">{item.desc}</div>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+		))}
+	</div>
+</MainGridLayout>
+
+<style>
+	.haban-feature {
+		display: flex;
+		gap: 1.25rem;
+		flex-wrap: wrap;
+		background: var(--card-bg, rgba(128,128,128,0.06));
+		border: 1px solid rgba(128, 128, 128, 0.15);
+		border-radius: var(--radius-large, 1rem);
+		padding: 1rem;
+	}
+	.haban-thumb {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex: 1 1 280px;
+		min-width: 240px;
+	}
+	.haban-thumb img {
+		width: 100%;
+		border-radius: 0.6rem;
+		border: 1px solid rgba(128, 128, 128, 0.15);
+	}
+	.haban-info { flex: 2 1 320px; }
+	.haban-info ul { margin: 0.5rem 0; padding-left: 1.1rem; list-style: disc; }
+	.haban-info li { margin: 0.25rem 0; font-size: 0.92rem; }
+	.haban-meta { font-size: 0.85rem; color: var(--primary, #6b7280); margin: 0.25rem 0 0.5rem; }
+	.haban-offline { font-size: 0.85rem; color: #b45309; margin-top: 0.5rem; }
+
+	.works-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+		gap: 1rem;
+	}
+	.work-card {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid rgba(128, 128, 128, 0.15);
+		border-radius: 0.75rem;
+		overflow: hidden;
+		background: rgba(128, 128, 128, 0.04);
+		transition: transform 0.15s ease, box-shadow 0.15s ease;
+		text-decoration: none;
+	}
+	.work-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+	}
+	.work-thumb {
+		width: 100%;
+		height: 130px;
+		overflow: hidden;
+		background: #000;
+	}
+	.work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+	.work-placeholder {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: linear-gradient(135deg, rgba(125,125,255,0.18), rgba(255,125,200,0.18));
+	}
+	.work-placeholder span { font-size: 2.6rem; }
+	.work-body { padding: 0.6rem 0.75rem 0.8rem; }
+	.work-title { font-weight: 700; font-size: 0.95rem; }
+	.work-desc { font-size: 0.8rem; margin-top: 0.15rem; }
+</style>

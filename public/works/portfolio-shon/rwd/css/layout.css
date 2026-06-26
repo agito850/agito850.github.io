@@ -1,0 +1,73 @@
+
+.web{
+	
+	margin-bottom:15px; 
+	background-color: rgba(251,242,201,1.00);
+	color: #7567AA;
+}
+.web .portfolio-item{
+    position: relative;
+    display: block;
+    max-width: 25rem;
+    border-radius: 30px;
+    margin-bottom: 15px;	
+}
+.web .portfolio-item .portfolio-item-caption{
+    -webkit-transition: all ease .5s;
+    -moz-transition: all ease .5s;
+    transition: all ease .5s;
+    opacity: 0;
+    background-image: linear-gradient(180deg,rgba(176,255,255,.7) 0%,rgba(117,103,170,.7) 99.48%);
+}
+.web .portfolio-item .portfolio-item-caption:hover{
+	opacity: 1;
+}
+.web .portfolio-item .portfolio-item-caption .portfolio-item-caption-content{
+	font-size: 1.5rem;
+}
+@media (min-width:576px){
+.web{
+	margin-bottom: -30px;
+}
+.web .portfolio-item{
+	margin-bottom: 30px;
+}
+}
+
+/*------------------------*/
+.portfolio{
+	background-color:rgba(251,242,201,1.00);
+}
+
+
+/*----------------porfolio-------------------*/
+.portfolio{
+	margin-bottom:-15px; 
+}
+.portfolio .portfolio-item{
+	position: relative;
+	display: block;
+	max-width: 25rem;
+	margin-bottom: 15px
+}
+.portfolio .portfolio-item .portfolio-item-caption{
+	transition: all ease .5s;
+	opacity: 0;
+	background-color: rgba(24,188,156,.9)
+}
+.portfolio .portfolio-item .portfolio-item-caption:hover{/*滑上*/
+	opacity: 1;
+}
+.portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content{
+	font-size: 1.5rem;
+}
+@media (min-width:576px){
+	.portfolio{
+		margin-bottom: -30px;
+	}
+	.portfolio .portfolio-item{
+		margin-bottom: 30px;
+	}
+}
+
+
