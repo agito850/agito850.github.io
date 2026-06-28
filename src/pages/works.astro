@@ -59,19 +59,35 @@ const categories = [
 			<h2 class="text-xl font-bold mb-4 text-90">🌟 團隊專案</h2>
 			<div class="haban-feature">
 				<div class="haban-thumb">
-					<img src="/thumbs/haban-home.png" alt="蛤班 HaBan 首頁" loading="lazy" />
-					<img src="/thumbs/haban-dashboard.png" alt="蛤班 HaBan 後台" loading="lazy" />
+					<img class="zoomable" src="/thumbs/haban-home.png" alt="蛤班 HaBan 首頁" loading="lazy" />
+					<img class="zoomable" src="/thumbs/haban-dashboard.png" alt="蛤班 HaBan 後台" loading="lazy" />
 				</div>
 				<div class="haban-info">
 					<h3 class="text-lg font-bold text-90">蛤班 HaBan — 人力資源媒合平台</h3>
 					<p class="haban-meta">Build School 畢業專案 · 2023 · 6 人團隊・我擔任組長</p>
+					<p class="haban-desc text-75">媒合求職者與企業的全端平台，是我從設計轉軌後第一個完整的團隊開發專案。我擔任組長，負責以下前後台功能與架構規劃：</p>
 					<ul class="text-75">
-						<li><b>技術</b>：C# / ASP.NET Core MVC / SQL Server / Vue.js / Azure DevOps</li>
-						<li><b>架構</b>：Repository / Service 分層、DI、CI/CD Pipeline</li>
-						<li><b>亮點</b>：導入 Redis 快取，分類表載入效率提升 <b>6.5 倍</b></li>
+						<li><b>前台</b>：首頁職缺搜尋 + 職缺 Modal / 公司卡片、應徵紀錄（換頁 / 排序 / 篩選 / 連結聯絡資料）、AI 媒合（串接 ChatGPT 依角色生成內容）</li>
+						<li><b>後台</b>：JWT 驗證（Cookie / API 轉接層）</li>
+						<li><b>技術亮點</b>：導入 Redis 快取，職缺分類載入 822ms → 127ms（提速 <b>6.5 倍</b>）</li>
+						<li><b>技術</b>：C# / ASP.NET Core MVC / SQL Server / Vue.js / Azure DevOps；Repository / Service 分層、DI、CI/CD</li>
 					</ul>
 					<p class="haban-offline">⚠️ 網站目前已下線，暫無 live demo。</p>
 				</div>
+			</div>
+			<div class="haban-shots">
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-redis.png" alt="HaBan Redis 快取效能" loading="lazy" />
+					<figcaption class="text-50">Redis 快取：載入提速 6.5 倍</figcaption>
+				</figure>
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-ai.png" alt="HaBan AI 媒合串接 ChatGPT" loading="lazy" />
+					<figcaption class="text-50">AI 媒合：串接 ChatGPT 生成內容</figcaption>
+				</figure>
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-features.png" alt="HaBan 核心功能" loading="lazy" />
+					<figcaption class="text-50">核心功能：多角色 / 精準搜尋 / 迅速媒合</figcaption>
+				</figure>
 			</div>
 		</section>
 
@@ -125,6 +141,20 @@ const categories = [
 	.haban-info ul { margin: 0.5rem 0; padding-left: 1.1rem; list-style: disc; }
 	.haban-info li { margin: 0.25rem 0; font-size: 0.92rem; }
 	.haban-meta { font-size: 0.85rem; color: var(--primary, #6b7280); margin: 0.25rem 0 0.5rem; }
+	.haban-desc { font-size: 0.9rem; margin: 0.25rem 0 0.6rem; line-height: 1.6; }
+	.haban-shots {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 0.85rem;
+		margin-top: 0.85rem;
+	}
+	.haban-shots figure { margin: 0; }
+	.haban-shots img {
+		width: 100%;
+		border-radius: 0.6rem;
+		border: 1px solid rgba(128, 128, 128, 0.15);
+	}
+	.haban-shots figcaption { font-size: 0.78rem; margin-top: 0.3rem; text-align: center; }
 	.haban-offline { font-size: 0.85rem; color: #b45309; margin-top: 0.5rem; }
 
 	.works-grid {
@@ -163,4 +193,52 @@ const categories = [
 	.work-body { padding: 0.6rem 0.75rem 0.8rem; }
 	.work-title { font-weight: 700; font-size: 0.95rem; }
 	.work-desc { font-size: 0.8rem; margin-top: 0.15rem; }
+	.zoomable { cursor: zoom-in; }
 </style>
+
+<style is:global>
+	#img-lightbox {
+		position: fixed;
+		inset: 0;
+		z-index: 9999;
+		display: none;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		background: rgba(0, 0, 0, 0.85);
+		cursor: zoom-out;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
+	#img-lightbox.show { display: flex; opacity: 1; }
+	#img-lightbox img {
+		max-width: 95vw;
+		max-height: 92vh;
+		border-radius: 0.5rem;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+	}
+</style>
+
+<script>
+	function ensureLightbox() {
+		let ov = document.getElementById("img-lightbox");
+		if (!ov) {
+			ov = document.createElement("div");
+			ov.id = "img-lightbox";
+			ov.innerHTML = '<img alt="放大圖" />';
+			ov.addEventListener("click", () => ov.classList.remove("show"));
+			document.body.appendChild(ov);
+		}
+		return ov;
+	}
+	document.addEventListener("click", (e) => {
+		const img = (e.target as HTMLElement)?.closest?.(".zoomable") as HTMLImageElement | null;
+		if (!img) return;
+		const ov = ensureLightbox();
+		(ov.querySelector("img") as HTMLImageElement).src = img.src;
+		ov.classList.add("show");
+	});
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") document.getElementById("img-lightbox")?.classList.remove("show");
+	});
+</script>
