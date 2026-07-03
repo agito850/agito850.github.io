@@ -261,6 +261,55 @@ public class Order
 
 兩者也可以組合使用——外層用悲觀鎖擋住明顯的併發（如重複點擊），內層用樂觀鎖做最後一道防線（如版本號檢查）。
 
+## Fencing Token：當鎖過期但持有者還在寫
+
+悲觀鎖有一個邊界情況：**業務邏輯跑太久，鎖的 TTL 先到期了**。
+
+```
+Request A ──→ 搶到鎖 ✅ ──→ 業務邏輯跑很久… ──→ 鎖過期了（TTL 到了）
+Request B ──→ 鎖已過期 ──→ 合法搶到鎖 ✅ ──→ 開始寫入
+Request A ──→ 還在做（以為自己還持有鎖）──→ 也寫入 💀 ──→ 覆蓋 B 的資料
+```
+
+注意：**不是兩個人同時搶到鎖**（Redis `SET NX` 是原子操作，不會同時成功），而是 A 的鎖過期後 B 合法拿到了新鎖，但 A 不知道自己的鎖已經沒了。
+
+### 解法：Fencing Token（防護令牌）
+
+Martin Kleppmann 提出的方案——拿鎖時取得一個**遞增的 token**，寫入時帶上 token，儲存端只接受最大 token 的寫入：
+
+```
+Request A ──→ 搶到鎖 (token=42) ──→ 跑很久… ──→ 鎖過期
+Request B ──→ 搶到鎖 (token=43) ──→ 寫入 (token=43) ✅
+Request A ──→ 寫入 (token=42) ──→ Storage 檢查：42 < 43 → 拒絕 ✅
+```
+
+```csharp
+// 概念程式碼
+var (locked, fencingToken) = await AcquireLock(key);  // token = 42
+
+// ... 業務邏輯（可能跑很久）...
+
+// 寫入時帶上 token，DB 端檢查是否為最新
+var affected = await _db.ExecuteAsync(@"
+    UPDATE Resource SET Data = @Data
+    WHERE Id = @Id AND FencingToken <= @Token",
+    new { Id = resourceId, Data = newData, Token = fencingToken });
+```
+
+### 什麼時候需要 Fencing Token？
+
+**共用資源 + 多個寫入者 + 長時間操作**。例如分散式檔案系統中，多個 Worker 輪流處理同一個檔案，操作時間可能超過 TTL。
+
+### 什麼時候不需要？
+
+大多數業務場景都不需要。以表單送簽為例：
+
+- 鎖的粒度是 **per 表單**（per `formObjId`），不存在多人「合法輪流寫同一筆資料」的需求
+- 同一張表單被送簽兩次本身就該被擋掉，不是「比誰的 token 大」的問題
+- TTL 設為預期時間的 3~5 倍（例如 2 分鐘），過期問題幾乎不會發生
+
+> **實務上大多數場景不需要 Fencing Token，RedLock + 合理 TTL 就足夠。** Fencing Token 是學術上的完備性補充，在金融級或分散式儲存等極端場景才需要。
+
 ## 多層鎖的設計
 
 實務中，一個操作可能需要**多層不同粒度的鎖**：
