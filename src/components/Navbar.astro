@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon/components";
 import { navBarConfig, siteConfig } from "../config";
 import { LinkPresets } from "../constants/link-presets";
+import I18nKey from "../i18n/i18nKey";
+import { i18n } from "../i18n/translation";
 import { LinkPreset, type NavBarLink } from "../types/config";
 import { url } from "../utils/url-utils";
 import LightDarkSwitch from "./LightDarkSwitch.svelte";
@@ -10,22 +12,38 @@ import DisplaySettings from "./widget/DisplaySettings.svelte";
 import NavMenuPanel from "./widget/NavMenuPanel.astro";
 
 const className = Astro.props.class;
+const lang = (Astro.props.lang as string) || siteConfig.lang || "en";
+const isEn = lang.toLowerCase().startsWith("en");
+const prefix = isEn ? "/en" : "";
 
-let links: NavBarLink[] = navBarConfig.links.map(
+const presetKey: Record<number, I18nKey> = {
+	[LinkPreset.Home]: I18nKey.home,
+	[LinkPreset.About]: I18nKey.about,
+	[LinkPreset.Archive]: I18nKey.archive,
+};
+
+let links: NavBarLink[] = navBarConfig.links
+	.filter((item) => !(isEn && item === LinkPreset.Archive))
+	.map(
 	(item: NavBarLink | LinkPreset): NavBarLink => {
 		if (typeof item === "number") {
-			return LinkPresets[item];
+			const base = LinkPresets[item];
+			return { name: i18n(presetKey[item], lang), url: prefix + base.url };
 		}
-		return item;
+		if (item.external) return item;
+		// 內部自訂連結（如 作品集）：加 /en 前綴、英文時換標籤
+		const name = item.url === "/works/" && isEn ? "Works" : item.name;
+		return { ...item, name, url: prefix + item.url };
 	},
 );
+const homeUrl = isEn ? "/en/" : "/";
 ---
 <div id="navbar" class="z-50 onload-animation">
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
     <div class:list={[
         className,
         "card-base !overflow-visible max-w-[var(--page-width)] h-[4.5rem] !rounded-t-none mx-auto flex items-center justify-between px-4"]}>
-        <a href={url('/')} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
+        <a href={url(homeUrl)} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
             <div class="flex flex-row text-[var(--primary)] items-center text-md">
                 <Icon name="material-symbols:home-outline-rounded" class="text-[1.75rem] mb-1 mr-2" />
                 {siteConfig.title}
@@ -52,6 +70,10 @@ let links: NavBarLink[] = navBarConfig.links.map(
                     </button>
             )}
             <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
+            <button aria-label="Switch language" class="btn-plain scale-animation rounded-lg h-11 px-3 active:scale-90 font-bold text-sm flex items-center gap-1" id="lang-switch">
+                <Icon name="material-symbols:translate" class="text-[1.25rem]"></Icon>
+                <span id="lang-switch-label">EN</span>
+            </button>
             <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:!hidden" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
@@ -102,6 +124,26 @@ function loadButtonScript() {
 }
 
 loadButtonScript();
+</script>
+
+<script is:inline>
+(function(){
+    function isEn(){ return location.pathname === '/en' || location.pathname.startsWith('/en/'); }
+    function setLabel(){ var el=document.getElementById('lang-switch-label'); if(el) el.textContent = isEn() ? '中' : 'EN'; }
+    setLabel();
+    if(!window.__langSwitchBound){
+        window.__langSwitchBound = true;
+        document.addEventListener('click', function(e){
+            var btn = e.target && e.target.closest && e.target.closest('#lang-switch');
+            if(!btn) return;
+            var p = location.pathname, target;
+            if(isEn()){ target = p.replace(/^\/en/, ''); if(!target) target = '/'; }
+            else { target = '/en' + p; }
+            location.href = target;
+        });
+    }
+    document.addEventListener('swup:page:view', setLabel);
+})();
 </script>
 
 {import.meta.env.PROD && <script is:inline define:vars={{scriptUrl: url('/pagefind/pagefind.js')}}>

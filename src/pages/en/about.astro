@@ -1,0 +1,109 @@
+---
+import { getEntry, render } from "astro:content";
+import { Icon } from "astro-icon/components";
+import Markdown from "@components/misc/Markdown.astro";
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+
+const aboutPost = await getEntry("spec", "about-en");
+
+if (!aboutPost) {
+	throw new Error("About (en) page content not found");
+}
+
+const { Content } = await render(aboutPost);
+
+const skillGroups = [
+	{
+		label: "⚙️ Backend",
+		items: [
+			{ icon: "simple-icons:csharp", label: "C#", color: "#512BD4" },
+			{ icon: "simple-icons:dotnet", label: ".NET Core", color: "#512BD4" },
+			{ label: "ASP.NET Core Web API" },
+			{ label: "EF Core" },
+			{ label: "Dapper" },
+		],
+	},
+	{
+		label: "🗄️ Database & Cache",
+		items: [
+			{ icon: "simple-icons:microsoftsqlserver", label: "SQL Server", color: "#CC2927" },
+			{ icon: "simple-icons:redis", label: "Redis", color: "#FF4438" },
+			{ icon: "simple-icons:mongodb", label: "MongoDB", color: "#47A248" },
+		],
+	},
+	{
+		label: "☁️ Cloud & DevOps",
+		items: [
+			{ icon: "simple-icons:microsoftazure", label: "Azure", color: "#0078D4" },
+			{ icon: "simple-icons:docker", label: "Docker", color: "#2496ED" },
+			{ icon: "simple-icons:git", label: "Git", color: "#F05032" },
+		],
+	},
+	{
+		label: "🎨 Frontend",
+		items: [
+			{ icon: "simple-icons:html5", label: "HTML", color: "#E34F26" },
+			{ icon: "simple-icons:css", label: "CSS", color: "#1572B6" },
+			{ icon: "simple-icons:javascript", label: "JavaScript", color: "#F7DF1E" },
+			{ icon: "simple-icons:vuedotjs", label: "Vue", color: "#4FC08D" },
+		],
+	},
+	{
+		label: "🖌️ Creative",
+		items: [
+			{ icon: "simple-icons:adobephotoshop", label: "Photoshop", color: "#31A8FF" },
+			{ icon: "simple-icons:adobeillustrator", label: "Illustrator", color: "#FF9A00" },
+		],
+	},
+];
+---
+<MainGridLayout title="About" description="About Shon">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <Markdown class="mt-2">
+                <Content />
+            </Markdown>
+
+            <section class="mt-8">
+                <h2 class="text-xl font-bold mb-4 text-90">🛠️ Skills & Tools</h2>
+                {skillGroups.map((group) => (
+                    <div class="skill-group">
+                        <div class="skill-group-label text-75">{group.label}</div>
+                        <div class="skill-pills">
+                            {group.items.map((item) => (
+                                <span class="skill-pill">
+                                    {item.icon && <Icon name={item.icon} class="skill-icon" style={item.color ? `color:${item.color}` : undefined} />}
+                                    <span class="text-90">{item.label}</span>
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </section>
+        </div>
+    </div>
+</MainGridLayout>
+
+<style>
+    .skill-group { margin-bottom: 1rem; }
+    .skill-group-label { font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        background: rgba(125, 125, 255, 0.10);
+        border: 1px solid rgba(125, 125, 255, 0.18);
+        transition: transform 0.12s ease;
+    }
+    .skill-pill:hover { transform: translateY(-2px); }
+    .skill-icon {
+        width: 1.05rem;
+        height: 1.05rem;
+        color: var(--primary);
+    }
+</style>

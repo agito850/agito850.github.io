@@ -1,0 +1,156 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+
+const categories = [
+	{
+		name: "📄 Full Layout Projects",
+		items: [
+			{ title: "Homepage (Index)", url: "/works/Project/Index/index.html", desc: "Brand homepage with a carousel", emoji: "🏠" },
+		],
+	},
+	{
+		name: "🎮 Mini Games & Interactions (JavaScript)",
+		items: [
+			{ title: "1A2B", url: "/works/JavaScript/Day04/1A2B/index_1A2B.html", desc: "Neon number-guessing game", thumb: "/thumbs/1a2b.webp" },
+			{ title: "Little Mary · QiaoHu Edition", url: "/works/JavaScript/Day06/littleTiger/index.html", desc: "Reskinned marquee slot machine", thumb: "/thumbs/littletiger.webp" },
+			{ title: "Apple Store Clone", url: "/works/JavaScript/Day05/Apple/3.three%20products/Apple2023_HW.html", desc: "iPad Air product page interaction", thumb: "/thumbs/apple.png" },
+			{ title: "Calendar", url: "/works/JavaScript/Day05/Calendar/calendar.html", desc: "Monthly calendar & date logic", thumb: "/thumbs/calendar.png" },
+			{ title: "Farm Map", url: "/works/JavaScript/Day08/FarmMap/MapHW.html", desc: "Leisure farms map (MOA open data)", thumb: "/thumbs/farmmap.png" },
+			{ title: "YouBike Map", url: "/works/JavaScript/Day08/youBikeMap/MapHW.html", desc: "Live station map (YouBike 2.0)", emoji: "🚲" },
+			{ title: "Guess the Number", url: "/works/JavaScript/Day01/GuessNumber/index.html", desc: "Classic number guessing", emoji: "🔢" },
+			{ title: "Little Mary", url: "/works/JavaScript/Day06/littleMary/index.html", desc: "Marquee slot machine (original)", emoji: "🎰" },
+			{ title: "Marketing Share Chart", url: "/works/JavaScript/Day03/1.Chart/MarketingShare.html", desc: "Data visualization", emoji: "📊" },
+			{ title: "LoL Roster to Table", url: "/works/JavaScript/Day03/2.LoL/LoL.html", desc: "Data rendering practice", emoji: "🎯" },
+		],
+	},
+	{
+		name: "🎨 Layout Practice (HTML / CSS)",
+		items: [
+			{ title: "Timetable", url: "/works/HtmlCSS/Day01/1.table/index.html", desc: "Table layout", emoji: "📅" },
+			{ title: "Cat Web", url: "/works/HtmlCSS/Day01/2.cat%20web/index.html", desc: "Image + text page", emoji: "🐱" },
+			{ title: "Shopline", url: "/works/HtmlCSS/Day02/1.Shopline/index.html", desc: "E-commerce page layout", emoji: "🛒" },
+			{ title: "Toyota", url: "/works/HtmlCSS/Day04/Toyota/index.html", desc: "Car brand page", emoji: "🚗" },
+			{ title: "Hawaii (RWD)", url: "/works/HtmlCSS/Day05/1.Hawaii/index_RWD_min.html", desc: "Responsive layout", emoji: "🌺" },
+			{ title: "Toyota to Grid", url: "/works/HtmlCSS/Day05/2.Toyota轉grid/index_grid.html", desc: "CSS Grid refactor", emoji: "🔲" },
+			{ title: "RWD Grid Layout", url: "/works/HtmlCSS/Day06/2.HawaiiRWD/index_RWD_12column.html", desc: "12-column grid system", emoji: "📐" },
+			{ title: "Grid Cards", url: "/works/HtmlCSS/Day06/1.gridRWD/index.html", desc: "Grid card layout", emoji: "🃏" },
+			{ title: "Shopline (Bootstrap)", url: "/works/HtmlCSS/Day07/ShoplineBS/Shopline_BS.html", desc: "Bootstrap remake", emoji: "🅱️" },
+		],
+	},
+	{
+		name: "🎬 Animation / Graphic / 3D Portfolio",
+		items: [
+			{ title: "Interactive Portfolio", url: "/works/portfolio-shon/index.html", desc: "Adobe Animate intro — click \"Click Me\" to enter the animation / graphic / 3D portfolio", thumb: "/thumbs/portfolio-shon.png" },
+		],
+	},
+];
+---
+<MainGridLayout title="Works" description="Shon's portfolio">
+	<div class="card-base z-10 px-6 md:px-9 py-6 relative w-full">
+		<h1 class="text-3xl font-bold mb-2 text-90">Works</h1>
+		<p class="text-neutral-500 dark:text-neutral-400 mb-8">
+			From team projects and frontend layouts to mini games — footprints along my road from "fashion design" to "software design". 🧵→💻
+			<br />Click a thumbnail to open the demo (opens in a new tab).
+		</p>
+
+		<section class="mb-10">
+			<h2 class="text-xl font-bold mb-4 text-90">🌟 Team Project</h2>
+			<div class="haban-feature">
+				<div class="haban-thumb">
+					<img class="zoomable" src="/thumbs/haban-home.png" alt="HaBan homepage" loading="lazy" />
+					<img class="zoomable" src="/thumbs/haban-dashboard.png" alt="HaBan dashboard" loading="lazy" />
+				</div>
+				<div class="haban-info">
+					<h3 class="text-lg font-bold text-90">HaBan — Job Matching Platform</h3>
+					<p class="haban-meta">Build School capstone · 2023 · 6-person team · I was the team lead</p>
+					<p class="haban-desc text-75">A full-stack platform matching job seekers with companies — my first complete team project after pivoting from design. As team lead, I built the following front/back-end features and planned the architecture:</p>
+					<ul class="text-75">
+						<li><b>Frontend</b>: homepage job search + job Modal / company cards, application records (paging / sorting / filtering / contact links), AI matching (ChatGPT-generated content by role)</li>
+						<li><b>Backend</b>: JWT auth (via Cookie / API relay layer)</li>
+						<li><b>Highlight</b>: introduced Redis caching — job-category loading 822ms → 127ms (<b>6.5× faster</b>)</li>
+						<li><b>Stack</b>: C# / ASP.NET Core MVC / SQL Server / Vue.js / Azure DevOps; Repository / Service layering, DI, CI/CD</li>
+					</ul>
+					<p class="haban-offline">⚠️ The site is currently offline — no live demo.</p>
+				</div>
+			</div>
+			<div class="haban-shots">
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-redis.png" alt="HaBan Redis cache performance" loading="lazy" />
+					<figcaption class="text-50">Redis cache: 6.5× faster loading</figcaption>
+				</figure>
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-ai.png" alt="HaBan AI matching with ChatGPT" loading="lazy" />
+					<figcaption class="text-50">AI matching: ChatGPT integration</figcaption>
+				</figure>
+				<figure>
+					<img class="zoomable" src="/thumbs/haban-features.png" alt="HaBan core features" loading="lazy" />
+					<figcaption class="text-50">Core features: multi-role / search / matching</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		{categories.map((cat) => (
+			<section class="mb-10">
+				<h2 class="text-xl font-bold mb-4 text-90">{cat.name}</h2>
+				<div class="works-grid">
+					{cat.items.map((item) => (
+						<a class="work-card" href={item.url} target="_blank" rel="noopener noreferrer">
+							{item.thumb ? (
+								<div class="work-thumb"><img src={item.thumb} alt={item.title} loading="lazy" /></div>
+							) : (
+								<div class="work-thumb work-placeholder"><span>{item.emoji}</span></div>
+							)}
+							<div class="work-body">
+								<div class="work-title text-90">{item.title}</div>
+								<div class="work-desc text-50">{item.desc}</div>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+		))}
+	</div>
+</MainGridLayout>
+
+<style>
+	.haban-feature { display: flex; gap: 1.25rem; flex-wrap: wrap; background: var(--card-bg, rgba(128,128,128,0.06)); border: 1px solid rgba(128, 128, 128, 0.15); border-radius: var(--radius-large, 1rem); padding: 1rem; }
+	.haban-thumb { display: flex; flex-direction: column; gap: 0.5rem; flex: 1 1 280px; min-width: 240px; }
+	.haban-thumb img { width: 100%; border-radius: 0.6rem; border: 1px solid rgba(128, 128, 128, 0.15); }
+	.haban-info { flex: 2 1 320px; }
+	.haban-info ul { margin: 0.5rem 0; padding-left: 1.1rem; list-style: disc; }
+	.haban-info li { margin: 0.25rem 0; font-size: 0.92rem; }
+	.haban-meta { font-size: 0.85rem; color: var(--primary, #6b7280); margin: 0.25rem 0 0.5rem; }
+	.haban-desc { font-size: 0.9rem; margin: 0.25rem 0 0.6rem; line-height: 1.6; }
+	.haban-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.85rem; margin-top: 0.85rem; }
+	.haban-shots figure { margin: 0; }
+	.haban-shots img { width: 100%; border-radius: 0.6rem; border: 1px solid rgba(128, 128, 128, 0.15); }
+	.haban-shots figcaption { font-size: 0.78rem; margin-top: 0.3rem; text-align: center; }
+	.works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1rem; }
+	.work-card { display: flex; flex-direction: column; border: 1px solid rgba(128, 128, 128, 0.15); border-radius: 0.75rem; overflow: hidden; background: rgba(128, 128, 128, 0.04); transition: transform 0.15s ease, box-shadow 0.15s ease; text-decoration: none; }
+	.work-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12); }
+	.work-thumb { width: 100%; height: 130px; overflow: hidden; background: #000; }
+	.work-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+	.work-placeholder { display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(125,125,255,0.18), rgba(255,125,200,0.18)); }
+	.work-placeholder span { font-size: 2.6rem; }
+	.work-body { padding: 0.6rem 0.75rem 0.8rem; }
+	.work-title { font-weight: 700; font-size: 0.95rem; }
+	.work-desc { font-size: 0.8rem; margin-top: 0.15rem; }
+	.zoomable { cursor: zoom-in; }
+</style>
+
+<style is:global>
+	#img-lightbox { position: fixed; inset: 0; z-index: 9999; display: none; align-items: center; justify-content: center; padding: 2rem; background: rgba(0, 0, 0, 0.85); cursor: zoom-out; opacity: 0; transition: opacity 0.2s ease; }
+	#img-lightbox.show { display: flex; opacity: 1; }
+	#img-lightbox img { max-width: 95vw; max-height: 92vh; border-radius: 0.5rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); }
+</style>
+
+<script is:inline>
+	(function(){
+		function ensure(){ var ov=document.getElementById("img-lightbox"); if(!ov){ ov=document.createElement("div"); ov.id="img-lightbox"; ov.innerHTML='<img alt="zoom" />'; ov.addEventListener("click",function(){ov.classList.remove("show");}); document.body.appendChild(ov);} return ov; }
+		if(!window.__langSwitchZoomBound){
+			window.__langSwitchZoomBound = true;
+			document.addEventListener("click",function(e){ var img=e.target&&e.target.closest&&e.target.closest(".zoomable"); if(!img) return; var ov=ensure(); ov.querySelector("img").src=img.src; ov.classList.add("show"); });
+			document.addEventListener("keydown",function(e){ if(e.key==="Escape"){ var ov=document.getElementById("img-lightbox"); if(ov) ov.classList.remove("show"); }});
+		}
+	})();
+</script>
