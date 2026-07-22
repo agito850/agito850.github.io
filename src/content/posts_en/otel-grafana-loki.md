@@ -1,6 +1,6 @@
 ---
 title: "From Manually Grepping Logs to One-Click Queries: An OpenTelemetry + Grafana Loki Observability Story"
-published: 2026-07-02
+published: 2026-02-21
 description: "Debugging production bugs meant manually digging through logs, often half an hour from report to root cause — wiring up OpenTelemetry + Grafana Loki so logs auto-carry user identity and 8 sources query as one."
 tags: [OpenTelemetry, Grafana, Loki, Observability, C#]
 category: Tech

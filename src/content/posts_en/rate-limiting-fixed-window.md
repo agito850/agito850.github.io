@@ -1,6 +1,6 @@
 ---
 title: "Implementing a Rate Limiter from 0 to 1: Blocking Brute Force with a Fixed Window"
-published: 2026-07-02
+published: 2025-11-07
 description: "What do you do when an API gets hammered by key-guessing? Implement the simplest fixed-window limiter with IMemoryCache, plus a trade-off comparison of four algorithms."
 tags: [Rate Limiting, C#, API Design, Security, Backend]
 category: Tech

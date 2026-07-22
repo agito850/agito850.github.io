@@ -1,6 +1,6 @@
 ---
 title: 從 0 到 1 實作 Rate Limiter：用 Fixed Window 擋住暴力破解
-published: 2026-07-02
+published: 2025-11-07
 description: "API 被猜 Key 瘋狂試打怎麼辦？用 IMemoryCache 實作一個最簡單的固定窗口限流器，附上四種演算法的取捨比較。"
 tags: [Rate Limiting, C#, API設計, 資安, 後端]
 category: 技術

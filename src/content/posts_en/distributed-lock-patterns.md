@@ -1,6 +1,6 @@
 ---
 title: "Intro to Distributed Locks: Starting from 'a Form Submitted Twice' — Pessimistic Locks, Optimistic Locks, and RedLock"
-published: 2026-07-03
+published: 2025-05-02
 description: "Multiple people submitting the same form at once, duplicate approval steps generated — a practical note on solving concurrency with distributed locks, plus an optimistic/pessimistic comparison and an Execute-Around-Method wrapping technique."
 tags: [Distributed Lock, Redis, RedLock, C#, Concurrency, Backend]
 category: Tech

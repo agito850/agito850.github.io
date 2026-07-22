@@ -1,6 +1,6 @@
 ---
 title: 批次驗證從 2 分鐘降到 8 秒：一場 Task.WhenAll 的平行化實戰
-published: 2026-07-02
+published: 2025-10-18
 description: "Grid OnChange 驗證在大數據量下直接 Timeout——拆解瓶頸、平行切分、保留順序，最終提速 10 倍的除錯與優化紀實。"
 tags: [效能優化, C#, async, 平行處理, 踩坑]
 category: 技術

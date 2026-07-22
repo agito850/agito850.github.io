@@ -1,6 +1,6 @@
 ---
 title: "Batch Validation from 2 Minutes to 8 Seconds: A Task.WhenAll Parallelization Story"
-published: 2026-07-02
+published: 2025-10-18
 description: "Grid OnChange validation timed out under large data volumes — a debugging and optimization log of dissecting the bottleneck, parallel chunking, preserving order, and ending up 10× faster."
 tags: [Performance, C#, async, Parallelism, Pitfall]
 category: Tech

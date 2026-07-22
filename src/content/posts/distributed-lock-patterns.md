@@ -1,6 +1,6 @@
 ---
 title: 分散式鎖入門：從「表單被送簽兩次」聊起，搞懂悲觀鎖、樂觀鎖與 RedLock
-published: 2026-07-03
+published: 2025-05-02
 description: "多人同時送簽同一張表單，流程關卡被重複產出——用分散式鎖解決併發問題的實戰筆記，附上樂觀鎖/悲觀鎖比較與 Execute Around Method 封裝技巧。"
 tags: [分散式鎖, Redis, RedLock, C#, 併發, 後端]
 category: 技術

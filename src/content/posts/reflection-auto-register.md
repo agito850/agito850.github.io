@@ -1,6 +1,6 @@
 ---
 title: 15 行 Reflection 幹掉 194 行手動註冊：當 DI 註冊變成一種儀式
-published: 2026-07-02
+published: 2025-10-26
 description: "每新增一支 DataSource 就要手動加一行 DI 註冊，忘了就是上線後才發現的 Bug——用 Assembly 掃描一次解決。"
 tags: [C#, DI, Reflection, 架構, 重構]
 category: 技術

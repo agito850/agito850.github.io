@@ -1,6 +1,6 @@
 ---
 title: 從人工翻 Log 到一鍵查詢：OpenTelemetry + Grafana Loki 可觀測性串接實戰
-published: 2026-07-02
+published: 2026-02-21
 description: "線上 Bug 排查全靠人工翻 Log，從回報到定位動輒半小時——串接 OpenTelemetry + Grafana Loki，讓 Log 自動帶上使用者身分，8 種來源統一查詢。"
 tags: [OpenTelemetry, Grafana, Loki, 可觀測性, C#]
 category: 技術

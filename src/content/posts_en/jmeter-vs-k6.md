@@ -1,6 +1,6 @@
 ---
 title: "Load-Testing Tool Selection: JMeter vs k6 — Legacy GUI vs Modern Code-first"
-published: 2026-06-28
+published: 2025-09-29
 description: "From scripting, resource efficiency and protocol support to CI/CD — comparing the two major load-testing tools, with a practical recommendation."
 tags: [Load Testing, JMeter, k6, Performance, DevOps]
 category: Tech

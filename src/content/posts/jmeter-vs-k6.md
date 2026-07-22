@@ -1,6 +1,6 @@
 ---
 title: 壓測工具選型：JMeter vs k6，老牌 GUI 對決現代 Code-first
-published: 2026-06-28
+published: 2025-09-29
 description: "從腳本、資源效率、協定支援到 CI/CD，比較兩大負載測試工具，並給出實戰選型建議。"
 tags: [壓力測試, JMeter, k6, 效能, DevOps]
 category: 技術

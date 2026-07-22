@@ -1,6 +1,6 @@
 ---
 title: "15 Lines of Reflection Kill 194 Lines of Manual Registration: When DI Registration Becomes a Ritual"
-published: 2026-07-02
+published: 2025-10-26
 description: "Every new DataSource meant manually adding a line of DI registration — forget it and you have a bug you only find in production. Solved once with an assembly scan."
 tags: [C#, DI, Reflection, Architecture, Refactoring]
 category: Tech
