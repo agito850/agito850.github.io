@@ -231,14 +231,18 @@ const categories = [
 		}
 		return ov;
 	}
-	document.addEventListener("click", (e) => {
-		const img = (e.target as HTMLElement)?.closest?.(".zoomable") as HTMLImageElement | null;
-		if (!img) return;
-		const ov = ensureLightbox();
-		(ov.querySelector("img") as HTMLImageElement).src = img.src;
-		ov.classList.add("show");
-	});
-	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") document.getElementById("img-lightbox")?.classList.remove("show");
-	});
+	// 用 document 委派 + 全站只掛一次的旗標，確保 Swup 切頁後仍有效、不重複掛
+	if (!(window as any).__zoomableBound) {
+		(window as any).__zoomableBound = true;
+		document.addEventListener("click", (e) => {
+			const img = (e.target as HTMLElement)?.closest?.(".zoomable") as HTMLImageElement | null;
+			if (!img) return;
+			const ov = ensureLightbox();
+			(ov.querySelector("img") as HTMLImageElement).src = img.src;
+			ov.classList.add("show");
+		});
+		document.addEventListener("keydown", (e) => {
+			if (e.key === "Escape") document.getElementById("img-lightbox")?.classList.remove("show");
+		});
+	}
 </script>
