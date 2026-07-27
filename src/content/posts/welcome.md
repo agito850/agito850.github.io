@@ -1,6 +1,6 @@
 ---
 title: 嗨，歡迎來到 Shon 的技術沙盒
-published: 2026-06-24
+published: 2025-01-01
 description: "一點創作、一點踩坑，還有一點作為人類的思考與祈願。"
 tags: [雜談]
 category: 隨筆
